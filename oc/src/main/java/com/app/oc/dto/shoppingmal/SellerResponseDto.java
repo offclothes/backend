@@ -21,7 +21,7 @@ public class SellerResponseDto {
     private String shopTel;
     private Approval approval;
 
-    public static SellerResponseDto of(Member member, Shoppingmall shoppingmall) {
+    public static SellerResponseDto of(Member member, Shoppingmal shoppingmal) {
         return SellerResponseDto.builder()
                 .shopId(shoppingmall.getShopId())
                 .memberId(member.getMemberId())

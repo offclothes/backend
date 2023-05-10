@@ -29,8 +29,8 @@ public class SellerRequestDto {
     @NotNull
     private String shopTel;
 
-    public Shoppingmall toShoppingmall() {
-        return Shoppingmall.builder()
+    public Shoppingmal toShoppingmal() {
+        return Shoppingmal.builder()
                 .shopName(shopName)
                 .address(address)
                 .email(email)
