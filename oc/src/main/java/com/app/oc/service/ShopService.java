@@ -29,8 +29,12 @@ public class ShopService {
 
     private final ItemRepository ItemRepository;
     private final ShopRepository shopRepositroy ;
+
+    private final ShopRepositoryImpl shopRepositoryImpl;
     private final MemberRepository memberRepository;
     private final ItemService itemService;
+
+    private final EmailUtil emailUtil;
 
 
 //
@@ -39,7 +43,29 @@ public class ShopService {
 //        return ItemRepository.findByshopItem(id);
 //    }
 
+    @Transactional
+    public SellerResponseDto sellerSignup(SellerRequestDto requestDto) {
 
+        Map<String, Object> result = emailUtil.sendEmail(requestDto.getEmail());
+
+        if(result.get("resultCode").equals(200))  {
+            Member findMember = shopRepositoryImpl.findMemberByMemberId(requestDto.getMemberId());
+            findMember.setRole(Role.SELLER);
+
+            shopRepositoryImpl.saveMember(findMember);
+            System.out.println("findMember.getRole() = " + findMember.getRole());
+
+            Shoppingmal shoppingmal = requestDto.toShoppingmall();
+            shoppingmall.setMember(findMember);
+            System.out.println("shoppingmall.getMember() = " + shoppingmall.getMember());
+            shoppingmal.setApproval(Approval.Y);
+            shopRepositoryImpl.save(shoppingmall);
+
+
+            return SellerResponseDto.of(findMember, shoppingmal);
+        } else {
+            throw new RuntimeException("입점 신청 접수가 안됐습니다. 한 번 더 입력해주세요");
+        }
 
     //각 shop정보
     public ShoppingMal findMyshopById(Long id) {
@@ -101,4 +127,28 @@ public class ShopService {
 
         return result;
     }
+
+        /**
+         * 매장 정보 작성
+         * @param shopId
+         * @param shopLogo 썸네일 파일류
+         * @param requestDto 입력 정보(내용)
+         * @return
+         */
+        @Transactional
+        public ShopIntroductionResponseDto saveIntroduction(Long shopId, MultipartFile shopLogo,
+                ShopIntroductionRequestDto requestDto) {
+
+            Shoppingmal findShop = shopRepositoryImpl.findByShopId(shopId);
+
+            findShop.setShopLogo(encodeImageToBase64(shopLogo));
+            findShop.setStyle(requestDto.getStyle());
+            findShop.setContent(requestDto.getContent());
+
+            shopRepositoryImpl.save(findShop);
+
+            Shoppingmal newFindShop = shopRepositoryImpl.findByShopId(shopId);
+
+            return ShopIntroductionResponseDto.introductionResponseDto(newFindShop);
+        }
 }

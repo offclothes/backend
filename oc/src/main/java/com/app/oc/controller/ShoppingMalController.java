@@ -24,6 +24,40 @@ public class ShoppingMalController {
     private final ItemService itemService;
 
 
+    /**
+     * 입점 신청
+     * @param requestDto
+     * @return
+     */
+    @PostMapping("/signup")
+    public ResponseEntity<SellerResponseDto> sellerJoin(@RequestBody SellerRequestDto requestDto) {
+
+        log.info("memberId = {} ", requestDto.getMemberId());
+
+        ResponseEntity<SellerResponseDto> responseDto = ResponseEntity.ok(shoppingmallService.sellerSignup(requestDto));
+
+        return responseDto;
+    }
+
+    /**
+     * 매장 정보 작성(정상 작동하는 지 확인 필요)
+     * @param shopId
+     * @param shopLogo
+     * @param requestDto
+     * @return
+     */
+    @PostMapping("/{shopId}")
+    public ResponseEntity<ShopIntroductionResponseDto> setIntroduction(@PathVariable Long shopId,
+                                                                       @RequestParam MultipartFile shopLogo,
+                                                                       @RequestBody ShopIntroductionRequestDto requestDto) {
+
+        return ResponseEntity.ok(shoppingmallService.saveIntroduction(shopId, shopLogo, requestDto));
+    }
+
+    @GetMapping("/{shopId}/change")
+    public ResponseEntity<ShopIntroductionResponseDto> getIntroduction(@PathVariable Long shopId) {
+        return ResponseEntity.ok(shoppingmallService.getIntroduction(shopId));
+    }
 
     /**
      * Item 저장(+file) /- 등록 / 수정

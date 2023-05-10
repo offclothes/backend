@@ -22,7 +22,7 @@ import java.util.List;
 @Slf4j
 public class MemberService {
 
-    private final MemberRepository memberRepository;
+    private final MemberRepository me0mberRepository;
     private final AttenShopRepository attenShopRepository;
 
     //Member 1명 찾기
