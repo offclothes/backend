@@ -1,0 +1,16 @@
+package com.app.oc.dto.paging;
+
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.domain.Page;
+
+@Getter
+@Setter
+@Data
+public class ItemPageDto {
+    Page<com.app.oc.dto.SearchDto> items;
+    Integer startPage;
+    Integer endPage;
+}
