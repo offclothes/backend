@@ -1,5 +1,6 @@
 package com.app.oc.repository;
 
+
 import com.app.oc.dto.paging.SearchDto;
 import com.app.oc.dto.shoppingmal.MainItemDto;
 import com.app.oc.entity.Item;
@@ -15,11 +16,10 @@ public interface ItemRepositoryCustom {
     List<Item> getcontent(Long id, Pageable pageable);
 
 
-    Page<SearchDto> searchPageItemM(Pageable pageable);
-    Page<SearchDto> searchPageItemF(Pageable pageable);
-    Page<SearchDto> searchPageItemB(Pageable pageable);
-
-    Page<SearchDto> findByKeyword(String keyword, Pageable pageable);
+    List<Item> searchByCategory(Integer category, Pageable pageable);
+    List<Item> searchByKeyword(String keyword, Pageable pageable);
+    Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable);
+    Page<SearchDto> pagingByKe(List<SearchDto> items, String keword, Pageable pageable);
 
 
 

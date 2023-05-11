@@ -5,89 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3a99038-e1eb-4777-96e0-193a43b47d45" name="Changes" comment="chore: 준호 오류 수정">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/MapController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/SearchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/ItemPageDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/SearchDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Approval.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MapService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/generated/com/app/oc/entity/QAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/generated/com/app/oc/entity/QAttenItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAttenItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/generated/com/app/oc/entity/QAttenShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAttenShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/generated/com/app/oc/entity/QFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/generated/com/app/oc/entity/QItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/generated/com/app/oc/entity/QMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/generated/com/app/oc/entity/QShoppingMal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QShoppingMal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/OcApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/OcApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/controller/ShoppingMalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/ShoppingMalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/ResultDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/ResultDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/fileDto/UploadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/fileDto/UploadFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/mypage/AttenShopDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/AttenShopDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/mypage/MemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/MemberDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/mypage/PwdDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/PwdDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/mypage/ResponseMemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/ResponseMemberDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/DetailItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/DetailItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/ItemFileRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ItemFileRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/ItemFileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ItemFileResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/MainItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/MainItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/MyShoppingmalDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/MyShoppingmalDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/SellerRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/SellerRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/SellerResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/SellerResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/ShopIntroductionRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ShopIntroductionRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/ShopIntroductionResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ShopIntroductionResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/dto/shoppingmal/myshopDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/myshopDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/entity/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/entity/AttenItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/AttenItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/entity/AttenShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/AttenShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/entity/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/File.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/entity/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/entity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/entity/MemberRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/MemberRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/entity/SellState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/SellState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/entity/ShoppingMal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/ShoppingMal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/exception/ErrorResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/exception/ErrorResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/exception/advice/ExceptionAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/exception/advice/ExceptionAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/repository/AttenShopRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/AttenShopRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/repository/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/FileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/repository/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/repository/ShopRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ShopRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/repositoryImpl/ShopRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ShopRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/service/ShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ShopService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/util/EmailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/util/EmailUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/util/EmailUtilImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/util/EmailUtilImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/java/com/app/oc/util/FileStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/util/FileStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/OcApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/OcApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/controller/FileControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/controller/FileControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/controller/UserControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/repository/AttenShopRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/repository/AttenShopRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/repository/FileRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/repository/FileRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/repository/MyPageRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/repository/MyPageRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/repository/ShopRepositroyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/repository/ShopRepositroyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/service/FileServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/service/FileServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/service/ItemServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/service/ItemServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/service/MemberServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/service/MemberServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/java/com/app/oc/service/ShopServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/service/ShopServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oc/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/oc.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/oc.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/ItemPageDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/ItemPageDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/SearchDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/SearchDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MapService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MapService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ShopService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +35,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="oc" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -130,9 +66,14 @@
       </map>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "last_opened_file_path": "D:/스프링/oc",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }

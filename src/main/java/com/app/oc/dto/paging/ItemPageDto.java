@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
 @Setter
 @Data
 public class ItemPageDto {
-    Page<com.app.oc.dto.SearchDto> items;
+    Page<SearchDto> items;
     Integer startPage;
     Integer endPage;
 }

@@ -1,72 +1,123 @@
 package com.app.oc.service;
 
 
+import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.dto.paging.ItemPageDto;
-import com.app.oc.dto.paging.SearchDto;
+import com.app.oc.dto.paging.SearchDto;;
+import com.app.oc.entity.File;
+import com.app.oc.entity.Item;
+import com.app.oc.repository.FileRepository;
 import com.app.oc.repository.ItemRepository;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class SearchService {
 
     // 썸네일 추가 작업 필요
     // 지역(시,구,동 / City,District,Neighborhood 필터링 작업 추가)
 
+    private FileRepository fileRepository;
     private ItemRepository itemRepository;
 
-    public ItemPageDto getItemPagingByMale(Pageable pageable){
+
+    @Transactional
+    public ItemPageDto getItemByCategory(Integer category, Pageable pageable){
         ItemPageDto itemPageDto = new ItemPageDto();
-        Page<SearchDto> itemM = itemRepository.searchPageItemM(pageable);
+        //item List
+        List<Item> getItems = itemRepository.searchByCategory(category, pageable);
 
-        int startPage = Math.max(1, itemM.getPageable().getPageNumber() - 1);
-        int endPage = Math.min(itemM.getTotalPages(), itemM.getPageable().getPageNumber()+3);
+        //id들로만 한번에
+        List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
-        itemPageDto.setItems(itemM);
+        List<File> fileIn = fileRepository.findFileIn(Ids);
+        List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+        Map<Long, UploadFile> fileMap = new HashMap<>();
+        for (UploadFile uploadFile : uploadFiles) {
+            if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일만
+                fileMap.put(uploadFile.getItem_seq(), uploadFile);
+            }
+        }
+
+        List<SearchDto> items = getsearchDtos(getItems, fileMap);
+
+        Page<SearchDto> searchDtos = itemRepository.pagingByCa(items, category, pageable);
+
+        log.info("items :{} ", items);
+
+        int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+        int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
+
+        itemPageDto.setItems(searchDtos);
         itemPageDto.setStartPage(startPage);
         itemPageDto.setEndPage(endPage);
 
         return itemPageDto;
     }
-    public ItemPageDto getItemPagingByFemale(Pageable pageable){
+
+    private static List<SearchDto> getsearchDtos(List<Item> getItems, Map<Long, UploadFile> fileMap) {
+        return getItems.stream().map(item -> {
+            SearchDto searchDto = new SearchDto();
+            searchDto.setUploadFile(fileMap.get(item.getItemId()));
+            return searchDto;
+        }).collect(Collectors.toList());
+    }
+
+
+    @Transactional
+    public ItemPageDto getItemByKeyword(String keyword, Pageable pageable){
         ItemPageDto itemPageDto = new ItemPageDto();
-        Page<SearchDto> itemM = itemRepository.searchPageItemF(pageable);
+        //item List
+        List<Item> getItems = itemRepository.searchByKeyword(keyword, pageable);
 
-        int startPage = Math.max(1, itemM.getPageable().getPageNumber() - 1);
-        int endPage = Math.min(itemM.getTotalPages(), itemM.getPageable().getPageNumber()+3);
+        //id들로만 한번에
+        List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
-        itemPageDto.setItems(itemM);
+        List<File> fileIn = fileRepository.findFileIn(Ids);
+        List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+        Map<Long, UploadFile> fileMap = new HashMap<>();
+        for (UploadFile uploadFile : uploadFiles) {
+            if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일만
+                fileMap.put(uploadFile.getItem_seq(), uploadFile);
+            }
+        }
+
+        List<SearchDto> items = getsearchDtos(getItems, fileMap);
+
+        Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, keyword, pageable);
+
+        log.info("items :{} ", items);
+
+        int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+        int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
+
+        itemPageDto.setItems(searchDtos);
         itemPageDto.setStartPage(startPage);
         itemPageDto.setEndPage(endPage);
 
         return itemPageDto;
     }
-    public ItemPageDto getItemPagingByBoth(Pageable pageable){
-        ItemPageDto itemPageDto = new ItemPageDto();
-        Page<SearchDto> itemM = itemRepository.searchPageItemB(pageable);
 
-        int startPage = Math.max(1, itemM.getPageable().getPageNumber() - 1);
-        int endPage = Math.min(itemM.getTotalPages(), itemM.getPageable().getPageNumber()+3);
-
-        itemPageDto.setItems(itemM);
-        itemPageDto.setStartPage(startPage);
-        itemPageDto.setEndPage(endPage);
-
-        return itemPageDto;
+    private static List<SearchDto> getkeyworditem(List<Item> getItems, Map<Long, UploadFile> fileMap) {
+        return getItems.stream().map(item -> {
+            SearchDto searchDto = new SearchDto();
+            searchDto.setUploadFile(fileMap.get(item.getItemId()));
+            return searchDto;
+        }).collect(Collectors.toList());
     }
 
-    public ItemPageDto getItemPagingByKeyword(String keyword, Pageable pageable){
-        ItemPageDto itemPageDto = new ItemPageDto();
-        Page<SearchDto> itemM = itemRepository.findByKeyword(keyword,pageable);
 
-        int startPage = Math.max(1, itemM.getPageable().getPageNumber() - 1);
-        int endPage = Math.min(itemM.getTotalPages(), itemM.getPageable().getPageNumber()+3);
-
-        itemPageDto.setItems(itemM);
-        itemPageDto.setStartPage(startPage);
-        itemPageDto.setEndPage(endPage);
-
-        return itemPageDto;
-    }
 }

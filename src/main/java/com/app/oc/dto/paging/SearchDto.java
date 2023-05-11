@@ -1,6 +1,8 @@
 package com.app.oc.dto.paging;
 
+import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.entity.File;
+import com.app.oc.entity.Item;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,9 +12,17 @@ import lombok.NoArgsConstructor;
 public class SearchDto {
     private Long item_seq;
     private String itemTitle;
+    private UploadFile uploadFile;
     private Integer category;
 
-    private File file;
+
+
+    public SearchDto(Item item) {
+        this.item_seq =item.getItemId();
+        this.itemTitle = item.getItemTitle();
+        this.category = item.getCategory();
+    }
+
 
 
 }

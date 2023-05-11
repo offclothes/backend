@@ -1,5 +1,6 @@
 package com.app.oc.repository;
 
+import com.app.oc.entity.QShoppingMal;
 import com.app.oc.entity.ShoppingMal;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
@@ -21,9 +22,9 @@ public class MapRepository{
     }
 
 
-    public List<ShoppingMal> findAll_Querydsl(){
+    public List<ShoppingMal> findAll_Mall(){
         return queryFactory
-                .selectFrom(shoppingMal)
+                .selectFrom(QShoppingMal.shoppingMal)
                 .fetch();
     }
 

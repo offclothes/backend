@@ -3,15 +3,11 @@ package com.app.oc.repositoryImpl;
 import com.app.oc.dto.paging.SearchDto;
 import com.app.oc.dto.shoppingmal.MainItemDto;
 import com.app.oc.entity.Item;
-import com.app.oc.entity.QFile;
 import com.app.oc.repository.ItemRepositoryCustom;
-import com.querydsl.core.QueryResults;
-import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.support.PageableExecutionUtils;
 
@@ -61,101 +57,41 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
         return queryFactory.selectFrom(item).where(item.shoppingMal.shopId.eq(id));
     }
 
+
+
+    //카테고리 리스트
     @Override
-    public Page<SearchDto> searchPageItemM(Pageable pageable) {
-        QueryResults<SearchDto> results = queryFactory
-                .select(new QSearchDto(
-                        item.itemId,
-                        item.itemTitle,
-                        item.category,
-                        item.file
-                        )
-                )
-                .from(item)
-                .join(item.files,file)
-                .where(item.category.eq(0).a)
-                .orderBy(item.itemId.desc())
+    public List<Item> searchByCategory(Integer category, Pageable pageable) {
+        return queryFactory.selectFrom(item)
+                .where(item.category.eq(category))
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetchResults();
-
-        List<SearchDto> content = results.getResults();
-        long total = results.getTotal();
-
-        return new PageImpl<>(content, pageable, total);
+                .limit(pageable.getPageSize()).fetch();
     }
 
     @Override
-    public Page<SearchDto> searchPageItemF(Pageable pageable) {
-        QueryResults<SearchDto> results = queryFactory
-                .select(new QSearchDto(
-                        item.itemId,
-                        item.itemTitle,
-                        item.category,
-                        item.file
-                ))
-                .from(item)
-                .join(item.files,file)
-                .where(item.category.eq(1)).and(QFile.filename.contains("s_"))
-                .orderBy(item.itemId.desc())
+    public List<Item> searchByKeyword(String keyword, Pageable pageable) {
+        return queryFactory.selectFrom(item)
+                .where(item.itemTitle.contains(keyword))
                 .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetchResults();
+                .limit(pageable.getPageSize()).fetch();
+    }
 
-        List<SearchDto> content = results.getResults();
-        long total = results.getTotal();
 
-        return new PageImpl<>(content, pageable, total);
+    @Override
+    public Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable) {
+        JPAQuery<Item> total = queryFactory.selectFrom(item).where(item.category.eq(category));
+
+        return PageableExecutionUtils.getPage(items, pageable, total::fetchCount);
     }
 
     @Override
-    public Page<SearchDto> searchPageItemB(Pageable pageable) {
-        QueryResults<SearchDto> results = queryFactory
-                .select(new QSearchDto(
-                        item.itemId,
-                        item.itemTitle,
-                        item.category,
-                        item.file
-                ))
-                .from(item)
-                .join(item.files,file)
-                .where(item.category.eq(2)).and(QFile.filename.contains("s_"))
-                .orderBy(item.itemId.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetchResults();
+    public Page<SearchDto> pagingByKe(List<SearchDto> items, String keyword, Pageable pageable) {
+        JPAQuery<Item> total = queryFactory.selectFrom(item).where(item.itemTitle.contains(keyword));
 
-        List<SearchDto> content = results.getResults();
-        long total = results.getTotal();
+        return PageableExecutionUtils.getPage(items, pageable, total::fetchCount);
 
-        return new PageImpl<>(content, pageable, total);
     }
 
-    @Override
-    public Page<SearchDto> findByKeyword(String keyword, Pageable pageable) {
-        QueryResults<SearchDto> results = queryFactory
-                .select(new QSearchDto(
-                        item.itemId,
-                        item.itemTitle,
-                        item.category,
-                        item.file
-                ))
-                .from(item)
-                .join(item.files,file)
-                .where(keywordEq(keyword)).and(QFile.filename.contains("s_"))
-                .orderBy(item.itemId.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetchResults();
 
-        List<SearchDto> content = results.getResults();
-        long total = results.getTotal();
-
-        return new PageImpl<>(content, pageable, total);
-    }
-
-    private Predicate keywordEq(String keyword){
-        return keyword != null ? item.itemTitle.contains(keyword) : null;
-    }
 
 }
