@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3a99038-e1eb-4777-96e0-193a43b47d45" name="Changes" comment="chore: 준호 오류 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/oc.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/oc.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/ItemPageDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/ItemPageDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/SearchDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/SearchDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MapService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MapService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ShopService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,13 +57,23 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectId" id="2PeJt4G7ISCz85qWN3WsGOPW1OL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/스프링/oc",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "6ebaa08261cb26c214a339191cce1339",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -92,6 +90,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="chore: 준호 오류 수정">
       <created>1683772953282</created>
@@ -100,8 +99,18 @@
       <option name="project" value="LOCAL" />
       <updated>1683772953282</updated>
     </task>
+    <task active="true" id="Default" summary="디폴트 작업">
+      <created>1683811830321</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683811830321</updated>
+      <workItem from="1683811831789" duration="209000" />
+    </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
