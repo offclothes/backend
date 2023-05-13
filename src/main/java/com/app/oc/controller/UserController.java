@@ -1,10 +1,7 @@
 package com.app.oc.controller;
 
-import com.app.oc.dto.mypage.AttenShopDto;
-import com.app.oc.dto.mypage.MemberDto;
+import com.app.oc.dto.mypage.*;
 import com.app.oc.dto.ResultDto;
-import com.app.oc.dto.mypage.PwdDto;
-import com.app.oc.dto.mypage.ResponseMemberDto;
 import com.app.oc.entity.AttenShop;
 import com.app.oc.entity.Member;
 import com.app.oc.service.MemberService;
@@ -34,16 +31,15 @@ public class UserController {
     @Autowired
     HttpServletRequest request;
 
-
     private final MemberService memberService;
 
     //Long  : Null을 넣을 수 있다
 
 
+
     /**
      * 로그인
      */
-
     @PostMapping("/login")
     public ResultDto login(String id, String pwd) {
         Member findMember = memberService.findOne(id);

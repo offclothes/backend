@@ -5,8 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3a99038-e1eb-4777-96e0-193a43b47d45" name="Changes" comment="chore: 준호 오류 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jayway_jsonpath_json_path_2_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mysema_commons_mysema_commons_lang_0_2_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_codegen_utils_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_codegen_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_core_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_github_classgraph_classgraph_4_8_108.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jdt_ecj_3_26_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_jandex_2_4_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_objenesis_objenesis_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_skyscreamer_jsonassert_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_xmlunit_xmlunit_core_2_9_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/oc.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/oc.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAttenItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAttenItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAttenShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAttenShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QShoppingMal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QShoppingMal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/SearchDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/SearchDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,12 +54,20 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="oc" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="oc" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
             </expand>
             <select />
@@ -37,6 +78,15 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="develop" />
+        <option value="main" />
+      </list>
+    </option>
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -58,6 +108,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2PeJt4G7ISCz85qWN3WsGOPW1OL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -66,11 +117,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/스프링/oc",
+    "last_opened_file_path": "D:/git_kraken/backend/src/main/java/com/app/oc/dto/mypage",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "spring.configuration.checksum": "6ebaa08261cb26c214a339191cce1339",
     "vue.rearranger.settings.migration": "true"
@@ -78,6 +133,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git_kraken\backend\src\main\java\com\app\oc\dto\mypage" />
       <recent name="D:\git_kraken\backend" />
     </key>
   </component>
@@ -100,11 +156,13 @@
       <updated>1683772953282</updated>
     </task>
     <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="d3a99038-e1eb-4777-96e0-193a43b47d45" name="Changes" comment="chore: 준호 오류 수정" />
       <created>1683811830321</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683811830321</updated>
       <workItem from="1683811831789" duration="209000" />
+      <workItem from="1683939375988" duration="4174000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

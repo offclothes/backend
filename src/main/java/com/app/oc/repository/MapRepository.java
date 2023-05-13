@@ -22,6 +22,10 @@ public class MapRepository{
     }
 
 
+    /**
+     * 지역 내 존재하는 모든 매장을 리스트로 출력
+     * @return
+     */
     public List<ShoppingMal> findAll_Mall(){
         return queryFactory
                 .selectFrom(QShoppingMal.shoppingMal)

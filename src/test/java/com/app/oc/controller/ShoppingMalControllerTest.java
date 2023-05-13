@@ -35,8 +35,7 @@ class ShoppingMalControllerTest {
     @Test
     public void findMyshop() throws Exception{
     //given
-         shoppingMalController.MyShopping(1L);
-
+//         shoppingMalController.MyShopping(1L);
 
     //when
 

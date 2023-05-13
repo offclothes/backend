@@ -3,7 +3,7 @@ package com.app.oc.dto.paging;
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.entity.File;
 import com.app.oc.entity.Item;
-import com.querydsl.core.annotations.QueryProjection;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
