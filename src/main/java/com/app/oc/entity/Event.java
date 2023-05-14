@@ -1,16 +1,23 @@
 package com.app.oc.entity;
 
+import com.app.oc.dto.event.EventRequestDto;
 import jakarta.persistence.*;
 
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
 @Getter @Setter
 //연관관계 매핑을
 public class Event {
@@ -37,8 +44,12 @@ public class Event {
 
     private String content;
 
-    @Column(name = "writeDay")
-    private LocalDateTime writeDay;
+    @CreatedDate
+    @Column(name = "writeDay",updatable = false)
+    private LocalDateTime WriteDay;
+    @LastModifiedDate
+    @Column(name = "modifiedDay")
+    private LocalDateTime modifiedDay;
 
     @Column(name = "startDay")
     private LocalDate startDay;
@@ -55,4 +66,24 @@ public class Event {
 //
 //    @Column(name = "shop_tel")
 //    private String shopTel;
+
+    @Builder
+    public Event(Long id, String title, EventType eventType, LocalDate startDay, LocalDate endDay  ,String content) {
+        this.eventId = id;
+        this.eventType = eventType;
+        this.startDay = startDay;
+        this.endDay = endDay;
+        this.title = title;
+        this.content = content;
+    }
+
+    public Event updateEvent(EventRequestDto requestDto){
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.eventType = requestDto.getEventType();
+        this.startDay = requestDto.getStartDate();
+        this.endDay = requestDto.getEndDate();
+
+        return this;
+    }
 }

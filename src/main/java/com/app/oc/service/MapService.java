@@ -22,7 +22,7 @@ public class MapService {
 
 
     public List<ShoppingMal> findAll_Mall(){
-        return mapRepository.findAll_Mall();
+        return mapRepository.findAll();
     }
 
 }

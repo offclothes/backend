@@ -1,8 +1,10 @@
 package com.app.oc.service;
 
+import com.app.oc.dto.event.EventRequestDto;
 import com.app.oc.dto.event.MyPostResponseDto;
 import com.app.oc.dto.event.ResponseLists;
 import com.app.oc.dto.event.ResponseeventDto;
+import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.dto.shoppingmal.MainItemDto;
 import com.app.oc.entity.*;
 import com.app.oc.repository.EventRepository;
@@ -34,6 +36,32 @@ public class EventService {
 
     private final ShopRepository shopRepository;
     private final ShopRepositoryImpl shopRepositoryImpl;
+
+
+    //게시글 등록
+    public Event savePost(EventRequestDto requestDto){
+        Event post = requestDto.toEntity();
+        if(post.getEventId() != null){
+            return null;
+        }
+        return eventRepository.save(post);
+    }
+
+
+    //게시글 등록
+    public Event updatePost(Long id, EventRequestDto requestDto){
+
+        log.info("id : {}, title : {}", id, requestDto.getTitle());
+        //조회
+        Event target = eventRepository.findById(id).
+                orElseThrow(() -> new IllegalArgumentException("게시글이 없습니다."));
+
+        //업데이트
+        target.updateEvent(requestDto);
+        Event updated = eventRepository.save(target);
+
+        return updated;
+    }
 
     /**
      * 전체 폐점 할인점 조회
