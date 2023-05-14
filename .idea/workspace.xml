@@ -5,8 +5,481 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3a99038-e1eb-4777-96e0-193a43b47d45" name="Changes" comment="chore: 준호 오류 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jayway_jsonpath_json_path_2_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mysema_commons_mysema_commons_lang_0_2_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_codegen_utils_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_codegen_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_core_5_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_github_classgraph_classgraph_4_8_108.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jdt_ecj_3_26_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_jandex_2_4_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_objenesis_objenesis_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_skyscreamer_jsonassert_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_xmlunit_xmlunit_core_2_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/EventController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/ResponseLists.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/ResponseeventDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/EventType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/EventRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/EventService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/service/EventServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_classic_1_4_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_classic_1_4_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_4_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_4_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_14_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_14_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_14_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_14_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_14_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_14_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_14_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_14_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_14_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_14_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_module_jackson_module_parameter_names_2_14_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_module_jackson_module_parameter_names_2_14_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mysql_mysql_connector_j_8_0_32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mysql_mysql_connector_j_8_0_32.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_apt_jakarta_5_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_apt_jakarta_5_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_jpa_jakarta_5_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_querydsl_querydsl_jpa_jakarta_5_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sun_istack_istack_commons_runtime_4_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sun_istack_istack_commons_runtime_4_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_zaxxer_HikariCP_5_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_zaxxer_HikariCP_5_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_micrometer_micrometer_commons_1_10_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_micrometer_micrometer_commons_1_10_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_micrometer_micrometer_observation_1_10_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_micrometer_micrometer_observation_1_10_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_activation_jakarta_activation_api_2_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_activation_jakarta_activation_api_2_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_annotation_jakarta_annotation_api_2_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_annotation_jakarta_annotation_api_2_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_inject_jakarta_inject_api_2_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_inject_jakarta_inject_api_2_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_persistence_jakarta_persistence_api_3_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_persistence_jakarta_persistence_api_3_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_transaction_jakarta_transaction_api_2_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_transaction_jakarta_transaction_api_2_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_validation_jakarta_validation_api_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_validation_jakarta_validation_api_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_xml_bind_jakarta_xml_bind_api_4_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_xml_bind_jakarta_xml_bind_api_4_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_1_12_22.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_1_12_22.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_agent_1_12_22.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_agent_1_12_22.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_minidev_accessors_smart_2_4_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_minidev_accessors_smart_2_4_8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_minidev_json_smart_2_4_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_minidev_json_smart_2_4_8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_antlr_antlr4_runtime_4_10_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_antlr_antlr4_runtime_4_10_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_api_2_19_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_api_2_19_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_to_slf4j_2_19_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_to_slf4j_2_19_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_core_10_1_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_core_10_1_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_el_10_1_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_el_10_1_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_websocket_10_1_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_websocket_10_1_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_aspectj_aspectjweaver_1_9_19.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_aspectj_aspectjweaver_1_9_19.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_assertj_assertj_core_3_23_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_assertj_assertj_core_3_23_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_angus_angus_activation_1_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_angus_angus_activation_1_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_angus_jakarta_mail_1_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_angus_jakarta_mail_1_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jaxb_jaxb_core_4_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jaxb_jaxb_core_4_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jaxb_jaxb_runtime_4_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jaxb_jaxb_runtime_4_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jaxb_txw2_4_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jaxb_txw2_4_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_common_hibernate_commons_annotations_6_0_2_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_common_hibernate_commons_annotations_6_0_2_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_orm_hibernate_core_6_1_6_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_orm_hibernate_core_6_1_6_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_validator_hibernate_validator_8_0_0_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_validator_hibernate_validator_8_0_0_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_5_0_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_5_0_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_5_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_5_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_params_5_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_params_5_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mockito_mockito_core_4_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mockito_mockito_core_4_8_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mockito_mockito_junit_jupiter_4_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mockito_mockito_junit_jupiter_4_8_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_ow2_asm_asm_9_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_ow2_asm_asm_9_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_projectlombok_lombok_1_18_24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_projectlombok_lombok_1_18_24.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_jul_to_slf4j_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_jul_to_slf4j_2_0_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_slf4j_api_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_slf4j_api_2_0_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_autoconfigure_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_autoconfigure_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_aop_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_aop_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_data_jpa_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_data_jpa_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_hateoas_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_hateoas_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_jdbc_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_jdbc_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_json_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_json_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_logging_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_logging_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_mail_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_mail_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_test_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_test_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_tomcat_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_tomcat_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_validation_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_validation_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_web_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_web_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_test_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_test_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_test_autoconfigure_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_test_autoconfigure_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_commons_3_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_commons_3_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_jpa_3_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_jpa_3_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_hateoas_spring_hateoas_2_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_hateoas_spring_hateoas_2_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_plugin_spring_plugin_core_3_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_plugin_spring_plugin_core_3_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aop_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aop_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aspects_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aspects_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_beans_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_beans_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_support_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_support_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_core_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_core_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_expression_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_expression_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_jcl_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_jcl_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_jdbc_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_jdbc_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_orm_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_orm_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_test_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_test_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_tx_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_tx_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_web_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_web_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_webmvc_6_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_webmvc_6_0_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_yaml_snakeyaml_1_33.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_yaml_snakeyaml_1_33.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/oc.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/oc.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QShoppingMal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QShoppingMal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/FileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/util/EmailUtilImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/util/EmailUtilImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/app/oc/repository/MyPageRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/repository/MyPageRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/generated/com/app/oc/entity/QAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/generated/com/app/oc/entity/QAttenItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/generated/com/app/oc/entity/QAttenShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/generated/com/app/oc/entity/QFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/generated/com/app/oc/entity/QItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/generated/com/app/oc/entity/QMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/generated/com/app/oc/entity/QShoppingMal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/OcApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/controller/FileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/controller/ShoppingMalController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/ResultDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/fileDto/UploadFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/mypage/AttenShopDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/mypage/MemberDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/mypage/PwdDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/mypage/ResponseMemberDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/shoppingmal/DetailItemDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/shoppingmal/ItemFileRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/shoppingmal/ItemFileResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/shoppingmal/MainItemDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/shoppingmal/MyShoppingmalDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/dto/shoppingmal/myshopDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/entity/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/entity/AttenItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/entity/AttenShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/entity/File.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/entity/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/entity/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/entity/MemberRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/entity/SellState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/entity/ShoppingMal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/exception/ErrorResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/exception/advice/ExceptionAdvice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/repository/AttenShopRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/repository/FileRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/repository/ItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/repository/MemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/repository/ShopRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/service/FileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/service/ItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/service/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/service/ShopService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/java/com/app/oc/util/FileStore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/OcApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/controller/FileControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/controller/UserControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/repository/AttenShopRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/repository/FileRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/repository/MyPageRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/repository/ShopRepositroyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/service/FileServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/service/ItemServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/service/MemberServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/java/com/app/oc/service/ShopServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/oc/src/test/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/OcApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/controller/MemberController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/controller/ShoppingmallController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/dto/LoginRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/dto/MemberRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/dto/MemberResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/dto/SellerRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/dto/SellerResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/dto/ShopIntroductionRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/dto/ShopIntroductionResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Approval.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/AttenItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/AttenShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Buyer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/BuyerOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/BuyerOrderItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Event.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/EventType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/File.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Gender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/OrderState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Question.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Review.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/SellerCheck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/Shoppingmall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/entity/SoldOut.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/exception/MemberErrorResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/repository/MemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/repository/ShoppingmallRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/service/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/service/ShoppingmallService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/util/EmailUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/java/com/app/oc/util/EmailUtilImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-2/src/test/java/com/app/oc/OcApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/OcApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/controller/SearchController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/dto/ItemPageDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/dto/QSearchDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/dto/QThumbFileDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/dto/SearchDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/dto/ThumbFileDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/entity/Address.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/entity/File.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/entity/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/entity/QAddress.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/entity/QFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/entity/QItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/entity/QShoppingMall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/entity/ShoppingMall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/repository/FileRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/repository/ItemRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/repository/ItemRepositoryCustom.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/repository/ItemRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/main/com/app/oc/service/SearchService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/classes/java/test/com/app/oc/OcApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/generated/sources/annotationProcessor/java/main/com/app/oc/dto/QSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/generated/sources/annotationProcessor/java/main/com/app/oc/dto/QThumbFileDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/generated/sources/annotationProcessor/java/main/com/app/oc/entity/QAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/generated/sources/annotationProcessor/java/main/com/app/oc/entity/QFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/generated/sources/annotationProcessor/java/main/com/app/oc/entity/QItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/generated/sources/annotationProcessor/java/main/com/app/oc/entity/QShoppingMall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/reports/tests/test/classes/com.app.oc.OcApplicationTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/reports/tests/test/packages/com.app.oc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/resources/main/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/test-results/test/TEST-com.app.oc.OcApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/OcApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/controller/MapController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/controller/SearchController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/dto/ItemPageDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/dto/SearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/dto/ThumbFileDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/entity/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/entity/File.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/entity/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/entity/ShoppingMall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/repository/FileRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/repository/ItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/repository/ItemRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/repository/MapRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/service/MapService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/java/com/app/oc/service/SearchService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-3/src/test/java/com/app/oc/OcApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/generated/com/app/oc/entity/QAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/generated/com/app/oc/entity/QAttenItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/generated/com/app/oc/entity/QAttenShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/generated/com/app/oc/entity/QFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/generated/com/app/oc/entity/QItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/generated/com/app/oc/entity/QMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/generated/com/app/oc/entity/QShoppingMal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/OcApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/controller/FileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/controller/ShoppingMalController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/ResultDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/fileDto/UploadFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/mypage/AttenShopDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/mypage/MemberDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/mypage/PwdDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/mypage/ResponseMemberDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/shoppingmal/DetailItemDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/shoppingmal/ItemFileRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/shoppingmal/ItemFileResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/shoppingmal/MainItemDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/shoppingmal/MyShoppingmalDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/dto/shoppingmal/myshopDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/entity/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/entity/AttenItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/entity/AttenShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/entity/File.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/entity/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/entity/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/entity/MemberRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/entity/SellState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/entity/ShoppingMal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/exception/ErrorResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/exception/advice/ExceptionAdvice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/repository/AttenShopRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/repository/FileRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/repository/ItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/repository/MemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/repository/ShopRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/service/FileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/service/ItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/service/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/service/ShopService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/java/com/app/oc/util/FileStore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/OcApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/controller/FileControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/controller/UserControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/repository/AttenShopRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/repository/FileRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/repository/MyPageRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/repository/ShopRepositroyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/service/FileServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/service/ItemServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/service/MemberServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/java/com/app/oc/service/ShopServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge/backend-BE-4/src/test/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oc/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../oc/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oc/src/main/java/com/app/oc/controller/ShoppingMalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oc/src/main/java/com/app/oc/controller/ShoppingMalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oc/src/main/java/com/app/oc/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oc/src/main/java/com/app/oc/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oc/src/main/java/com/app/oc/dto/shoppingmal/MyShoppingmalDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oc/src/main/java/com/app/oc/dto/shoppingmal/MyShoppingmalDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oc/src/main/java/com/app/oc/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oc/src/main/java/com/app/oc/service/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/generated/com/app/oc/entity/QAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/generated/com/app/oc/entity/QAttenItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/generated/com/app/oc/entity/QAttenShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/generated/com/app/oc/entity/QFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/generated/com/app/oc/entity/QItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/generated/com/app/oc/entity/QMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/generated/com/app/oc/entity/QShoppingMal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/OcApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/controller/FileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/controller/MapController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/controller/SearchController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/controller/ShoppingMalController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/ResultDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/fileDto/UploadFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/mypage/AttenShopDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/mypage/MemberDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/mypage/PwdDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/mypage/ResponseMemberDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/paging/ItemPageDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/paging/SearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/DetailItemDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/ItemFileRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/ItemFileResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/MainItemDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/MyShoppingmalDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/SellerRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/SellerResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/ShopIntroductionRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/ShopIntroductionResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/dto/shoppingmal/myshopDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/Approval.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/AttenItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/AttenShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/File.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/MemberRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/SellState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/entity/ShoppingMal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/exception/ErrorResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/exception/advice/ExceptionAdvice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/repository/AttenShopRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/repository/FileRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/repository/ItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/repository/MapRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/repository/MemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/repository/ShopRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/repositoryImpl/ShopRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/service/FileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/service/ItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/service/MapService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/service/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/service/SearchService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/service/ShopService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/util/EmailUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/util/EmailUtilImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/app/oc/util/FileStore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/OcApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/controller/FileControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/controller/UserControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/repository/AttenShopRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/repository/FileRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/repository/MyPageRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/repository/ShopRepositroyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/service/FileServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/service/ItemServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/service/MemberServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/app/oc/service/ShopServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/resources/application.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +508,15 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -58,19 +540,30 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2PeJt4G7ISCz85qWN3WsGOPW1OL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/스프링/oc",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "D:/전종설Project/sorce/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "spring.configuration.checksum": "6ebaa08261cb26c214a339191cce1339",
     "vue.rearranger.settings.migration": "true"
@@ -80,8 +573,30 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\git_kraken\backend" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.app.oc.service" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.OcApplication">
+    <configuration name="EventServiceTest.listtotal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="oc.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.app.oc.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.app.oc.service" />
+      <option name="MAIN_CLASS_NAME" value="com.app.oc.service.EventServiceTest" />
+      <option name="METHOD_NAME" value="listtotal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OcApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="oc.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.app.oc.OcApplication" />
@@ -89,6 +604,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.EventServiceTest.listtotal" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -100,11 +620,17 @@
       <updated>1683772953282</updated>
     </task>
     <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="d3a99038-e1eb-4777-96e0-193a43b47d45" name="Changes" comment="chore: 준호 오류 수정" />
       <created>1683811830321</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683811830321</updated>
       <workItem from="1683811831789" duration="209000" />
+      <workItem from="1683941701630" duration="4489000" />
+      <workItem from="1683953035113" duration="7370000" />
+      <workItem from="1683961593282" duration="8657000" />
+      <workItem from="1683986873688" duration="2838000" />
+      <workItem from="1684048645057" duration="423000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -126,5 +652,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="chore: 준호 오류 수정" />
     <option name="LAST_COMMIT_MESSAGE" value="chore: 준호 오류 수정" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/app/oc/controller/UserController.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/app/oc/entity/Event.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -85,7 +85,6 @@ public class UserController {
      */
     @GetMapping("/{id}")
     public MemberDto findById(@PathVariable String id) {
-        log.info("phoneNm ={}", memberService.findOne(id).getPhoneNm());
         return new MemberDto(memberService.findOne(id));
     }
 

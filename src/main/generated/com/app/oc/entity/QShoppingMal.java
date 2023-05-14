@@ -24,7 +24,7 @@ public class QShoppingMal extends EntityPathBase<ShoppingMal> {
 
     public final QAddress address;
 
-    public final StringPath Approval = createString("Approval");
+    public final EnumPath<Approval> approval = createEnum("approval", Approval.class);
 
     public final StringPath content = createString("content");
 
