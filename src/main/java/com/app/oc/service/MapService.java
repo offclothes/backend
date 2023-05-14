@@ -14,15 +14,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MapService {
 
-    // 아직 더 공부필요
-    // 맵을 위한 쇼핑몰 api 전달
-
     private MapRepository mapRepository;
 
-
+    /*
+    * 모든 쇼핑몰 리스트 전달
+     */
 
     public List<ShoppingMal> findAll_Mall(){
-        return mapRepository.findAll_Mall();
+        return mapRepository.findAll();
     }
 
 }

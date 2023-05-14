@@ -1,7 +1,9 @@
 package com.app.oc.controller;
 
+import com.app.oc.dto.event.EventRequestDto;
 import com.app.oc.dto.event.MyPostResponseDto;
 import com.app.oc.dto.event.ResponseeventDto;
+import com.app.oc.entity.Event;
 import com.app.oc.service.EventService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -9,10 +11,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -21,6 +25,37 @@ import java.util.List;
 public class EventController {
 
     private final EventService eventService;
+
+
+    /**
+     * 게시글 등록
+     */
+
+    @PostMapping("/event/post")
+    public ResponseEntity<Event> savePost(@RequestBody EventRequestDto requestDto) throws IOException {
+        Event saved = eventService.savePost(requestDto);
+        return (saved != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(saved) :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    @PatchMapping("/event/update/{id}")
+    public ResponseEntity<Event> updatePost(@RequestParam Long id, @RequestBody EventRequestDto requestDto) throws IOException {
+        Event updated = eventService.updatePost(id, requestDto);
+        return (updated != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(updated) :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+
+
+
+    /**
+     * 원하는 게시글 수정
+     * @param eventSeq 글 번호
+     */
+
+
 
     /**
      * 폐점 전체 조회

@@ -30,13 +30,15 @@ public class QEvent extends EntityPathBase<Event> {
 
     public final EnumPath<EventType> eventType = createEnum("eventType", EventType.class);
 
+    public final DateTimePath<java.time.LocalDateTime> modifiedDay = createDateTime("modifiedDay", java.time.LocalDateTime.class);
+
     public final QShoppingMal shoppingmall;
 
     public final DatePath<java.time.LocalDate> startDay = createDate("startDay", java.time.LocalDate.class);
 
     public final StringPath title = createString("title");
 
-    public final DateTimePath<java.time.LocalDateTime> writeDay = createDateTime("writeDay", java.time.LocalDateTime.class);
+    public final DateTimePath<java.time.LocalDateTime> WriteDay = createDateTime("WriteDay", java.time.LocalDateTime.class);
 
     public QEvent(String variable) {
         this(Event.class, forVariable(variable), INITS);
