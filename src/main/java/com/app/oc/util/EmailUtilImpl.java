@@ -30,7 +30,6 @@ public class EmailUtilImpl implements EmailUtil {
             helper.setSubject("[Off Clothes]입점 심사 결과");
             helper.setText(body.toString(), true);
             result.put("resultCode", 200); //전송 성공
-
         } catch (MessagingException e) {
             e.printStackTrace();
             result.put("resultCode", 500); //전송 실패

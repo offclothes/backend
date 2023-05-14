@@ -1,6 +1,8 @@
 package com.app.oc.entity;
 
 import jakarta.persistence.*;
+
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -53,5 +55,4 @@ public class Event {
 //
 //    @Column(name = "shop_tel")
 //    private String shopTel;
-
 }

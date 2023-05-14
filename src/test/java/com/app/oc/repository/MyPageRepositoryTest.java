@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @Transactional
 @Rollback(value = false) //롤백안시킴
-
 class MyPageRepositoryTest {
     @Autowired
     MemberRepository memberRepository;

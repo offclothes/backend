@@ -9,4 +9,5 @@ public interface ShopRepository extends JpaRepository<ShoppingMal,Long> {
 
 //    Optional<ShoppingMal> findById(Long id);
 
+    ShoppingMal findByMember(String memberId);
 }

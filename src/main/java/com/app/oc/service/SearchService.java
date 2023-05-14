@@ -3,7 +3,7 @@ package com.app.oc.service;
 
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.dto.paging.ItemPageDto;
-import com.app.oc.dto.paging.SearchDto;;
+import com.app.oc.dto.paging.SearchDto;
 import com.app.oc.entity.File;
 import com.app.oc.entity.Item;
 import com.app.oc.repository.FileRepository;

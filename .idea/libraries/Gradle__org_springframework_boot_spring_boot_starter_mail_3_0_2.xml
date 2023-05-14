@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.springframework.boot:spring-boot-starter-mail:3.0.2">
+  <library name="Gradle: org.springframework.boot:spring-boot-starter-mail:3.0.2" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-mail/3.0.2/2387f0300115cefef373b97a3ac6eaa5ff7fc82f/spring-boot-starter-mail-3.0.2.jar!/" />
     </CLASSES>

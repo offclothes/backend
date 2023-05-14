@@ -10,4 +10,5 @@ public interface MemberRepository extends JpaRepository<Member,String> {
     void deleteByNickname(String nickname);
 
 
+
 }

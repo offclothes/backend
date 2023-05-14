@@ -27,6 +27,12 @@ public class ShopRepositoryImpl {
        return em.find(Member.class, memberId);
     }
 
+    public ShoppingMal findByMember(String memberId) {
+        return em.createQuery("select s from ShoppingMal s where s.member.memberId = :memberId", ShoppingMal.class)
+                .setParameter("memberId", memberId)
+                .getSingleResult();
+    }
+
     /**
      * shopId로 매장 정보 조회
      * @param shopId

@@ -15,6 +15,7 @@ import static com.app.oc.entity.SellState.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="item_seq" )
