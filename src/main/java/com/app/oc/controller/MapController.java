@@ -17,9 +17,17 @@ public class MapController {
     @Autowired
     private MapService mapService;
 
-    @GetMapping("/map")
+    /**
+     * 메인 홈페이지 지도
+     * @param requestDto
+     * @return
+     */
+    @GetMapping("/")
     public List<MapResponDto> shopListByRegion(@RequestBody MapRequestDto requestDto) {
         //주소 가져오기
+        // 우편번호
+        // ~~~~~~ 로 35
+        //상세주소
         String region = requestDto.getRegion();
 
         return mapService.findAll_region(region);

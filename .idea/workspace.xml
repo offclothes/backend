@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3a99038-e1eb-4777-96e0-193a43b47d45" name="Changes" comment="chore: 준호 오류 수정">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/EventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/MapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/MapController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/map/MapDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/map/MapRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MapService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MapService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/ShoppingMalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/ShoppingMalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/map/MapRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/map/MapRequestDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +159,7 @@
       <workItem from="1684160164600" duration="149000" />
       <workItem from="1684161015119" duration="230000" />
       <workItem from="1684162430729" duration="230000" />
+      <workItem from="1684324161082" duration="13218000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

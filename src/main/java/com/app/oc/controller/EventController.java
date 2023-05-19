@@ -4,7 +4,9 @@ import com.app.oc.dto.event.EventRequestDto;
 import com.app.oc.dto.event.MyPostResponseDto;
 import com.app.oc.dto.event.ResponseeventDto;
 import com.app.oc.entity.Event;
+import com.app.oc.exception.ErrorResult;
 import com.app.oc.service.EventService;
+import jakarta.persistence.NoResultException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -102,5 +104,22 @@ public class EventController {
     @DeleteMapping("/myPost/{eventSeq}")
     public void deletePost(@PathVariable Long eventSeq) {
         eventService.deletePost(eventSeq);
+    }
+
+    /**
+     * 매장 정보가 없을 때 발생하는 오류 처리
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = NoResultException.class)
+    public ResponseEntity<ErrorResult> joinExceptionHandler(NoResultException e){
+
+        ErrorResult response = new ErrorResult();
+        response.setCode(HttpStatus.NOT_FOUND.value());
+
+        response.setMessage("소유하고 있는 매장이 없습니다");
+        System.out.println("message = " + e.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RequiredArgsConstructor
-@RequestMapping("/shop/")
+@RequestMapping("/shop")
 @Slf4j
 @RestController
 public class ShoppingMalController {
@@ -37,6 +37,7 @@ public class ShoppingMalController {
 
         return responseDto;
     }
+
 
     /**
      * 매장 정보 작성(정상 작동하는 지 확인 필요)
