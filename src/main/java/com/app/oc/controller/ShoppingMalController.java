@@ -57,7 +57,7 @@ public class ShoppingMalController {
         return ResponseEntity.ok(shopService.getIntroduction(shopId));
     }
 
-    @PutMapping("/{shopId}/change")
+    @PatchMapping("/{shopId}/change")
     public ResponseEntity<ShopIntroductionResponseDto> changeIntroduction(@PathVariable Long shopId,
                                                                           @RequestBody ShopIntroductionRequestDto requestDto) {
 
