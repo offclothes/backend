@@ -35,11 +35,8 @@ class ShoppingMalControllerTest {
     @Test
     public void findMyshop() throws Exception{
     //given
-<<<<<<< HEAD
 //         shoppingMalController.MyShopping(1L);
-=======
 
->>>>>>> 4c8e3d6180a67b6e5ab319d5f6a340110a6c35c4
 
     //when
 

@@ -1,0 +1,549 @@
+Index: src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.app.oc.controller;\r\n\r\nimport com.app.oc.dto.shoppingmal.ItemFileRequestDto;\r\nimport com.app.oc.service.ShopService;\r\nimport org.junit.jupiter.api.Test;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.boot.test.context.SpringBootTest;\r\nimport org.springframework.test.annotation.Commit;\r\nimport org.springframework.transaction.annotation.Transactional;\r\n\r\nimport static org.junit.jupiter.api.Assertions.*;\r\n\r\n@SpringBootTest\r\n@Transactional\r\n@Commit\r\nclass ShoppingMalControllerTest {\r\n\r\n    @Autowired\r\n     ShopService shopService;\r\n    @Autowired\r\n     ShoppingMalController shoppingMalController;\r\n\r\n    @Test\r\n    public void deleteITem() throws Exception{\r\n        shoppingMalController.ItemDelete(4L);\r\n    }\r\n\r\n\r\n    public void findOneItem() {\r\n        shopService.findByItem(2L);\r\n\r\n    }\r\n\r\n\r\n    @Test\r\n    public void findMyshop() throws Exception{\r\n    //given\r\n<<<<<<< HEAD\r\n//         shoppingMalController.MyShopping(1L);\r\n=======\r\n\r\n>>>>>>> 4c8e3d6180a67b6e5ab319d5f6a340110a6c35c4\r\n\r\n    //when\r\n\r\n    //then\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java b/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java
+--- a/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java	
++++ b/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java	
+@@ -35,11 +35,8 @@
+     @Test
+     public void findMyshop() throws Exception{
+     //given
+-<<<<<<< HEAD
+ //         shoppingMalController.MyShopping(1L);
+-=======
+ 
+->>>>>>> 4c8e3d6180a67b6e5ab319d5f6a340110a6c35c4
+ 
+     //when
+ 
+Index: src/main/generated/com/app/oc/entity/QShoppingMal.java
+===================================================================
+diff --git a/src/main/generated/com/app/oc/entity/QShoppingMal.java b/src/main/generated/com/app/oc/entity/QShoppingMal.java
+deleted file mode 100644
+--- a/src/main/generated/com/app/oc/entity/QShoppingMal.java	
++++ /dev/null	
+@@ -1,74 +0,0 @@
+-package com.app.oc.entity;
+-
+-import static com.querydsl.core.types.PathMetadataFactory.*;
+-
+-import com.querydsl.core.types.dsl.*;
+-
+-import com.querydsl.core.types.PathMetadata;
+-import javax.annotation.processing.Generated;
+-import com.querydsl.core.types.Path;
+-import com.querydsl.core.types.dsl.PathInits;
+-
+-
+-/**
+- * QShoppingMal is a Querydsl query type for ShoppingMal
+- */
+-@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+-public class QShoppingMal extends EntityPathBase<ShoppingMal> {
+-
+-    private static final long serialVersionUID = -190760635L;
+-
+-    private static final PathInits INITS = PathInits.DIRECT2;
+-
+-    public static final QShoppingMal shoppingMal = new QShoppingMal("shoppingMal");
+-
+-    public final QAddress address;
+-
+-    public final EnumPath<Approval> approval = createEnum("approval", Approval.class);
+-
+-    public final StringPath content = createString("content");
+-
+-    public final StringPath email = createString("email");
+-
+-    public final ListPath<Item, QItem> items = this.<Item, QItem>createList("items", Item.class, QItem.class, PathInits.DIRECT2);
+-
+-    public final NumberPath<Integer> leasePic = createNumber("leasePic", Integer.class);
+-
+-    public final QMember member;
+-
+-    public final StringPath password = createString("password");
+-
+-    public final NumberPath<Long> shopId = createNumber("shopId", Long.class);
+-
+-    public final StringPath shopLogo = createString("shopLogo");
+-
+-    public final StringPath shopName = createString("shopName");
+-
+-    public final StringPath shopTel = createString("shopTel");
+-
+-    public final StringPath style = createString("style");
+-
+-    public QShoppingMal(String variable) {
+-        this(ShoppingMal.class, forVariable(variable), INITS);
+-    }
+-
+-    public QShoppingMal(Path<? extends ShoppingMal> path) {
+-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+-    }
+-
+-    public QShoppingMal(PathMetadata metadata) {
+-        this(metadata, PathInits.getFor(metadata, INITS));
+-    }
+-
+-    public QShoppingMal(PathMetadata metadata, PathInits inits) {
+-        this(ShoppingMal.class, metadata, inits);
+-    }
+-
+-    public QShoppingMal(Class<? extends ShoppingMal> type, PathMetadata metadata, PathInits inits) {
+-        super(type, metadata, inits);
+-        this.address = inits.isInitialized("address") ? new QAddress(forProperty("address")) : null;
+-        this.member = inits.isInitialized("member") ? new QMember(forProperty("member"), inits.get("member")) : null;
+-    }
+-
+-}
+-
+Index: src/main/generated/com/app/oc/entity/QMember.java
+===================================================================
+diff --git a/src/main/generated/com/app/oc/entity/QMember.java b/src/main/generated/com/app/oc/entity/QMember.java
+deleted file mode 100644
+--- a/src/main/generated/com/app/oc/entity/QMember.java	
++++ /dev/null	
+@@ -1,65 +0,0 @@
+-package com.app.oc.entity;
+-
+-import static com.querydsl.core.types.PathMetadataFactory.*;
+-
+-import com.querydsl.core.types.dsl.*;
+-
+-import com.querydsl.core.types.PathMetadata;
+-import javax.annotation.processing.Generated;
+-import com.querydsl.core.types.Path;
+-import com.querydsl.core.types.dsl.PathInits;
+-
+-
+-/**
+- * QMember is a Querydsl query type for Member
+- */
+-@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+-public class QMember extends EntityPathBase<Member> {
+-
+-    private static final long serialVersionUID = -261144827L;
+-
+-    private static final PathInits INITS = PathInits.DIRECT2;
+-
+-    public static final QMember member = new QMember("member1");
+-
+-    public final QAddress address;
+-
+-    public final StringPath gender = createString("gender");
+-
+-    public final NumberPath<Integer> length = createNumber("length", Integer.class);
+-
+-    public final StringPath memberId = createString("memberId");
+-
+-    public final StringPath nickname = createString("nickname");
+-
+-    public final StringPath password = createString("password");
+-
+-    public final StringPath phoneNm = createString("phoneNm");
+-
+-    public final EnumPath<MemberRole> role = createEnum("role", MemberRole.class);
+-
+-    public final NumberPath<Integer> weight = createNumber("weight", Integer.class);
+-
+-    public QMember(String variable) {
+-        this(Member.class, forVariable(variable), INITS);
+-    }
+-
+-    public QMember(Path<? extends Member> path) {
+-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+-    }
+-
+-    public QMember(PathMetadata metadata) {
+-        this(metadata, PathInits.getFor(metadata, INITS));
+-    }
+-
+-    public QMember(PathMetadata metadata, PathInits inits) {
+-        this(Member.class, metadata, inits);
+-    }
+-
+-    public QMember(Class<? extends Member> type, PathMetadata metadata, PathInits inits) {
+-        super(type, metadata, inits);
+-        this.address = inits.isInitialized("address") ? new QAddress(forProperty("address")) : null;
+-    }
+-
+-}
+-
+Index: src/main/generated/com/app/oc/entity/QAddress.java
+===================================================================
+diff --git a/src/main/generated/com/app/oc/entity/QAddress.java b/src/main/generated/com/app/oc/entity/QAddress.java
+deleted file mode 100644
+--- a/src/main/generated/com/app/oc/entity/QAddress.java	
++++ /dev/null	
+@@ -1,41 +0,0 @@
+-package com.app.oc.entity;
+-
+-import static com.querydsl.core.types.PathMetadataFactory.*;
+-
+-import com.querydsl.core.types.dsl.*;
+-
+-import com.querydsl.core.types.PathMetadata;
+-import javax.annotation.processing.Generated;
+-import com.querydsl.core.types.Path;
+-
+-
+-/**
+- * QAddress is a Querydsl query type for Address
+- */
+-@Generated("com.querydsl.codegen.DefaultEmbeddableSerializer")
+-public class QAddress extends BeanPath<Address> {
+-
+-    private static final long serialVersionUID = -1602128663L;
+-
+-    public static final QAddress address = new QAddress("address");
+-
+-    public final StringPath address1 = createString("address1");
+-
+-    public final StringPath address2 = createString("address2");
+-
+-    public final StringPath postcode = createString("postcode");
+-
+-    public QAddress(String variable) {
+-        super(Address.class, forVariable(variable));
+-    }
+-
+-    public QAddress(Path<? extends Address> path) {
+-        super(path.getType(), path.getMetadata());
+-    }
+-
+-    public QAddress(PathMetadata metadata) {
+-        super(Address.class, metadata);
+-    }
+-
+-}
+-
+Index: src/main/generated/com/app/oc/entity/QAttenItem.java
+===================================================================
+diff --git a/src/main/generated/com/app/oc/entity/QAttenItem.java b/src/main/generated/com/app/oc/entity/QAttenItem.java
+deleted file mode 100644
+--- a/src/main/generated/com/app/oc/entity/QAttenItem.java	
++++ /dev/null	
+@@ -1,54 +0,0 @@
+-package com.app.oc.entity;
+-
+-import static com.querydsl.core.types.PathMetadataFactory.*;
+-
+-import com.querydsl.core.types.dsl.*;
+-
+-import com.querydsl.core.types.PathMetadata;
+-import javax.annotation.processing.Generated;
+-import com.querydsl.core.types.Path;
+-import com.querydsl.core.types.dsl.PathInits;
+-
+-
+-/**
+- * QAttenItem is a Querydsl query type for AttenItem
+- */
+-@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+-public class QAttenItem extends EntityPathBase<AttenItem> {
+-
+-    private static final long serialVersionUID = 1017851122L;
+-
+-    private static final PathInits INITS = PathInits.DIRECT2;
+-
+-    public static final QAttenItem attenItem = new QAttenItem("attenItem");
+-
+-    public final NumberPath<Long> aitem_seq = createNumber("aitem_seq", Long.class);
+-
+-    public final QItem item;
+-
+-    public final QMember member;
+-
+-    public QAttenItem(String variable) {
+-        this(AttenItem.class, forVariable(variable), INITS);
+-    }
+-
+-    public QAttenItem(Path<? extends AttenItem> path) {
+-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+-    }
+-
+-    public QAttenItem(PathMetadata metadata) {
+-        this(metadata, PathInits.getFor(metadata, INITS));
+-    }
+-
+-    public QAttenItem(PathMetadata metadata, PathInits inits) {
+-        this(AttenItem.class, metadata, inits);
+-    }
+-
+-    public QAttenItem(Class<? extends AttenItem> type, PathMetadata metadata, PathInits inits) {
+-        super(type, metadata, inits);
+-        this.item = inits.isInitialized("item") ? new QItem(forProperty("item"), inits.get("item")) : null;
+-        this.member = inits.isInitialized("member") ? new QMember(forProperty("member"), inits.get("member")) : null;
+-    }
+-
+-}
+-
+Index: src/main/generated/com/app/oc/entity/QAttenShop.java
+===================================================================
+diff --git a/src/main/generated/com/app/oc/entity/QAttenShop.java b/src/main/generated/com/app/oc/entity/QAttenShop.java
+deleted file mode 100644
+--- a/src/main/generated/com/app/oc/entity/QAttenShop.java	
++++ /dev/null	
+@@ -1,54 +0,0 @@
+-package com.app.oc.entity;
+-
+-import static com.querydsl.core.types.PathMetadataFactory.*;
+-
+-import com.querydsl.core.types.dsl.*;
+-
+-import com.querydsl.core.types.PathMetadata;
+-import javax.annotation.processing.Generated;
+-import com.querydsl.core.types.Path;
+-import com.querydsl.core.types.dsl.PathInits;
+-
+-
+-/**
+- * QAttenShop is a Querydsl query type for AttenShop
+- */
+-@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+-public class QAttenShop extends EntityPathBase<AttenShop> {
+-
+-    private static final long serialVersionUID = 1018137813L;
+-
+-    private static final PathInits INITS = PathInits.DIRECT2;
+-
+-    public static final QAttenShop attenShop = new QAttenShop("attenShop");
+-
+-    public final NumberPath<Long> attens_seq = createNumber("attens_seq", Long.class);
+-
+-    public final QMember member;
+-
+-    public final QShoppingMal shoppingMal;
+-
+-    public QAttenShop(String variable) {
+-        this(AttenShop.class, forVariable(variable), INITS);
+-    }
+-
+-    public QAttenShop(Path<? extends AttenShop> path) {
+-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+-    }
+-
+-    public QAttenShop(PathMetadata metadata) {
+-        this(metadata, PathInits.getFor(metadata, INITS));
+-    }
+-
+-    public QAttenShop(PathMetadata metadata, PathInits inits) {
+-        this(AttenShop.class, metadata, inits);
+-    }
+-
+-    public QAttenShop(Class<? extends AttenShop> type, PathMetadata metadata, PathInits inits) {
+-        super(type, metadata, inits);
+-        this.member = inits.isInitialized("member") ? new QMember(forProperty("member"), inits.get("member")) : null;
+-        this.shoppingMal = inits.isInitialized("shoppingMal") ? new QShoppingMal(forProperty("shoppingMal"), inits.get("shoppingMal")) : null;
+-    }
+-
+-}
+-
+Index: src/main/generated/com/app/oc/entity/QEvent.java
+===================================================================
+diff --git a/src/main/generated/com/app/oc/entity/QEvent.java b/src/main/generated/com/app/oc/entity/QEvent.java
+deleted file mode 100644
+--- a/src/main/generated/com/app/oc/entity/QEvent.java	
++++ /dev/null	
+@@ -1,65 +0,0 @@
+-package com.app.oc.entity;
+-
+-import static com.querydsl.core.types.PathMetadataFactory.*;
+-
+-import com.querydsl.core.types.dsl.*;
+-
+-import com.querydsl.core.types.PathMetadata;
+-import javax.annotation.processing.Generated;
+-import com.querydsl.core.types.Path;
+-import com.querydsl.core.types.dsl.PathInits;
+-
+-
+-/**
+- * QEvent is a Querydsl query type for Event
+- */
+-@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+-public class QEvent extends EntityPathBase<Event> {
+-
+-    private static final long serialVersionUID = -708049713L;
+-
+-    private static final PathInits INITS = PathInits.DIRECT2;
+-
+-    public static final QEvent event = new QEvent("event");
+-
+-    public final StringPath content = createString("content");
+-
+-    public final DatePath<java.time.LocalDate> endDay = createDate("endDay", java.time.LocalDate.class);
+-
+-    public final NumberPath<Long> eventId = createNumber("eventId", Long.class);
+-
+-    public final EnumPath<EventType> eventType = createEnum("eventType", EventType.class);
+-
+-    public final DateTimePath<java.time.LocalDateTime> modifiedDay = createDateTime("modifiedDay", java.time.LocalDateTime.class);
+-
+-    public final QShoppingMal shoppingmall;
+-
+-    public final DatePath<java.time.LocalDate> startDay = createDate("startDay", java.time.LocalDate.class);
+-
+-    public final StringPath title = createString("title");
+-
+-    public final DateTimePath<java.time.LocalDateTime> WriteDay = createDateTime("WriteDay", java.time.LocalDateTime.class);
+-
+-    public QEvent(String variable) {
+-        this(Event.class, forVariable(variable), INITS);
+-    }
+-
+-    public QEvent(Path<? extends Event> path) {
+-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+-    }
+-
+-    public QEvent(PathMetadata metadata) {
+-        this(metadata, PathInits.getFor(metadata, INITS));
+-    }
+-
+-    public QEvent(PathMetadata metadata, PathInits inits) {
+-        this(Event.class, metadata, inits);
+-    }
+-
+-    public QEvent(Class<? extends Event> type, PathMetadata metadata, PathInits inits) {
+-        super(type, metadata, inits);
+-        this.shoppingmall = inits.isInitialized("shoppingmall") ? new QShoppingMal(forProperty("shoppingmall"), inits.get("shoppingmall")) : null;
+-    }
+-
+-}
+-
+Index: src/main/generated/com/app/oc/entity/QFile.java
+===================================================================
+diff --git a/src/main/generated/com/app/oc/entity/QFile.java b/src/main/generated/com/app/oc/entity/QFile.java
+deleted file mode 100644
+--- a/src/main/generated/com/app/oc/entity/QFile.java	
++++ /dev/null	
+@@ -1,55 +0,0 @@
+-package com.app.oc.entity;
+-
+-import static com.querydsl.core.types.PathMetadataFactory.*;
+-
+-import com.querydsl.core.types.dsl.*;
+-
+-import com.querydsl.core.types.PathMetadata;
+-import javax.annotation.processing.Generated;
+-import com.querydsl.core.types.Path;
+-import com.querydsl.core.types.dsl.PathInits;
+-
+-
+-/**
+- * QFile is a Querydsl query type for File
+- */
+-@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+-public class QFile extends EntityPathBase<File> {
+-
+-    private static final long serialVersionUID = -2101032793L;
+-
+-    private static final PathInits INITS = PathInits.DIRECT2;
+-
+-    public static final QFile file = new QFile("file");
+-
+-    public final StringPath datePath = createString("datePath");
+-
+-    public final StringPath filename = createString("filename");
+-
+-    public final QItem item;
+-
+-    public final StringPath storefile = createString("storefile");
+-
+-    public QFile(String variable) {
+-        this(File.class, forVariable(variable), INITS);
+-    }
+-
+-    public QFile(Path<? extends File> path) {
+-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+-    }
+-
+-    public QFile(PathMetadata metadata) {
+-        this(metadata, PathInits.getFor(metadata, INITS));
+-    }
+-
+-    public QFile(PathMetadata metadata, PathInits inits) {
+-        this(File.class, metadata, inits);
+-    }
+-
+-    public QFile(Class<? extends File> type, PathMetadata metadata, PathInits inits) {
+-        super(type, metadata, inits);
+-        this.item = inits.isInitialized("item") ? new QItem(forProperty("item"), inits.get("item")) : null;
+-    }
+-
+-}
+-
+Index: src/main/generated/com/app/oc/entity/QItem.java
+===================================================================
+diff --git a/src/main/generated/com/app/oc/entity/QItem.java b/src/main/generated/com/app/oc/entity/QItem.java
+deleted file mode 100644
+--- a/src/main/generated/com/app/oc/entity/QItem.java	
++++ /dev/null	
+@@ -1,63 +0,0 @@
+-package com.app.oc.entity;
+-
+-import static com.querydsl.core.types.PathMetadataFactory.*;
+-
+-import com.querydsl.core.types.dsl.*;
+-
+-import com.querydsl.core.types.PathMetadata;
+-import javax.annotation.processing.Generated;
+-import com.querydsl.core.types.Path;
+-import com.querydsl.core.types.dsl.PathInits;
+-
+-
+-/**
+- * QItem is a Querydsl query type for Item
+- */
+-@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+-public class QItem extends EntityPathBase<Item> {
+-
+-    private static final long serialVersionUID = -2100933058L;
+-
+-    private static final PathInits INITS = PathInits.DIRECT2;
+-
+-    public static final QItem item = new QItem("item");
+-
+-    public final NumberPath<Integer> category = createNumber("category", Integer.class);
+-
+-    public final StringPath content = createString("content");
+-
+-    public final ListPath<File, QFile> files = this.<File, QFile>createList("files", File.class, QFile.class, PathInits.DIRECT2);
+-
+-    public final NumberPath<Long> itemId = createNumber("itemId", Long.class);
+-
+-    public final StringPath itemTitle = createString("itemTitle");
+-
+-    public final NumberPath<Integer> price = createNumber("price", Integer.class);
+-
+-    public final EnumPath<SellState> sellState = createEnum("sellState", SellState.class);
+-
+-    public final QShoppingMal shoppingMal;
+-
+-    public QItem(String variable) {
+-        this(Item.class, forVariable(variable), INITS);
+-    }
+-
+-    public QItem(Path<? extends Item> path) {
+-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+-    }
+-
+-    public QItem(PathMetadata metadata) {
+-        this(metadata, PathInits.getFor(metadata, INITS));
+-    }
+-
+-    public QItem(PathMetadata metadata, PathInits inits) {
+-        this(Item.class, metadata, inits);
+-    }
+-
+-    public QItem(Class<? extends Item> type, PathMetadata metadata, PathInits inits) {
+-        super(type, metadata, inits);
+-        this.shoppingMal = inits.isInitialized("shoppingMal") ? new QShoppingMal(forProperty("shoppingMal"), inits.get("shoppingMal")) : null;
+-    }
+-
+-}
+-
