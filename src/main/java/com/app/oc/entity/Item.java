@@ -39,6 +39,8 @@ public class Item {
     private Integer category;
 
 
+
+
     //연관 관계 매서드
     public void setFile(File file) {
         this.files.add(file);

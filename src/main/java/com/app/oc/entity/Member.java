@@ -5,6 +5,9 @@ import com.app.oc.dto.mypage.ResponseMemberDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name ="member")
@@ -34,6 +37,9 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private MemberRole role;
 
+
+    @OneToMany(mappedBy = "attens_seq")
+    private List<AttenShop> aiShop = new ArrayList<>();
 
     @Builder
     public void Member(MemberDto member) {

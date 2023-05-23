@@ -18,6 +18,8 @@ public class EventRequestDto {
     private EventType eventType;
     private String title;
     private String content;
+
+    private String shopAdr;
     private LocalDate startDate;
     private LocalDate endDate;
 

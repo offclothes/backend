@@ -7,15 +7,11 @@ import com.app.oc.entity.Event;
 import com.app.oc.exception.ErrorResult;
 import com.app.oc.service.EventService;
 import jakarta.persistence.NoResultException;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Session;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -34,12 +30,19 @@ public class EventController {
      */
 
     @PostMapping("/event/post")
-    public ResponseEntity<Event> savePost(@RequestBody EventRequestDto requestDto) throws IOException {
+    public ResponseEntity<Event> savePost(@RequestBody EventRequestDto requestDto, HttpSession session) throws IOException {
         Event saved = eventService.savePost(requestDto);
         return (saved != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(saved) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
+
+
+    /**
+     * 원하는 게시글 수정
+     * @param eventSeq 글 번호
+     */
+
 
     @PatchMapping("/event/update/{id}")
     public ResponseEntity<Event> updatePost(@RequestParam Long id, @RequestBody EventRequestDto requestDto) throws IOException {
@@ -48,14 +51,6 @@ public class EventController {
                 ResponseEntity.status(HttpStatus.OK).body(updated) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-
-
-
-
-    /**
-     * 원하는 게시글 수정
-     * @param eventSeq 글 번호
-     */
 
 
 
