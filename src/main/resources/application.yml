@@ -36,7 +36,8 @@ spring:
 
 #aws rds에 연결
   datasource:
-      url: jdbc:mysql://offclothes.calbqsfmpggm.ap-northeast-2.rds.amazonaws.com:3306/oc?serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+#      url: jdbc:mysql://offclothes.calbqsfmpggm.ap-northeast-2.rds.amazonaws.com:3306/oc?serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+      url: jdbc:mysql://localhost:3306/project?serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
       username: root
       password: 12345678
       driver-class-name: com.mysql.cj.jdbc.Driver

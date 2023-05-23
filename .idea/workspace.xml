@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3a99038-e1eb-4777-96e0-193a43b47d45" name="Changes" comment="chore: 준호 오류 수정" />
+    <list default="true" id="d3a99038-e1eb-4777-96e0-193a43b47d45" name="Changes" comment="chore: 준호 오류 수정">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-05-23__8_12__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-05-23__8_12__Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-05-23_오후_8_12_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-05-23_오후_8_12_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/ocApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAttenItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QAttenShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/app/oc/entity/QShoppingMal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/oc/controller/ShoppingMalControllerTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,6 +64,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="BE/#9" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
