@@ -24,6 +24,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public final QAddress address;
 
+    public final ListPath<AttenShop, QAttenShop> aiShop = this.<AttenShop, QAttenShop>createList("aiShop", AttenShop.class, QAttenShop.class, PathInits.DIRECT2);
+
     public final StringPath gender = createString("gender");
 
     public final NumberPath<Integer> length = createNumber("length", Integer.class);

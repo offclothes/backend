@@ -43,7 +43,6 @@ public class EventController {
      * @param eventSeq 글 번호
      */
 
-
     @PatchMapping("/event/update/{id}")
     public ResponseEntity<Event> updatePost(@RequestParam Long id, @RequestBody EventRequestDto requestDto) throws IOException {
         Event updated = eventService.updatePost(id, requestDto);
