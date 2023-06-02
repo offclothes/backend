@@ -1,5 +1,7 @@
 package com.app.oc.entity;
 
+
+
 import com.app.oc.dto.mypage.MemberDto;
 import com.app.oc.dto.mypage.ResponseMemberDto;
 import jakarta.persistence.*;

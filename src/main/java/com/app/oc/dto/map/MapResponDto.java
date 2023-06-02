@@ -1,6 +1,7 @@
 package com.app.oc.dto.map;
 
 
+
 import com.app.oc.entity.ShoppingMal;
 import lombok.*;
 

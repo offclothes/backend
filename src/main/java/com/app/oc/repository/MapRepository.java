@@ -1,6 +1,7 @@
 package com.app.oc.repository;
 
-import com.app.oc.dto.map.MapRequestDto;
+
+
 import com.app.oc.dto.map.MapResponDto;
 import com.app.oc.entity.ShoppingMal;
 import org.springframework.data.jpa.repository.JpaRepository;

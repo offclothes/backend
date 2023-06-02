@@ -1,21 +1,24 @@
 package com.app.oc.controller;
 
-import com.app.oc.dto.mypage.*;
+
 import com.app.oc.dto.ResultDto;
+import com.app.oc.dto.mypage.*;
 import com.app.oc.entity.AttenShop;
 import com.app.oc.entity.Member;
 import com.app.oc.service.MemberService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
+
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,15 +44,26 @@ public class UserController {
      * 로그인
      */
     @PostMapping("/login")
-    public ResultDto login(String id, String pwd) {
-        Member findMember = memberService.findOne(id);
-        if (!findMember.getPassword().equals(pwd)) {
+    public ResultDto login(@RequestBody LoginDto loginDto, HttpServletResponse response) {
+        System.out.println("id = " + loginDto.getId());
+        System.out.println("pwd = " +loginDto.getPwd());
+        Member findMember = memberService.findOne(loginDto.getId());
+        if (!findMember.getPassword().equals(loginDto.getPwd())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
+        //세션 생성
         HttpSession session = request.getSession();
         session.setAttribute("id", findMember.getMemberId());
         log.info("sessionID : {}", session.getAttribute("id"));
+        //프론트에서도 값을 받기 위해서 쿠키에 아이디 넣어서 응답 헤더를 통해 전송
+        response.setHeader("id", session.getAttribute("id").toString());
+        Cookie cookie = new Cookie("id", session.getAttribute("id").toString());
+        cookie.setDomain("localhost");
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(60*60*60);
+        response.addCookie(cookie);
 
         return new ResultDto("로그인 완료");
     }
@@ -61,11 +75,15 @@ public class UserController {
      */
 
     @PostMapping("/logout")
-    public ResultDto logout() {
+    public ResultDto logout(HttpServletResponse response) {
         System.out.println("로그아웃으로 간다.");
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.removeAttribute("id");
+            Cookie cookie = new Cookie("id", null);
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
         }
         return new ResultDto("로그아웃되었습니다.");
     }
@@ -79,8 +97,8 @@ public class UserController {
      *
      * OK
      */
-    @GetMapping("/{id}")
-    public MemberDto findById(@PathVariable String id) {
+    @GetMapping("/myPage")
+    public MemberDto findById(@CookieValue String id) {
         return new MemberDto(memberService.findOne(id));
     }
 
@@ -93,8 +111,8 @@ public class UserController {
      *
      * OK
      */
-    @PutMapping("/{id}")
-    public ResultDto updateMember(@PathVariable String id, @RequestBody ResponseMemberDto buyer) {
+    @PutMapping("/myPage")
+    public ResultDto updateMember(@CookieValue String id, @RequestBody ResponseMemberDto buyer) {
         memberService.updateMember(id,buyer);
         return new ResultDto("회원이 수정되었습니다.");
     }

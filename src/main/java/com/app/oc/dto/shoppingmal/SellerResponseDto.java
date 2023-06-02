@@ -1,5 +1,7 @@
 package com.app.oc.dto.shoppingmal;
 
+
+
 import com.app.oc.entity.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

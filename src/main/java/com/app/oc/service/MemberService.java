@@ -1,5 +1,7 @@
 package com.app.oc.service;
 
+
+
 import com.app.oc.dto.mypage.ResponseMemberDto;
 import com.app.oc.entity.Address;
 import com.app.oc.entity.AttenItem;
@@ -27,9 +29,9 @@ public class MemberService {
 
     //Member 1명 찾기
     @Transactional(readOnly=true)// jpa 변경감지 내부기능 활성화x,update시 정합성 유지,
-    public Member findOne(String id) {
-        return memberRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("ID가 없습니다."));
+    public Member findOne(String memberId) {
+        return memberRepository.findById(memberId)
+                .orElseThrow(() -> new IllegalArgumentException("ID가 없습니다."));
     }
 
 

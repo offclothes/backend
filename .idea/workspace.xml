@@ -4,11 +4,79 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec7bfc73-de16-4d5f-b3b0-508f9a96c53e" name="Changes" comment="chore: 준호 오류 수정" />
+    <list default="true" id="ec7bfc73-de16-4d5f-b3b0-508f9a96c53e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/LoginDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-05-23_오후_11_44_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-05-23_오후_8_12_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/OcApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/MapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/MapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/ShoppingMalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/ShoppingMalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/ResultDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/ResultDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/EventRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/EventRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/MyPostResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/MyPostResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/ResponseLists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/ResponseLists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/ResponseeventDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/event/ResponseeventDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/fileDto/UploadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/fileDto/UploadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/map/MapRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/map/MapRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/map/MapResponDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/map/MapResponDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/AttenShopDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/AttenShopDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/MemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/MemberDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/PwdDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/PwdDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/ResponseMemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/mypage/ResponseMemberDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/SearchDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/paging/SearchDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/DetailItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/DetailItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ItemFileRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ItemFileRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ItemFileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ItemFileResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/MyShoppingmalDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/MyShoppingmalDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/SellerRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/SellerRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/SellerResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/SellerResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ShopIntroductionResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/ShopIntroductionResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/myshopDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/dto/shoppingmal/myshopDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/AttenItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/AttenItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/ShoppingMal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/entity/ShoppingMal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/exception/advice/ExceptionAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/exception/advice/ExceptionAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/ocApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/ocApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/AttenShopRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/AttenShopRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/EventRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/FileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ItemRepositoryCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MapRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ShopRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repository/ShopRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/EventRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/EventRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ItemRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ShopRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/repositoryImpl/ShopRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/EventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MapService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MapService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/SearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/service/ShopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/util/EmailUtilImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/util/EmailUtilImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/oc/util/FileStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/oc/util/FileStore.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -22,39 +90,40 @@
       </map>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QH6uEm2E2hdPeYHrsSYEwTIixy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
-    "last_opened_file_path": "D:/git_kraken/backend/src/main/generated/com/app/oc/entity",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/git_kraken/backend/src/main/java/com/app/oc",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "74f4b49619d4b9083a3c8d6f08c9336a"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git_kraken\backend\src\main\java\com\app\oc" />
       <recent name="D:\git_kraken\backend\src\main\generated\com\app\oc\entity" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="oc" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="oc" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OcApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="ocApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="com.app.oc.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.app.oc.OcApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.app.oc.ocApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.app.oc.*" />
@@ -67,11 +136,45 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.OcApplication" />
+        <item itemvalue="Spring Boot.ocApplication" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ec7bfc73-de16-4d5f-b3b0-508f9a96c53e" name="Changes" comment="" />
+      <created>1684998380714</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684998380714</updated>
+      <workItem from="1684998384875" duration="1768000" />
+      <workItem from="1685005860262" duration="1217000" />
+      <workItem from="1685013367270" duration="1191000" />
+      <workItem from="1685016505252" duration="1190000" />
+      <workItem from="1685019708561" duration="1820000" />
+      <workItem from="1685185285315" duration="1826000" />
+      <workItem from="1685344432380" duration="1206000" />
+      <workItem from="1685358683356" duration="1196000" />
+      <workItem from="1685364005392" duration="1468000" />
+      <workItem from="1685383930897" duration="1193000" />
+      <workItem from="1685422016554" duration="1904000" />
+      <workItem from="1685710799275" duration="1000000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

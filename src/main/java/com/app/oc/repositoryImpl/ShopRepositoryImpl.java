@@ -1,9 +1,9 @@
 package com.app.oc.repositoryImpl;
 
-import com.app.oc.entity.Item;
+
+
 import com.app.oc.entity.Member;
 import com.app.oc.entity.ShoppingMal;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;

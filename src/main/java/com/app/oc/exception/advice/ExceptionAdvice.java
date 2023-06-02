@@ -1,8 +1,8 @@
 package com.app.oc.exception.advice;
 
+
 import com.app.oc.exception.ErrorResult;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.TypeMismatchException;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

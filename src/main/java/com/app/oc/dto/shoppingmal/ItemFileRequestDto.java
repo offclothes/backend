@@ -1,8 +1,8 @@
 package com.app.oc.dto.shoppingmal;
 
+
+
 import com.app.oc.entity.SellState;
-import jakarta.persistence.ManyToOne;
-import lombok.Builder;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 

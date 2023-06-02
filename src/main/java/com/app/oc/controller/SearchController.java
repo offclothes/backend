@@ -3,17 +3,13 @@ package com.app.oc.controller;
 
 
 import com.app.oc.dto.paging.ItemPageDto;
-
-import com.app.oc.dto.paging.SearchDto;
 import com.app.oc.service.SearchService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.awt.*;
-import java.awt.event.PaintEvent;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SearchController {

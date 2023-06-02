@@ -2,7 +2,6 @@ package com.app.oc.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 
 @Table(name = "attenitem")
 @Entity

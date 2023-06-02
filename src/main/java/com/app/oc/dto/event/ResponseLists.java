@@ -1,8 +1,10 @@
 package com.app.oc.dto.event;
 
+
+
 import com.app.oc.entity.Event;
 import com.app.oc.entity.EventType;
-import lombok.Builder;
+import com.app.oc.entity.ShoppingMal;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -16,6 +18,8 @@ public class ResponseLists {
 
     private String title;
 
+    private ShoppingMal shoppingMal;
+
     private String content;
 
     private LocalDateTime writeDay;
@@ -28,9 +32,11 @@ public class ResponseLists {
         this.eventId = event.getEventId();
         this.eventType = event.getEventType();
         this.title = event.getTitle();
+        this.shoppingMal = event.getShoppingmall();
         this.content = event.getContent();
         this.writeDay = event.getWriteDay();
         this.startDay = event.getStartDay();
         this.endDay = event.getEndDay();
     }
+
 }

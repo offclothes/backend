@@ -1,13 +1,16 @@
 package com.app.oc.entity;
 
+
 import com.app.oc.dto.shoppingmal.ItemFileRequestDto;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.app.oc.entity.SellState.*;
 
 @Entity
 @Table(name = "item")
@@ -60,7 +63,7 @@ public class Item {
 
         Item item = new Item();
         item.itemTitle =itemFileRequestDto.getItemTitle();
-        item.sellState = 판매중;
+        item.sellState = SellState.판매중;
         item.price = itemFileRequestDto.getPrice();
         item.category= itemFileRequestDto.getCategory();
         item.content = itemFileRequestDto.getContent();

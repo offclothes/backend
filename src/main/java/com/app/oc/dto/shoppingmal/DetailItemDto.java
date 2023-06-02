@@ -1,5 +1,7 @@
 package com.app.oc.dto.shoppingmal;
 
+
+
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.entity.Item;
 import com.app.oc.entity.SellState;

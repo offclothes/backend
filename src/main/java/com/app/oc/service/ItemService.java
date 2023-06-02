@@ -1,25 +1,31 @@
 package com.app.oc.service;
 
-import com.app.oc.dto.shoppingmal.DetailItemDto;
-import com.app.oc.dto.shoppingmal.MainItemDto;
-import com.app.oc.dto.shoppingmal.ItemFileRequestDto;
+
 import com.app.oc.dto.fileDto.UploadFile;
-import com.app.oc.entity.*;
-import com.app.oc.repository.*;
+import com.app.oc.dto.shoppingmal.DetailItemDto;
+import com.app.oc.dto.shoppingmal.ItemFileRequestDto;
+import com.app.oc.dto.shoppingmal.MainItemDto;
+import com.app.oc.entity.File;
+import com.app.oc.entity.Item;
+import com.app.oc.entity.ShoppingMal;
+import com.app.oc.repository.FileRepository;
+import com.app.oc.repository.ItemRepository;
+import com.app.oc.repository.ShopRepository;
 import com.app.oc.util.FileStore;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -28,13 +34,12 @@ import java.util.stream.Collectors;
 @Transactional
 @Slf4j
 public class ItemService {
-    private final FileStore FileStore;
+    private final FileStore fileStore;
     private final FileService fileService;
-
 
     private final FileRepository fileRepository;
     private final ShopRepository shopRepositroy;
-    private final ItemRepository ItemRepository;
+    private final ItemRepository itemRepository;
 
     @Autowired
     HttpSession session;
@@ -74,7 +79,7 @@ public class ItemService {
 
 
             //item_id
-            item = ItemRepository.findById(itemFileRequestDto.getItemId()).
+            item = itemRepository.findById(itemFileRequestDto.getItemId()).
                     orElseThrow(() -> new IllegalArgumentException("상품이 없습니다."));
 
             //item update
@@ -94,8 +99,8 @@ public class ItemService {
 
 
         //파일 insert
-        UploadFile thumb = FileStore.storeFile(itemFileRequestDto.getThumb(), true);
-        List<UploadFile> files = FileStore.storeFiles(itemFileRequestDto.getImageFiles());
+        UploadFile thumb = fileStore.storeFile(itemFileRequestDto.getThumb(), true);
+        List<UploadFile> files = fileStore.storeFiles(itemFileRequestDto.getImageFiles());
 
         files.add(thumb);
 
@@ -106,7 +111,7 @@ public class ItemService {
             //File 연관관계 매핑
             item.setFile(fileOne);
 
-            ItemRepository.save(item);
+            itemRepository.save(item);
         }
 
         return name;
@@ -120,7 +125,7 @@ public class ItemService {
      * @return
      */
     public Item findByItem(Long id) {
-        return ItemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("상품이 없습니다."));
+        return itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("상품이 없습니다."));
     }
 
 
@@ -131,10 +136,10 @@ public class ItemService {
      * @return
      */
     //여러개(썸네일만)
-    public Page<MainItemDto>  findByShopITem(Long id, Pageable  pageable) {
+    public Page<MainItemDto> findByShopITem(Long id, Pageable  pageable) {
 
         //item 페이징 List
-        List<Item> getItems = ItemRepository.getcontent(id, pageable);
+        List<Item> getItems = itemRepository.getcontent(id, pageable);
 
 
         //id들로만 한번에
@@ -155,7 +160,7 @@ public class ItemService {
         List<MainItemDto> items = getMainItemDtos(getItems, fileMap);
 
         //페이징으로 변환
-        Page<MainItemDto> mainItemDtos = ItemRepository.shopMainItems(items, id, pageable);
+        Page<MainItemDto> mainItemDtos = itemRepository.shopMainItems(items, id, pageable);
 
         log.info("items :{} ", items);
         return mainItemDtos;
@@ -178,7 +183,7 @@ public class ItemService {
      */
     public DetailItemDto findDetailOne(Long id) {
         //Item
-        Item itemOne = ItemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("아이템이 없습니다."));
+        Item itemOne = itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("아이템이 없습니다."));
         log.info("itemOne : {}  ",itemOne.toString());
         log.info("itemOne.getSellState() = {}",itemOne.getSellState());
 
@@ -252,7 +257,7 @@ public class ItemService {
         files.forEach(file -> item.setFile(file)); //연관관계 매핑(file)연관관계
 
         //item 삭제
-        ItemRepository.deleteById(id);
+        itemRepository.deleteById(id);
     }
 
 

@@ -7,11 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,7 +34,7 @@ public class FileStore {
     }
 
     //파일 업로드
-    public UploadFile storeFile(MultipartFile multipartFile,Boolean th) throws IOException {
+    public UploadFile storeFile(MultipartFile multipartFile, Boolean th) throws IOException {
 
         File fileone = new File(fileDir); //파일 저장
         //Path path = Paths.get(fileDir);

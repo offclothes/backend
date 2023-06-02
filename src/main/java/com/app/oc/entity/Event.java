@@ -1,17 +1,14 @@
 package com.app.oc.entity;
 
+
 import com.app.oc.dto.event.EventRequestDto;
 import jakarta.persistence.*;
-
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,7 +33,7 @@ public class Event {
 //    @JoinColumn(name = "memberID")
 //    private Member member;
 //    ----------------------
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "shop_seq")
     private ShoppingMal shoppingmall;
 

@@ -1,8 +1,6 @@
 package com.app.oc.dto.event;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 

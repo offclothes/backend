@@ -1,6 +1,6 @@
 package com.app.oc.service;
 
-import com.app.oc.dto.map.MapRequestDto;
+
 import com.app.oc.dto.map.MapResponDto;
 import com.app.oc.repository.MapRepository;
 import lombok.RequiredArgsConstructor;

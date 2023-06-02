@@ -22,7 +22,7 @@ public class ShoppingMal {
     private String content;
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "memberId")
     private Member member;
     private String shopName;
@@ -36,8 +36,8 @@ public class ShoppingMal {
     private List<Item> items = new ArrayList<>();
 
 //Check
-    private String password;
-    private Integer leasePic;
+//    private String password;
+//    private Integer leasePic;
 
     @Enumerated(EnumType.STRING)
     private Approval approval;

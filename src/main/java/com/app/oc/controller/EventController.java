@@ -1,5 +1,7 @@
 package com.app.oc.controller;
 
+
+
 import com.app.oc.dto.event.EventRequestDto;
 import com.app.oc.dto.event.MyPostResponseDto;
 import com.app.oc.dto.event.ResponseeventDto;
@@ -7,6 +9,9 @@ import com.app.oc.entity.Event;
 import com.app.oc.exception.ErrorResult;
 import com.app.oc.service.EventService;
 import jakarta.persistence.NoResultException;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,8 +35,9 @@ public class EventController {
      */
 
     @PostMapping("/event/post")
-    public ResponseEntity<Event> savePost(@RequestBody EventRequestDto requestDto, HttpSession session) throws IOException {
-        Event saved = eventService.savePost(requestDto);
+    public ResponseEntity<Event> savePost(@RequestBody EventRequestDto requestDto, @CookieValue String id) throws IOException {
+        System.out.println("cookie id = " + id);
+        Event saved = eventService.savePost(requestDto, id);
         return (saved != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(saved) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -40,7 +46,7 @@ public class EventController {
 
     /**
      * 원하는 게시글 수정
-     * @param eventSeq 글 번호
+     * @param
      */
 
     @PatchMapping("/event/update/{id}")
@@ -59,7 +65,7 @@ public class EventController {
      * buyer 구분
      */
     @GetMapping("/eventAll")
-    public ResponseeventDto responseeventDto(@RequestParam(defaultValue = "A",required = false) String state , HttpSession session) {
+    public ResponseeventDto responseeventDto(@RequestParam(defaultValue = "A",required = false, name = "state") String state , HttpSession session) {
 
         //buyer로 구분
         return eventService.listAll(state, session);
@@ -68,34 +74,44 @@ public class EventController {
     /**
      * 내가 작성한 글 조회
      *
-     * @param session
+     * @param id
      * @return
      * postman에서 테스트 할 때는 nullPoint 에러 떴지만,
      * 임의의 링크에서 세션을 생성하고 테스트 하면 값이 잘 넘어옴
      */
     @GetMapping("/myPost")
-    public ResponseEntity<List<MyPostResponseDto>> getMyEventList(HttpSession session) {
-        String sessionId = (String) session.getAttribute("id");
+    public ResponseEntity<List<MyPostResponseDto>> getMyEventList(@CookieValue String id) {
 
-        System.out.println("sessionId = " + sessionId);
-        return ResponseEntity.ok(eventService.getMyEventPost(sessionId));
+
+        System.out.println("cookie id = " + id);
+        return ResponseEntity.ok(eventService.getMyEventPost(id));
     }
 
     /**
      * 세션 생성하는 사이트(테스트용)
      */
-//    @GetMapping("/test")
-//    public void createSession(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//
-//        session.setAttribute("id", "test123");
-//    }
+    @GetMapping("/api/test")
+    public ResponseEntity<String> createSession(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+
+        session.setAttribute("id", "test123");
+
+        response.setHeader("id", session.getAttribute("id").toString());
+        Cookie cookie = new Cookie("id", session.getAttribute("id").toString());
+        cookie.setDomain("localhost");
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(10*60);
+        response.addCookie(cookie);
+
+        return ResponseEntity.ok(session.getAttribute("id").toString());
+    }
 
     /**
      * 원하는 게시글 삭제
      * @param eventSeq 글 번호
      */
-    @DeleteMapping("/myPost/{eventSeq}")
+    @DeleteMapping("/myPost/{eventId}")
     public void deletePost(@PathVariable Long eventSeq) {
         eventService.deletePost(eventSeq);
     }

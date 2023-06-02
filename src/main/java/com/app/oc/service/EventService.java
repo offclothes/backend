@@ -1,24 +1,24 @@
 package com.app.oc.service;
 
+
+
+import com.app.oc.repositoryImpl.EventRepositoryImpl;
+import com.app.oc.repositoryImpl.ShopRepositoryImpl;
 import com.app.oc.dto.event.EventRequestDto;
 import com.app.oc.dto.event.MyPostResponseDto;
 import com.app.oc.dto.event.ResponseLists;
 import com.app.oc.dto.event.ResponseeventDto;
-import com.app.oc.dto.fileDto.UploadFile;
-import com.app.oc.dto.shoppingmal.MainItemDto;
 import com.app.oc.entity.*;
 import com.app.oc.repository.EventRepository;
 import com.app.oc.repository.MemberRepository;
 import com.app.oc.repository.ShopRepository;
-import com.app.oc.repositoryImpl.EventRepositoryImpl;
-import com.app.oc.repositoryImpl.ShopRepositoryImpl;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,8 +39,13 @@ public class EventService {
 
 
     //게시글 등록
-    public Event savePost(EventRequestDto requestDto){
+    public Event savePost(EventRequestDto requestDto, String memberId){
         Event post = requestDto.toEntity();
+        post.setWriteDay(LocalDateTime.now());
+
+        ShoppingMal findShop = shopRepositoryImpl.findByMember(memberId);
+        post.setShoppingmall(findShop);
+
         if(post.getEventId() != null){
             return null;
         }
@@ -99,8 +104,8 @@ public class EventService {
                 break;
         }
 
+        List<ResponseLists> lists = total.stream().map(e -> new ResponseLists(e)).collect(Collectors.toList());
 
-        List<ResponseLists> lists = total.stream().map(s -> new ResponseLists(s)).collect(Collectors.toList());
         System.out.println(lists);
 
 
@@ -114,8 +119,8 @@ public class EventService {
     public List<MyPostResponseDto> getMyEventPost(String memberId) {
 
         System.out.println("memberId = " + memberId);
-        ShoppingMal findShop = shopRepositoryImpl.findByMember(memberId);
-        List<Event> findList = eventRepositoryImpl.findListByShopSeq(findShop.getShopId());
+        ShoppingMal findShop = shopRepository.findByMember(memberId);
+        List<Event> findList = eventRepository.findAllByShoppingmall(findShop);
 
         return findList.stream().map(event -> {
            return MyPostResponseDto.myPostResponseDto(findShop, event);

@@ -1,28 +1,24 @@
 package com.app.oc.service;
 
 
+
+import com.app.oc.repositoryImpl.ShopRepositoryImpl;
 import com.app.oc.dto.shoppingmal.*;
 import com.app.oc.entity.*;
 import com.app.oc.repository.ItemRepository;
 import com.app.oc.repository.MemberRepository;
 import com.app.oc.repository.ShopRepository;
-import com.app.oc.repositoryImpl.ShopRepositoryImpl;
 import com.app.oc.util.EmailUtil;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Base64;
 import java.util.Map;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +29,7 @@ public class ShopService {
     HttpSession session;
 
 
-    private final ItemRepository ItemRepository;
+    private final ItemRepository itemRepository;
     private final ShopRepository shopRepository;
 
     private final ShopRepositoryImpl shopRepositoryImpl;
@@ -88,7 +84,7 @@ public class ShopService {
      * @return
      */
     public Item findByItem (Long id){
-        return ItemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Item이 없습니다.."));
+        return itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Item이 없습니다.."));
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.app.oc.dto.shoppingmal;
 
+
 import com.app.oc.dto.fileDto.UploadFile;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
