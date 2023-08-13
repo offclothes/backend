@@ -3,6 +3,9 @@ package com.app.oc.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+/**
+ * 관심 매장 엔티티
+ */
 @Entity
 @Table(name = "attenshop")
 @Getter

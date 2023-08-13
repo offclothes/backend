@@ -1,5 +1,7 @@
 package com.app.oc.service;
 
+
+
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.entity.File;
 import com.app.oc.repository.FileRepository;
@@ -27,13 +29,9 @@ public class FileService {
      */
     public void fileOneDelete(UploadFile uploadFile) throws UnsupportedEncodingException {
 
-        //파일 Date와 파일 명
-        //String filePath = uploadFile.getUpdateDate() + "/" + uploadFile.getStoreFileName();
-        
-        
+
         //파일명만
         String filePath =  uploadFile.getStoreFileName();
-
         java.io.File file = new java.io.File(fileDir + URLDecoder.decode(filePath, "UTF-8"));
 
         //파일 삭제

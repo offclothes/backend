@@ -1,8 +1,8 @@
 package com.app.oc.dto.shoppingmal;
 
+
+
 import com.app.oc.entity.SellState;
-import jakarta.persistence.ManyToOne;
-import lombok.Builder;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +17,7 @@ import java.util.List;
 public class ItemFileRequestDto {
 
     //Item id
+
     private Long itemId; //등록 , 수정 구분
 
     //Item

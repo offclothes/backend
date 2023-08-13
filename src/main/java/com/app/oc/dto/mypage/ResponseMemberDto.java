@@ -1,7 +1,5 @@
 package com.app.oc.dto.mypage;
 
-import com.app.oc.entity.Address;
-import com.app.oc.entity.MemberRole;
 import lombok.Data;
 
 /**

@@ -1,10 +1,7 @@
 package com.app.oc.service;
 
-import com.app.oc.dto.shoppingmal.DetailItemDto;
 import com.app.oc.dto.shoppingmal.ItemFileRequestDto;
 import com.app.oc.dto.shoppingmal.MainItemDto;
-import com.app.oc.entity.Item;
-import jakarta.validation.constraints.Size;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional

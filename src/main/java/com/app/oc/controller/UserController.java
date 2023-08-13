@@ -1,24 +1,26 @@
 package com.app.oc.controller;
 
-import com.app.oc.dto.mypage.AttenShopDto;
-import com.app.oc.dto.mypage.MemberDto;
+
 import com.app.oc.dto.ResultDto;
-import com.app.oc.dto.mypage.PwdDto;
-import com.app.oc.dto.mypage.ResponseMemberDto;
+import com.app.oc.dto.mypage.*;
 import com.app.oc.entity.AttenShop;
 import com.app.oc.entity.Member;
+import com.app.oc.exception.ErrorResult;
 import com.app.oc.service.MemberService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
-import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
+
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,26 +36,35 @@ public class UserController {
     @Autowired
     HttpServletRequest request;
 
-
     private final MemberService memberService;
 
     //Long  : Null을 넣을 수 있다
 
 
+
     /**
      * 로그인
      */
-
     @PostMapping("/login")
-    public ResultDto login(String id, String pwd) {
-        Member findMember = memberService.findOne(id);
-        if (!findMember.getPassword().equals(pwd)) {
+    public ResultDto login(@RequestBody LoginDto loginDto, HttpServletResponse response) {
+        Member findMember = memberService.findOne(loginDto.getId());
+        if (!findMember.getPassword().equals(loginDto.getPwd())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
+        //세션 생성
         HttpSession session = request.getSession();
+        String id = session.getId();
         session.setAttribute("id", findMember.getMemberId());
-        log.info("sessionID : {}", session.getAttribute("id"));
+
+        //프론트에서도 값을 받기 위해서 쿠키에 아이디 넣어서 응답 헤더를 통해 전송
+        response.setHeader("id", session.getAttribute("id").toString());
+        Cookie cookie = new Cookie("id", session.getAttribute("id").toString());
+        cookie.setDomain("localhost");
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(60*60*60);
+        response.addCookie(cookie);
 
         return new ResultDto("로그인 완료");
     }
@@ -65,11 +76,15 @@ public class UserController {
      */
 
     @PostMapping("/logout")
-    public ResultDto logout() {
-        System.out.println("로그아웃으로 간다.");
+    public ResultDto logout(HttpServletResponse response) {
+
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.removeAttribute("id");
+            Cookie cookie = new Cookie("id", null);
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
         }
         return new ResultDto("로그아웃되었습니다.");
     }
@@ -81,11 +96,10 @@ public class UserController {
      * @param id : Member ID
      * @return
      *
-     * 0
+     * OK
      */
-    @GetMapping("/{id}")
-    public MemberDto findById(@PathVariable String id) {
-        log.info("phoneNm ={}", memberService.findOne(id).getPhoneNm());
+    @GetMapping("/myPage")
+    public MemberDto findById(@CookieValue String id) {
         return new MemberDto(memberService.findOne(id));
     }
 
@@ -98,8 +112,8 @@ public class UserController {
      *
      * OK
      */
-    @PutMapping("/{id}")
-    public ResultDto updateMember(@PathVariable String id, @RequestBody ResponseMemberDto buyer) {
+    @PutMapping("/myPage")
+    public ResultDto updateMember(@CookieValue String id, @RequestBody ResponseMemberDto buyer) {
         memberService.updateMember(id,buyer);
         return new ResultDto("회원이 수정되었습니다.");
     }
@@ -110,99 +124,56 @@ public class UserController {
      */
     @GetMapping("/attenshop/{id}")
     public List<AttenShopDto> attenShop(@PathVariable String id) {
-
         List<AttenShop> byAttenShop = memberService.findByAttenShop(id);
         List<AttenShopDto> result = byAttenShop.stream().map(o -> new AttenShopDto(o)).collect(Collectors.toList());
         return result;
     }
 
 
+
+    @PostMapping("changePwd/{id}")
+    public  ResultDto   changePwd(@PathVariable String id,@RequestBody PwdDto pwdDto){
+        //비밀번호 변경
+        memberService.updatePwd(id,  pwdDto);
+        return new ResultDto("비밀번호 변경하였습니다.");
+
+
+    }
+
     /**
-     * 관심 상품
-     * * id - Member id
+     *
+     * @param pwd
+     * @return
      */
-//    @GetMapping("/attenITem/{id}")
-//    public List<MainItemDto> attenItem(@PathVariable String id) {
-//        List<AttenItem> byAttenItem = memberService.findByAttenItem(id);
-//        List<MainItemDto> result = byAttenItem.stream().map(a -> new MainItemDto(a.getItem())).collect(Collectors.toList());
-//        return result;
-//
-//
-//    }
-
-
-
-    //    회원탈퇴
-//    삭제해야함
-//    댓글 있을 시 추후 삭제 (회원 관련 내용 삭제)
-//    비밀번호 모를 시, 로그인 페이지 이동
-    //0k 22
-    @DeleteMapping("/{id}")
-    public ResultDto deleteById(@PathVariable String id){
+    @DeleteMapping("deleteUser/{id}")
+    public ResultDto deleteById(@PathVariable String id, String pwd){
         //회원 삭제
-        memberService.delete(id);
+        memberService.delete(id,pwd);
         return new ResultDto("탈퇴되었습니다.");
     }
 
 
-    /**
-     * 추후 구현
-     * 
-     * 
-     * 비밀번호 변경
-     * x
-     */
-    @PutMapping("changePwd/{id}")
-    public  ResultDto   changePwd(@PathVariable String id,@Valid @RequestBody PwdDto pwdDto) throws BindException {
-        //새비밀번호 불일치
-        if (!pwdDto.getN_pwd().equals(pwdDto.getPwd())) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
-        }
 
-        //비밀번호 변경
-        memberService.updatePwd(id, pwdDto.getN_pwd());
-        return new ResultDto("비밀번호 변경하였습니다.");
+    @ExceptionHandler(value = RuntimeException.class)
+    public ResponseEntity<ErrorResult> loginExceptionHandler(RuntimeException e){
 
-    }
-    
-
-    //추후 논의  - 비밀번호 확인 방법
-
-
-    /**
-     * - 비밀번호 변경, 회원 탈퇴
-     * 비밀번호 확인
-     *
-     * x
-     */
-    @PostMapping("confirmpwd/{id}")
-    public ResponseEntity comfirmpwd(@PathVariable String id, String pwd,String statue) {
-        Member buyer = memberService.findOne(id);
-        log.info("buyer.getPassword() ={}", buyer.getPassword());
-        log.info("pwdDto.getPwd() ={}", pwd);
-
-        if (!buyer.getPassword().equals(pwd)) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
-        }
-
-        //비밀번호 인증 완료
-        switch (statue) {
-            case "changePwd":
-                //확인되었다는 메시지
-                return ResponseEntity.ok(new ResultDto("확인되었습니다."));
-
-            case "deleteMember":
-                log.info("여기로 들어옴-delete");
-                log.info("id :{}",id);
-
-                memberService.delete(id);
-
-                URI uri = WebMvcLinkBuilder.linkTo(this.getClass()).slash(id).toUri();
-                log.info("uri : {}",uri);
-                return ResponseEntity.created(uri).body(new ResultDto("회원 탈퇴완료"));
-        }
-
-        return ResponseEntity.notFound().build();
+        ErrorResult response = new ErrorResult();
+        response.setCode(HttpStatus.BAD_REQUEST.value());
+        response.setMessage(e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * 이미 존재하는 회원일 경우의 오류 메시지
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = IllegalStateException.class)
+    public ResponseEntity<ErrorResult> joinExceptionHandler(IllegalStateException e){
+        ErrorResult response = new ErrorResult();
+        response.setCode(HttpStatus.MULTI_STATUS.value());
+
+        response.setMessage(e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.MULTI_STATUS);
+    }
 }

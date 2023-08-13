@@ -1,7 +1,6 @@
 package com.app.oc.service;
 
 import com.app.oc.dto.shoppingmal.MyShoppingmalDto;
-import com.app.oc.entity.ShoppingMal;
 import com.app.oc.repository.ShopRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;

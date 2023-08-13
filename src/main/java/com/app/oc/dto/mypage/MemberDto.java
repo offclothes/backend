@@ -1,12 +1,10 @@
 package com.app.oc.dto.mypage;
 
+
+
 import com.app.oc.entity.Address;
 import com.app.oc.entity.Member;
 import com.app.oc.entity.MemberRole;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -38,8 +36,6 @@ public class MemberDto {
         this.weight = member.getWeight();
         this.role = member.getRole();
     }
-
-
 
 
 }
