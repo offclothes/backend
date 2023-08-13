@@ -1,11 +1,7 @@
 package com.app.oc.entity;
 
 import jakarta.persistence.Embeddable;
-import jdk.jfr.Enabled;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
-import org.springframework.context.annotation.EnableMBeanExport;
 
 @Embeddable
 @Getter

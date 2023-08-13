@@ -2,8 +2,10 @@ package com.app.oc.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 
+/**
+ * 관심 상품 엔티티
+ */
 @Table(name = "attenitem")
 @Entity
 @Data

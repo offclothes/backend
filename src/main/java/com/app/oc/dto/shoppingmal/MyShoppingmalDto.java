@@ -1,10 +1,11 @@
 package com.app.oc.dto.shoppingmal;
 
-import com.app.oc.entity.*;
+
+
+import com.app.oc.entity.Address;
+import com.app.oc.entity.ShoppingMal;
 import lombok.Data;
 import org.springframework.data.domain.Page;
-
-import java.util.List;
 
 
 @Data
@@ -20,13 +21,14 @@ public class MyShoppingmalDto {
     private String email;
     private Address address;
 
+
     private String shopTel;
 
     private Page<MainItemDto> mainItemDtoList;
 
-    public MyShoppingmalDto(ShoppingMal shoppingMal,Boolean myshop) {
+    public MyShoppingmalDto(ShoppingMal shoppingMal, Boolean myshop) {
         this.shop_seq = shoppingMal.getShopId();
-        this.shopLogo =shoppingMal.getShopLogo();
+        this.shopLogo = shoppingMal.getShopLogo();
         this.style = shoppingMal.getStyle();
         this.content = shoppingMal.getContent();
         this.shopName = shoppingMal.getShopName();

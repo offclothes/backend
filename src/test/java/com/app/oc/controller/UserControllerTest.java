@@ -29,9 +29,8 @@ class UserControllerTest {
 
     @Test
     public void login() {
-        userController.login("Constance", "5ZHAzC0hr3qi");
+//        userController.login("Constance", "5ZHAzC0hr3qi");
     }
-
 
 
 

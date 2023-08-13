@@ -24,6 +24,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public final QAddress address;
 
+    public final ListPath<AttenShop, QAttenShop> aiShop = this.<AttenShop, QAttenShop>createList("aiShop", AttenShop.class, QAttenShop.class, PathInits.DIRECT2);
+
     public final StringPath gender = createString("gender");
 
     public final NumberPath<Integer> length = createNumber("length", Integer.class);
@@ -37,6 +39,8 @@ public class QMember extends EntityPathBase<Member> {
     public final StringPath phoneNm = createString("phoneNm");
 
     public final EnumPath<MemberRole> role = createEnum("role", MemberRole.class);
+
+    public final ListPath<ShoppingMal, QShoppingMal> shoppingMals = this.<ShoppingMal, QShoppingMal>createList("shoppingMals", ShoppingMal.class, QShoppingMal.class, PathInits.DIRECT2);
 
     public final NumberPath<Integer> weight = createNumber("weight", Integer.class);
 

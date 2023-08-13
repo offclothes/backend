@@ -1,5 +1,7 @@
 package com.app.oc.dto.fileDto;
 
+
+
 import com.app.oc.entity.File;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -33,12 +35,11 @@ public class UploadFile {
     }
 
 
-    public File toEntity(UploadFile itemFileRequestDto) {
+    public File toEntity() {
         return File.builder()
-                .datePath(itemFileRequestDto.getUpdateDate())
-                .storefile(itemFileRequestDto.getStoreFileName())
-                .filename(itemFileRequestDto.getFilename())
+                .datePath(updateDate)
+                .storefile(storeFileName)
+                .filename(filename)
                 .build();
-
     }
 }

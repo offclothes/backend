@@ -1,5 +1,7 @@
 package com.app.oc.dto.shoppingmal;
 
+
+
 import com.app.oc.entity.Address;
 import com.app.oc.entity.ShoppingMal;
 import lombok.Data;

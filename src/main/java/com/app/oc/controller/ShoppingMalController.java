@@ -1,21 +1,22 @@
 package com.app.oc.controller;
 
+
+
 import com.app.oc.dto.ResultDto;
-import com.app.oc.dto.shoppingmal.DetailItemDto;
-import com.app.oc.dto.shoppingmal.ItemFileRequestDto;
-import com.app.oc.dto.shoppingmal.MyShoppingmalDto;
+import com.app.oc.dto.shoppingmal.*;
 import com.app.oc.service.ItemService;
 import com.app.oc.service.ShopService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 @RequiredArgsConstructor
-@RequestMapping("/shop/")
+@RequestMapping("/shop")
 @Slf4j
 @RestController
 public class ShoppingMalController {
@@ -24,6 +25,53 @@ public class ShoppingMalController {
     private final ItemService itemService;
 
 
+    /**
+     * 입점 신청
+     * @param requestDto
+     * @return
+     */
+    @PostMapping("/signup")
+    public ResponseEntity<SellerResponseDto> sellerJoin(@RequestBody SellerRequestDto requestDto) {
+        ResponseEntity<SellerResponseDto> responseDto = ResponseEntity.ok(shopService.sellerSignup(requestDto));
+        return responseDto;
+    }
+
+
+    /**
+     * 매장 정보 작성(정상 작동하는 지 확인 필요)
+     * @param shopId
+     * @param requestDto
+     * @return
+     */
+    @PostMapping("/{shopId}")
+    public ResponseEntity<ShopIntroductionResponseDto> setIntroduction(@PathVariable Long shopId,
+                                                                       @RequestBody ShopIntroductionRequestDto requestDto) {
+
+        return ResponseEntity.ok(shopService.saveIntroduction(shopId, requestDto));
+    }
+
+    /**
+     * 변경하기 전 매장 정보 불러오는 api
+     * @param shopId
+     * @return
+     */
+    @GetMapping("/{shopId}/change")
+    public ResponseEntity<ShopIntroductionResponseDto> getIntroduction(@PathVariable Long shopId) {
+        return ResponseEntity.ok(shopService.getIntroduction(shopId));
+    }
+
+    /**
+     * 변경한 매장 정보 저장하는 api
+     * @param shopId
+     * @param requestDto
+     * @return
+     */
+    @PatchMapping("/{shopId}/change")
+    public ResponseEntity<ShopIntroductionResponseDto> changeIntroduction(@PathVariable Long shopId,
+                                                                          @RequestBody ShopIntroductionRequestDto requestDto) {
+
+        return ResponseEntity.ok(shopService.saveIntroduction(shopId,requestDto));
+    }
 
     /**
      * Item 저장(+file) /- 등록 / 수정
@@ -41,7 +89,6 @@ public class ShoppingMalController {
 
     /**
      *
-     * **미완료 - 페이징
      * @param id :
      *  ShoppingMal 상세 보기
      *           추후 세션으로 ID가져오기
@@ -72,15 +119,12 @@ public class ShoppingMalController {
         return itemService.findDetailOne(id);
     }
 
-
     /**
      * item - 삭제(파일포함)
      * {id} - item의 id
      * 
      * 추후 연관관계 삭제
      * 로그인 세션추가작업
-     *
-     * OK- 작동은 됨(수정)
      */
     @DeleteMapping("/item/{id}")
     public ResultDto ItemDelete(@PathVariable Long id) {

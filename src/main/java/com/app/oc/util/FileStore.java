@@ -1,5 +1,6 @@
 package com.app.oc.util;
 
+
 import com.app.oc.dto.fileDto.UploadFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,11 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,7 +38,6 @@ public class FileStore {
     public UploadFile storeFile(MultipartFile multipartFile,Boolean th) throws IOException {
 
         File fileone = new File(fileDir); //파일 저장
-        //Path path = Paths.get(fileDir);
 
         if (!fileone.exists()) {
             boolean mkdirs = fileone.mkdirs();
@@ -62,21 +58,15 @@ public class FileStore {
 
         //서버저장
         String filename = multipartFile.getOriginalFilename();
+        log.info("Df");
          updateDate = getDirectoryForm(); //날짜
          servername = createdSoreFileName(originalFilename);
-//
-//        File uploadPaths = new File( fileDir,updateDate); //파일 저장
-//
-//        if (!uploadPaths.exists()) {
-//            uploadPaths.mkdirs();
-//        }
 
         if (th) { //썸네일일 경우
             servername = "s_"+createdSoreFileName(multipartFile.getOriginalFilename());
         }
 
         File file = new File(fileDir,servername); //파일 저장
-        log.info("file : {}", file);
 
         //만약 파일의 네임과 같은게 있다면 저장을
         multipartFile.transferTo(file);

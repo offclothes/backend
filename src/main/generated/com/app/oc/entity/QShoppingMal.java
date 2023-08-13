@@ -24,7 +24,7 @@ public class QShoppingMal extends EntityPathBase<ShoppingMal> {
 
     public final QAddress address;
 
-    public final StringPath Approval = createString("Approval");
+    public final EnumPath<Approval> approval = createEnum("approval", Approval.class);
 
     public final StringPath content = createString("content");
 
@@ -32,11 +32,7 @@ public class QShoppingMal extends EntityPathBase<ShoppingMal> {
 
     public final ListPath<Item, QItem> items = this.<Item, QItem>createList("items", Item.class, QItem.class, PathInits.DIRECT2);
 
-    public final NumberPath<Integer> leasePic = createNumber("leasePic", Integer.class);
-
     public final QMember member;
-
-    public final StringPath password = createString("password");
 
     public final NumberPath<Long> shopId = createNumber("shopId", Long.class);
 
