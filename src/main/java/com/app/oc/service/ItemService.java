@@ -221,10 +221,10 @@ public class ItemService {
     public void DeleteOneItem(Long id) {
         Item item = findByItem(id);
 
-        //file 삭제
-        //List<File> files = fileService.fileFindPerItem(id);
+//        file 삭제
+        List<File> files = fileService.fileFindPerItem(id);
 
-        //files.forEach(file -> item.setFile(file)); //연관관계 매핑(file)연관관계
+        files.forEach(file -> item.setFile(file)); //연관관계 매핑(file)연관관계
 
         //item 삭제
         itemRepository.deleteById(id);
