@@ -7,6 +7,7 @@ import com.app.oc.entity.File;
 import com.app.oc.entity.Item;
 import com.app.oc.repository.FileRepository;
 import com.app.oc.repository.ItemRepository;
+import com.app.oc.repository.RegionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,8 +27,10 @@ public class SearchService {
 
     // 지역(시,구,동 / City,District,Neighborhood 필터링 작업 추가)
 
-    private FileRepository fileRepository;
-    private ItemRepository itemRepository;
+    private final FileRepository fileRepository;
+    private final ItemRepository itemRepository;
+
+    private final RegionRepository regionRepository;
 
 
 
@@ -111,5 +114,19 @@ public class SearchService {
         }).collect(Collectors.toList());
     }
 
+    public List<String> findTopRegion() {
+        return regionRepository.findTop();
+    }
+
+
+    public List<String> findMiddleRegion(String topRegion) {
+        System.out.println("topRegion = " + topRegion);
+        return regionRepository.findMid(topRegion);
+    }
+
+
+    public List<String> findDongRegion(String topRegion, String middleRegion) {
+        return regionRepository.findDong(topRegion, middleRegion);
+    }
 
 }

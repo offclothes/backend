@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.app.oc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.app.oc.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.app.oc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.app.oc.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/oc.iml" filepath="$PROJECT_DIR$/.idea/modules/oc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/oc.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/oc.test.iml" />
     </modules>
   </component>
 </project>
