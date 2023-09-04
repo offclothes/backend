@@ -3,7 +3,6 @@ package com.app.oc.service;
 
 
 import com.amazonaws.services.s3.AmazonS3Client;
-import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.entity.File;
 import com.app.oc.repository.FileRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.List;
 
 @Service
@@ -32,20 +30,18 @@ public class FileService {
     /**
      * 파일 삭제
      */
-    public void fileOneDelete(UploadFile uploadFile) throws UnsupportedEncodingException {
+    public void fileOneDelete(String storeFileName) throws UnsupportedEncodingException {
 
-        //파일명만
-        String filePath =  uploadFile.getStoreFileName();
 
-        boolean isObjectExist = amazonS3Client.doesObjectExist(bucketName,uploadFile.getStoreFileName() );
+        boolean isObjectExist = amazonS3Client.doesObjectExist(bucketName,storeFileName );
 
 
         if (isObjectExist) {
-            amazonS3Client.deleteObject(bucketName, filePath);
+            amazonS3Client.deleteObject(bucketName, storeFileName);
         }
 
         //디비 파일 삭제
-        File fileDB = fileRepository.findById(uploadFile.getStoreFileName()).orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
+        File fileDB = fileRepository.findById(storeFileName).orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
         fileRepository.delete(fileDB);
     }
 

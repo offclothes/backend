@@ -80,7 +80,7 @@ public class ItemService {
             List<File> oldFiles = fileService.fileFindPerItem(item.getItemId());
             if (oldFiles != null) {
                 for (File file : oldFiles) { //파일 삭제
-                        fileService.fileOneDelete(new UploadFile(file.getStorefile(), file.getDatePath(), file.getFilename()));
+                        fileService.fileOneDelete(file.getStorefile());
                 }
             }
 
@@ -231,7 +231,7 @@ public class ItemService {
         //기존 파일 삭제 - s3 삭제
         if (files != null) {
             for (File file : files) { //파일 삭제
-                fileService.fileOneDelete(new UploadFile(file.getStorefile(), file.getDatePath(), file.getFilename()));
+                fileService.fileOneDelete(file.getStorefile());
             }
         }
 
