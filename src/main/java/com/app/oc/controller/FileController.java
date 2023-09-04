@@ -2,6 +2,7 @@ package com.app.oc.controller;
 
 
 
+import com.amazonaws.services.s3.AmazonS3;
 import com.app.oc.dto.ResultDto;
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.service.FileService;
@@ -20,16 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.nio.file.Files;
 
 @RestController
 @Slf4j
 @RequiredArgsConstructor
 public class FileController {
-
-    @Value("${file.dir}")
-    private String fileDir;
-
     private final FileService fileService;
 
 
@@ -44,8 +42,8 @@ public class FileController {
      */
 
     @DeleteMapping("/deleteFile")
-    public ResultDto FileDelete(@RequestBody UploadFile uploadFile) throws UnsupportedEncodingException {
-        fileService.fileOneDelete(uploadFile);
+    public ResultDto FileDelete(String storeFileName) throws UnsupportedEncodingException {
+        fileService.fileOneDelete(storeFileName);
         return new ResultDto("파일을 삭제하였습니다.");
     }
 
@@ -54,16 +52,19 @@ public class FileController {
      * @param fileName  : 파일명(서버)
      * @return
      */
-    @PostMapping("/display")
-    public ResponseEntity<byte[]> display(String fileName) throws IOException {
-
-        File file = new File(fileDir, fileName);
-        ResponseEntity<byte[]> result = null;
-        HttpHeaders header = new HttpHeaders();
-        header.add("Content-Type", Files.probeContentType(file.toPath()));
-        result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
-        return result;
-    }
+//    @PostMapping("/display")
+//    public ResponseEntity<byte[]> display(String fileName) throws IOException {
+//
+////        File file = new File(fileDir, fileName);
+//  //      ResponseEntity<byte[]> result = null;
+//        HttpHeaders header = new HttpHeaders();
+//        URL url = s3Client.getUrl("mystackoverflows", fileName);
+//        String urltext = ""+url;
+//
+////        header.add("Content-Type", Files.probeContentType(file.toPath()));
+////        result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+////        return result;
+//    }
 
 
 }
