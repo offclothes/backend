@@ -2,6 +2,7 @@ package com.app.oc.service;
 
 
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.entity.File;
 import com.app.oc.repository.FileRepository;
@@ -21,22 +22,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FileService {
     private final FileRepository fileRepository;
-    @Value("${file.dir}")
-    private String fileDir;
+
+    @Value("${cloud.aws.s3.bucket}")
+    private String bucketName;
+
+    private final AmazonS3Client amazonS3Client;
+
 
     /**
      * 파일 삭제
      */
     public void fileOneDelete(UploadFile uploadFile) throws UnsupportedEncodingException {
 
-
         //파일명만
         String filePath =  uploadFile.getStoreFileName();
-        java.io.File file = new java.io.File(fileDir + URLDecoder.decode(filePath, "UTF-8"));
 
-        //파일 삭제
-        if (file.isFile()) {
-            file.delete();
+        boolean isObjectExist = amazonS3Client.doesObjectExist(bucketName,uploadFile.getStoreFileName() );
+
+
+        if (isObjectExist) {
+            amazonS3Client.deleteObject(bucketName, filePath);
         }
 
         //디비 파일 삭제

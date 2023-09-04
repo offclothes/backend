@@ -140,17 +140,6 @@ public class UserController {
 
     }
 
-    /**
-     *
-     * @param pwd
-     * @return
-     */
-    @DeleteMapping("deleteUser/{id}")
-    public ResultDto deleteById(@PathVariable String id, String pwd){
-        //회원 삭제
-        memberService.delete(id,pwd);
-        return new ResultDto("탈퇴되었습니다.");
-    }
 
 
 

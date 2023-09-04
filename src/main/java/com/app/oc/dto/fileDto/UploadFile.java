@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 public class UploadFile {
 
     private Long item_seq;
-    private String storeFileName; // 서부 내부에서 관리하는 파일명
-    private String updateDate; // 서부 내부에서 관리하는 파일명
-    private String filename; // 서부 내부에서 관리하는 파일명
+    private String storeFileName; // 파일 저장명 
+    private String updateDate; // update 날짜
+    private String filename; // 파일 실제 이름
 
 
 

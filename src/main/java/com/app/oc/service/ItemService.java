@@ -15,12 +15,14 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +45,8 @@ public class ItemService {
     @Autowired
     HttpSession session;
 
-
+    @Value("${cloud.aws.s3.bucket}")
+    private String bucket;
 
     /**
      * Item 등록 / 수정
@@ -73,11 +76,11 @@ public class ItemService {
             //item update
            item.Itemupdate(itemFileRequestDto);
 
-            //기존 파일 삭제
+            //기존 파일 삭제 -s3
             List<File> oldFiles = fileService.fileFindPerItem(item.getItemId());
             if (oldFiles != null) {
                 for (File file : oldFiles) { //파일 삭제
-                    fileService.fileOneDelete(new UploadFile(file.getStorefile(), file.getDatePath(), file.getFilename()));
+                        fileService.fileOneDelete(new UploadFile(file.getStorefile(), file.getDatePath(), file.getFilename()));
                 }
             }
 
@@ -169,6 +172,7 @@ public class ItemService {
         Item itemOne = itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("아이템이 없습니다."));
         Long shopId = itemOne.getShoppingMal().getShopId();
         ShoppingMal findShop = shopRepositroy.findById(shopId).orElseThrow(() -> new IllegalArgumentException("shop이 없습니다."));
+
         DetailItemDto detailItemDto = new DetailItemDto(itemOne,findShop.getShopName());
         String memberId = findShop.getMember().getMemberId();
 
@@ -183,10 +187,9 @@ public class ItemService {
 
 
 
-
         List<File> files = fileService.fileFindPerItem(id);
-
         files.forEach(file -> itemOne.setFile(file)); //연관관계 매핑(file)연관관계
+
 
         List list = new ArrayList<>();
         files.stream().forEach(file -> {
@@ -218,13 +221,19 @@ public class ItemService {
      * Item삭제
      * @param id item
      */
-    public void DeleteOneItem(Long id) {
+    public void DeleteOneItem(Long id) throws UnsupportedEncodingException {
         Item item = findByItem(id);
 
 //        file 삭제
         List<File> files = fileService.fileFindPerItem(id);
-
         files.forEach(file -> item.setFile(file)); //연관관계 매핑(file)연관관계
+
+        //기존 파일 삭제 - s3 삭제
+        if (files != null) {
+            for (File file : files) { //파일 삭제
+                fileService.fileOneDelete(new UploadFile(file.getStorefile(), file.getDatePath(), file.getFilename()));
+            }
+        }
 
         //item 삭제
         itemRepository.deleteById(id);
