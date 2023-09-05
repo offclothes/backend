@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -77,7 +78,7 @@ public class ItemService {
             List<File> oldFiles = fileService.fileFindPerItem(item.getItemId());
             if (oldFiles != null) {
                 for (File file : oldFiles) { //파일 삭제
-                    fileService.fileOneDelete(new UploadFile(file.getStorefile(), file.getDatePath(), file.getFilename()));
+                    fileService.fileOneDelete(file.getStorefile());
                 }
             }
 
@@ -218,13 +219,20 @@ public class ItemService {
      * Item삭제
      * @param id item
      */
-    public void DeleteOneItem(Long id) {
+    public void DeleteOneItem(Long id) throws UnsupportedEncodingException {
         Item item = findByItem(id);
 
 //        file 삭제
         List<File> files = fileService.fileFindPerItem(id);
 
         files.forEach(file -> item.setFile(file)); //연관관계 매핑(file)연관관계
+
+        if (files != null) {
+            for (File file : files) { //파일 삭제
+                fileService.fileOneDelete(file.getStorefile());
+            }
+        }
+
 
         //item 삭제
         itemRepository.deleteById(id);

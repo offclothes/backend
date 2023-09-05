@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 @RequiredArgsConstructor
 @RequestMapping("/shop")
@@ -127,7 +128,7 @@ public class ShoppingMalController {
      * 로그인 세션추가작업
      */
     @DeleteMapping("/item/{id}")
-    public ResultDto ItemDelete(@PathVariable Long id) {
+    public ResultDto ItemDelete(@PathVariable Long id) throws UnsupportedEncodingException {
         itemService.DeleteOneItem(id);
         return new ResultDto("삭제되었습니다.");
     }

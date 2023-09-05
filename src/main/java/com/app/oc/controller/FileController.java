@@ -44,8 +44,8 @@ public class FileController {
      */
 
     @DeleteMapping("/deleteFile")
-    public ResultDto FileDelete(@RequestBody UploadFile uploadFile) throws UnsupportedEncodingException {
-        fileService.fileOneDelete(uploadFile);
+    public ResultDto FileDelete(String storeFileName) throws UnsupportedEncodingException {
+        fileService.fileOneDelete(storeFileName);
         return new ResultDto("파일을 삭제하였습니다.");
     }
 
