@@ -1,6 +1,6 @@
 on:
   push:
-    -develop
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
