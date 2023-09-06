@@ -60,12 +60,6 @@ cloud:
     aws:
       s3:
         bucket: ocfiles-store
-      credentials:
-        access-key: AKIARJ3ZJIFOU4HU3RF5
-        secret-key: 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
-      region:
-        static: ap-northeast-2
-        auto: false
       stack:
         auto: false
 
