@@ -27,12 +27,11 @@ public class FileService {
     /**
      * 파일 삭제
      */
-    public void fileOneDelete(UploadFile uploadFile) throws UnsupportedEncodingException {
+    public void fileOneDelete(String storeFileName) throws UnsupportedEncodingException {
 
 
         //파일명만
-        String filePath =  uploadFile.getStoreFileName();
-        java.io.File file = new java.io.File(fileDir + URLDecoder.decode(filePath, "UTF-8"));
+        java.io.File file = new java.io.File(fileDir + URLDecoder.decode(storeFileName, "UTF-8"));
 
         //파일 삭제
         if (file.isFile()) {
@@ -40,7 +39,7 @@ public class FileService {
         }
 
         //디비 파일 삭제
-        File fileDB = fileRepository.findById(uploadFile.getStoreFileName()).orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
+        File fileDB = fileRepository.findById(storeFileName).orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
         fileRepository.delete(fileDB);
     }
 
