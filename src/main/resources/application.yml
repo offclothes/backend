@@ -56,10 +56,4 @@ spring:
 logging.level:
   org.hibernate.SQL: trace
 
-cloud:
-    aws:
-      s3:
-        bucket: ocfiles-store
-      stack:
-        auto: false
 
