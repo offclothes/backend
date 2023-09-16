@@ -1,0 +1,22 @@
+.myPageButton {
+    width: 42px;
+    height: 47px;
+    margin-right: 20px;
+    background-image: url('../assets/image/Group.png');
+    
+}
+
+.myPageButton:hover {
+    cursor: pointer;
+}
+
+.logInOut {
+    display: flex;
+}
+
+.logInOutButton {
+    background-color: white;
+    border: none;
+    margin-right: 20px;
+    font-size: 15px;
+}

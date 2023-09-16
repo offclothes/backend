@@ -1,0 +1,47 @@
+.goodsRegisterButton {
+    width: 150px;
+    height: 30px;
+    margin: 53px 160px 0 0;
+    border-radius: 8px;
+    background-color: #C9E79D;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+.shop1Button {
+    text-align: end;
+}
+
+.registerShopBtn {
+    width: 80px;
+    margin-right: 1em;
+    background: #C9E79D;
+    border: 1px solid #000000;
+    border-radius: 7px;
+}
+
+.cancelShopBtn {
+    width: 80px;
+    background: #F0F0F0;
+    border: 1px solid #000000;
+    border-radius: 7px;
+}
+
+.container {
+    gap: 50px;
+    justify-content: s;
+}
+
+.shopInformation {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1em;
+}
+
+.shopInformationBtn {
+    width: 80px;
+    margin-right: 1em;
+    background: #C9E79D;
+    border: 1px solid #000000;
+    border-radius: 7px;
+}

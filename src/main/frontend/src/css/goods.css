@@ -1,0 +1,80 @@
+.GoodsMain {
+    box-sizing: border-box;
+    width: 1200px;
+    height: 600px;
+    border: 2px solid #BCBCBC;
+    margin: 20px auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.shopTitle {
+    width: 390px;
+    height: 80px;
+    left: 523px;
+    top: 142px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 58px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #194819;
+}
+
+.goodsTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    color: #789B78;
+}
+
+.imageInformation {
+    display: flex;
+    width: 50%;
+}
+
+.goodsInformation {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 42px;
+    text-align: center;
+    color: #789B78;
+    margin-bottom: 30px;
+}
+
+.priceInformation {
+    text-align: end;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 36px;
+    color: #789B78;
+}
+
+.price {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 44px;
+    text-align: end;
+    color: #000000;
+}
+
+.updateBtnSection {
+    display: flex;
+    justify-content: end;
+}
+
+.updateBtn {
+    width: 100px;
+    background-color: #E8F3DA;
+    border: 1px solid #789B78;
+    color: #304F30;
+    border-radius: 7px;
+}

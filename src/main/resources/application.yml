@@ -1,0 +1,58 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: utf-8
+      enabled: true
+
+#  spring.datasource.hikari.jdbc-url=jdbc:mysql://localhost:3306/project?serverTimezone=UTC&characterEncoding=UTF-8
+#  spring.datasource.hikari.username=root
+#  spring.datasource.hikari.password=1234
+#  spring.datasource.hikari.driver-class-name=com.mysql.cj.jdbc.Driver
+#  spring.datasource.hikari.pool-name=TestHikariPool
+
+spring:
+  mail:
+    host: smtp.gmail.com # 1
+    port: 587 # 2
+    username: offclothes217@gmail.com # 3
+    password: mzrbzcxqmcgxjgqk # 4
+    properties:
+      mail:
+        smtp:
+          auth: true # 5
+          timeout: 5000 # 6
+          starttls:
+            enable: true # 7
+
+  #aws rds에 연결
+  datasource:
+    url: jdbc:mysql://offclothes2.calbqsfmpggm.ap-northeast-2.rds.amazonaws.com:3306/oc?serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+    #      url: jdbc:mysql://localhost:3306/project?serverTimezone=UTC&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+    username: root
+    #      password: 1234
+    #      aws rds 비밀번호
+    password: 12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: mysql
+    show-sql: true
+
+    #    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      default_batch_fetch_size: 100 #최적화 옵션
+      #      _자동변경 방지
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+
+logging.level:
+  org.hibernate.SQL: trace
+
+# s3로 대체하면 코드 삭제
+file:
+  dir: C:\Users\asd45\OneDrive\바탕 화면\전종설(2)

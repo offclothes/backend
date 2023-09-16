@@ -1,0 +1,45 @@
+.genderFemale {
+    margin-right: 80px;
+    margin-left: 50px;
+    color: #304F30;
+    font-weight: 600;
+}
+
+.genderFemaleClicked {
+    margin-right: 80px;
+    margin-left: 50px;
+    color: #304F30;
+    font-weight: 700;
+    border-bottom: 1px solid #194819;
+}
+
+.genderMale {
+    margin-right: 80px;
+    color: #304F30;
+    font-weight: 600;
+}
+
+.genderClicked {
+    margin-right: 80px;
+    color: #304F30;
+    font-weight: 700;
+    border-bottom: 1px solid #194819;
+}
+
+.genderBoth {
+    margin-right: 80px;
+    color: #304F30;
+    font-weight: 600;
+}
+
+.goToBoard {
+    margin-right: 80px;
+    color: #304F30;
+    font-weight: 600;
+}
+
+.goToLocation {
+    margin-right: 80px;
+    color: #304F30;
+    font-weight: 600;
+}
