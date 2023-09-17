@@ -5,4 +5,4 @@
 /out/production/classes/
 /out/test/classes/
 /.idea/
-ddir
+/src/main/resources/application.yml

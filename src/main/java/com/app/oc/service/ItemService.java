@@ -23,10 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -90,11 +87,18 @@ public class ItemService {
 
         //파일 insert
         UploadFile thumb = fileStore.storeFile(itemFileRequestDto.getThumb(), true);
-        List<UploadFile> files = fileStore.storeFiles(itemFileRequestDto.getImageFiles());
 
-        files.add(thumb);
+        LinkedList<UploadFile> list = new LinkedList<>();
 
-        for (UploadFile file : files) {
+        if (itemFileRequestDto.getImageFiles() != null) {
+            List<UploadFile> files = fileStore.storeFiles(itemFileRequestDto.getImageFiles());
+            list.addAll(files);
+        }
+
+        list.add(thumb);
+
+
+        for (UploadFile file : list) {
             File fileOne = file.toEntity();
 
             //File 연관관계 매핑
@@ -102,6 +106,7 @@ public class ItemService {
 
             itemRepository.save(item);
         }
+
 
         return name;
     }

@@ -56,4 +56,20 @@ spring:
 logging.level:
   org.hibernate.SQL: trace
 
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIARJ3ZJIFO76L3XUZK
+      secretKey: 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
+    s3:
+      bucket: ocfiles-store
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
 
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
