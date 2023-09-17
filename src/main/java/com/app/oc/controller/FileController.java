@@ -60,7 +60,6 @@ public class FileController {
     @PostMapping("/display")
     public String display(String fileName) throws IOException {
 
-        HttpHeaders header = new HttpHeaders();
         String string = amazonS3.getUrl(s3Component.getBucket(), fileName).toString();
         System.out.println("string = " + string);
         return string;
