@@ -72,28 +72,6 @@ public class MemberService {
         return buyerEntity.getMemberId();
     }
 
-    //Member 삭제 -item 삭제
-    public String delete(String id, String pwd) {
-
-        Member member = memberRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID가 없습니다."));
-        if (!member.getPassword().equals(pwd)) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
-        }
-
-        if (member.getRole() == MemberRole.SELLER) {
-            System.out.println("member = " + member);
-
-            List<ShoppingMal> shoppingMals = member.getShoppingMals();
-            System.out.println("shoppingMals = " + shoppingMals);
-            for (ShoppingMal shoppingMal : shoppingMals) {
-                 shopRepository.delete(shoppingMal);
-                System.out.println("shoppingMal = " + shoppingMal);
-
-            }
-        }
-        memberRepository.delete(member);
-        return "ok"; 
-    }
 
     //비밀번호 update
     public String updatePwd(String id, PwdDto pwdDto ) {

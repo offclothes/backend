@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,10 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -44,7 +42,8 @@ public class ItemService {
     @Autowired
     HttpSession session;
 
-
+    @Value("${cloud.aws.s3.bucket}")
+    private String bucket;
 
     /**
      * Item 등록 / 수정
@@ -74,11 +73,11 @@ public class ItemService {
             //item update
            item.Itemupdate(itemFileRequestDto);
 
-            //기존 파일 삭제
+            //기존 파일 삭제 -s3
             List<File> oldFiles = fileService.fileFindPerItem(item.getItemId());
             if (oldFiles != null) {
                 for (File file : oldFiles) { //파일 삭제
-                    fileService.fileOneDelete(file.getStorefile());
+                        fileService.fileOneDelete(file.getStorefile());
                 }
             }
 
@@ -88,11 +87,18 @@ public class ItemService {
 
         //파일 insert
         UploadFile thumb = fileStore.storeFile(itemFileRequestDto.getThumb(), true);
-        List<UploadFile> files = fileStore.storeFiles(itemFileRequestDto.getImageFiles());
 
-        files.add(thumb);
+        LinkedList<UploadFile> list = new LinkedList<>();
 
-        for (UploadFile file : files) {
+        if (itemFileRequestDto.getImageFiles() != null) {
+            List<UploadFile> files = fileStore.storeFiles(itemFileRequestDto.getImageFiles());
+            list.addAll(files);
+        }
+
+        list.add(thumb);
+
+
+        for (UploadFile file : list) {
             File fileOne = file.toEntity();
 
             //File 연관관계 매핑
@@ -100,6 +106,7 @@ public class ItemService {
 
             itemRepository.save(item);
         }
+
 
         return name;
     }
@@ -170,6 +177,7 @@ public class ItemService {
         Item itemOne = itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("아이템이 없습니다."));
         Long shopId = itemOne.getShoppingMal().getShopId();
         ShoppingMal findShop = shopRepositroy.findById(shopId).orElseThrow(() -> new IllegalArgumentException("shop이 없습니다."));
+
         DetailItemDto detailItemDto = new DetailItemDto(itemOne,findShop.getShopName());
         String memberId = findShop.getMember().getMemberId();
 
@@ -184,10 +192,9 @@ public class ItemService {
 
 
 
-
         List<File> files = fileService.fileFindPerItem(id);
-
         files.forEach(file -> itemOne.setFile(file)); //연관관계 매핑(file)연관관계
+
 
         List list = new ArrayList<>();
         files.stream().forEach(file -> {
@@ -224,15 +231,14 @@ public class ItemService {
 
 //        file 삭제
         List<File> files = fileService.fileFindPerItem(id);
-
         files.forEach(file -> item.setFile(file)); //연관관계 매핑(file)연관관계
 
+        //기존 파일 삭제 - s3 삭제
         if (files != null) {
             for (File file : files) { //파일 삭제
                 fileService.fileOneDelete(file.getStorefile());
             }
         }
-
 
         //item 삭제
         itemRepository.deleteById(id);

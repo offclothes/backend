@@ -5,3 +5,4 @@
 /out/production/classes/
 /out/test/classes/
 /.idea/
+/src/main/resources/config/secret.yml

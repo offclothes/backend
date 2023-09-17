@@ -1,7 +1,11 @@
 package com.app.oc.util;
 
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.app.oc.dto.fileDto.UploadFile;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -17,10 +21,13 @@ import java.util.UUID;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class FileStore {
 
-    @Value("${file.dir}")
-    private String fileDir;
+    @Value("${cloud.aws.s3.bucket}")
+    private String bucket;
+
+    private final AmazonS3Client amazonS3;
 
 
     public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException {
@@ -37,15 +44,6 @@ public class FileStore {
     //파일 업로드
     public UploadFile storeFile(MultipartFile multipartFile,Boolean th) throws IOException {
 
-        File fileone = new File(fileDir); //파일 저장
-
-        if (!fileone.exists()) {
-            boolean mkdirs = fileone.mkdirs();
-            log.info("mkdirs = ",mkdirs);
-        }
-
-
-
         if (multipartFile.isEmpty()) {
             return null;
         }
@@ -58,22 +56,27 @@ public class FileStore {
 
         //서버저장
         String filename = multipartFile.getOriginalFilename();
-        log.info("Df");
-         updateDate = getDirectoryForm(); //날짜
-         servername = createdSoreFileName(originalFilename);
+        updateDate = getDirectoryForm(); //날짜
+        servername = createdSoreFileName(originalFilename);
 
         if (th) { //썸네일일 경우
             servername = "s_"+createdSoreFileName(multipartFile.getOriginalFilename());
         }
 
-        File file = new File(fileDir,servername); //파일 저장
 
-        //만약 파일의 네임과 같은게 있다면 저장을
-        multipartFile.transferTo(file);
+        // 메타데이터 설정
+        ObjectMetadata objectMetadata = new ObjectMetadata();
+        objectMetadata.setContentType(multipartFile.getContentType());
+        objectMetadata.setContentLength(multipartFile.getSize());
 
+
+        try{
+        amazonS3.putObject(bucket, servername, multipartFile.getInputStream(), objectMetadata);
+        }catch (IOException e) {
+            throw new IllegalStateException("S3 파일 업로드에 실패했습니다.");
+        }
 
         return new UploadFile(servername,updateDate,filename);
-
     }
 
     private String getDirectoryForm() {

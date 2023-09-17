@@ -2,17 +2,18 @@ package com.app.oc.service;
 
 
 
-import com.app.oc.dto.fileDto.UploadFile;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.app.oc.entity.File;
 import com.app.oc.repository.FileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.List;
 
 @Service
@@ -21,8 +22,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FileService {
     private final FileRepository fileRepository;
-    @Value("${file.dir}")
-    private String fileDir;
+
+    @Value("${cloud.aws.s3.bucket}")
+    private String bucketName;
+
+
+    private final AmazonS3Client amazonS3;
+
+
+
+
 
     /**
      * 파일 삭제
@@ -30,18 +39,35 @@ public class FileService {
     public void fileOneDelete(String storeFileName) throws UnsupportedEncodingException {
 
 
-        //파일명만
-        java.io.File file = new java.io.File(fileDir + URLDecoder.decode(storeFileName, "UTF-8"));
+        boolean isObjectExist = amazonS3.doesObjectExist(bucketName,storeFileName );
 
-        //파일 삭제
-        if (file.isFile()) {
-            file.delete();
+
+        if (isObjectExist) {
+            amazonS3.deleteObject(bucketName, storeFileName);
         }
 
         //디비 파일 삭제
         File fileDB = fileRepository.findById(storeFileName).orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
         fileRepository.delete(fileDB);
     }
+
+
+
+    public void fileDelete(String storeFileName) throws UnsupportedEncodingException {
+
+
+        boolean isObjectExist = amazonS3.doesObjectExist(bucketName,storeFileName );
+
+
+        if (isObjectExist) {
+            amazonS3.deleteObject(bucketName, storeFileName);
+        }
+
+        //디비 파일 삭제
+        File fileDB = fileRepository.findById(storeFileName).orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
+        fileRepository.delete(fileDB);
+    }
+
 
     /**
      * 파일 찾기

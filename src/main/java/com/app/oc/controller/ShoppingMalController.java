@@ -124,7 +124,6 @@ public class ShoppingMalController {
      * item - 삭제(파일포함)
      * {id} - item의 id
      * 
-     * 추후 연관관계 삭제
      * 로그인 세션추가작업
      */
     @DeleteMapping("/item/{id}")
