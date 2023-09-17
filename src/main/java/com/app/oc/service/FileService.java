@@ -51,6 +51,24 @@ public class FileService {
         fileRepository.delete(fileDB);
     }
 
+
+
+    public void fileDelete(String storeFileName) throws UnsupportedEncodingException {
+
+
+        boolean isObjectExist = amazonS3.doesObjectExist(bucketName,storeFileName );
+
+
+        if (isObjectExist) {
+            amazonS3.deleteObject(bucketName, storeFileName);
+        }
+
+        //디비 파일 삭제
+        File fileDB = fileRepository.findById(storeFileName).orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
+        fileRepository.delete(fileDB);
+    }
+
+
     /**
      * 파일 찾기
      *  item_Seq

@@ -33,12 +33,12 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
     }
 
 
-    //서버오류
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler
-    public ErrorResult exHandler(Exception e) {
-        return new ErrorResult(HttpStatus.INTERNAL_SERVER_ERROR.value(), "내부오류");
-    }
+//    //서버오류
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    @ExceptionHandler
+//    public ErrorResult exHandler(Exception e) {
+//        return new ErrorResult(HttpStatus.INTERNAL_SERVER_ERROR.value(), "내부오류");
+//    }
 
 
 

@@ -6,6 +6,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.app.oc.dto.ResultDto;
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.service.FileService;
+import com.app.oc.util.S3Config;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,6 +30,8 @@ import java.nio.file.Files;
 @RequiredArgsConstructor
 public class FileController {
     private final FileService fileService;
+    private final AmazonS3 amazonS3;
+    private final S3Config s3Component;
 
 
     /**
@@ -52,19 +55,17 @@ public class FileController {
      * @param fileName  : 파일명(서버)
      * @return
      */
-//    @PostMapping("/display")
-//    public ResponseEntity<byte[]> display(String fileName) throws IOException {
-//
-////        File file = new File(fileDir, fileName);
-//  //      ResponseEntity<byte[]> result = null;
-//        HttpHeaders header = new HttpHeaders();
-//        URL url = s3Client.getUrl("mystackoverflows", fileName);
-//        String urltext = ""+url;
-//
-////        header.add("Content-Type", Files.probeContentType(file.toPath()));
-////        result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
-////        return result;
-//    }
+
+
+    @PostMapping("/display")
+    public String display(String fileName) throws IOException {
+
+        HttpHeaders header = new HttpHeaders();
+        String string = amazonS3.getUrl(s3Component.getBucket(), fileName).toString();
+        System.out.println("string = " + string);
+        return string;
+
+    }
 
 
 }
