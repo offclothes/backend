@@ -16,6 +16,7 @@ public class Address {
         this.address2 = address2;
     }
 
+
     protected Address() {
 
     }

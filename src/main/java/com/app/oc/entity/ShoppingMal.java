@@ -11,15 +11,14 @@ import java.util.List;
  */
 @Entity
 @Getter
-@ToString
-@Setter
+@ToString @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShoppingMal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "shop_seq")
+    @Column(name ="shop_seq" )
     private Long shopId;
     private String shopLogo;
     private String style;
@@ -38,12 +37,12 @@ public class ShoppingMal {
     @OneToMany(mappedBy = "itemId")
     private List<Item> items = new ArrayList<>();
 
+
     @Enumerated(EnumType.STRING)
     private Approval approval;
 
     @Builder
-    public ShoppingMal(Member member, String email, String shopName, String shopTel, Address address,
-            Approval approval) {
+    public ShoppingMal(Member member, String email, String shopName, String shopTel, Address address, Approval approval) {
         this.member = member;
         this.email = email;
         this.shopName = shopName;

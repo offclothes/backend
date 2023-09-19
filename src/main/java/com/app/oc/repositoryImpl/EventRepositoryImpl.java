@@ -15,25 +15,22 @@ public class EventRepositoryImpl {
 
     /**
      * 최근에 작성한 순으로 정렬(eventId를 역순으로 정렬)
-     * 
      * @param shopSeq
      * @return
      */
     public List<Event> findListByShopSeq(Long shopSeq) {
         return em.createQuery("select e from Event e where e.shoppingmall = :shopSeq order by e.eventId desc ",
-                Event.class)
+                        Event.class)
                 .setParameter("shopSeq", shopSeq)
                 .getResultList();
     }
 
     /**
      * 게시글 삭제
-     * 
      * @param eventSeq
      */
     public void deletePost(Long eventSeq) {
         Event findEvent = em.find(Event.class, eventSeq);
         em.remove(findEvent);
-        em.flush();
     }
 }

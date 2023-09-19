@@ -22,19 +22,20 @@ import java.util.Map;
 @Slf4j
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
-    // 400
-    @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
-    @ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class })
-    public ErrorResult illegalExHandler(RuntimeException e) {
-        return new ErrorResult(HttpStatus.BAD_REQUEST.value(), e.getMessage());
-    }
+    // //400
+    // @ResponseStatus(HttpStatus.BAD_REQUEST) //400
+    // @ExceptionHandler(value =
+    // {IllegalArgumentException.class,IllegalStateException.class})
+    // public ErrorResult illegalExHandler(RuntimeException e) {
+    // return new ErrorResult(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+    // }
 
-    // 서버오류
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler
-    public ErrorResult exHandler(Exception e) {
-        return new ErrorResult(HttpStatus.INTERNAL_SERVER_ERROR.value(), "내부오류");
-    }
+    // //서버오류
+    // @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    // @ExceptionHandler
+    // public ErrorResult exHandler(Exception e) {
+    // return new ErrorResult(HttpStatus.INTERNAL_SERVER_ERROR.value(), "내부오류");
+    // }
 
     // Bean
     @Override

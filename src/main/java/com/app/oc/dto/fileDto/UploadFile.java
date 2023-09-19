@@ -1,5 +1,7 @@
 package com.app.oc.dto.fileDto;
 
+
+
 import com.app.oc.entity.File;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -11,11 +13,14 @@ import lombok.NoArgsConstructor;
 public class UploadFile {
 
     private Long item_seq;
-    private String storeFileName; // 서부 내부에서 관리하는 파일명
-    private String updateDate; // 서부 내부에서 관리하는 파일명
-    private String filename; // 서부 내부에서 관리하는 파일명
+    private String storeFileName; // 파일 저장명 
+    private String updateDate; // update 날짜
+    private String filename; // 파일 실제 이름
 
-    public UploadFile(String storeFileName, String updateDate, String filename) {
+
+
+
+    public UploadFile(String storeFileName, String updateDate,String filename) {
         this.storeFileName = storeFileName;
         this.updateDate = updateDate;
         this.filename = filename;
@@ -28,6 +33,7 @@ public class UploadFile {
         this.filename = file.getFilename();
 
     }
+
 
     public File toEntity() {
         return File.builder()

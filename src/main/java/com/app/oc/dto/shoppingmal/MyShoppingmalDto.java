@@ -1,14 +1,17 @@
 package com.app.oc.dto.shoppingmal;
 
+
+
 import com.app.oc.entity.Address;
 import com.app.oc.entity.ShoppingMal;
 import lombok.Data;
 import org.springframework.data.domain.Page;
 
+
 @Data
 public class MyShoppingmalDto {
 
-    // private MemberRole role;
+//    private MemberRole role;
     private Boolean myshop;
     private Long shop_seq;
     private String shopLogo;
@@ -17,6 +20,7 @@ public class MyShoppingmalDto {
     private String shopName;
     private String email;
     private Address address;
+
 
     private String shopTel;
 
@@ -28,11 +32,11 @@ public class MyShoppingmalDto {
         this.style = shoppingMal.getStyle();
         this.content = shoppingMal.getContent();
         this.shopName = shoppingMal.getShopName();
-        this.address = shoppingMal.getAddress();
+        this.address  = shoppingMal.getAddress();
         this.shopTel = shoppingMal.getShopTel();
         this.myshop = myshop;
         this.email = shoppingMal.getEmail();
-        // this.role = shoppingMal.getMember().getRole();
+  //      this.role = shoppingMal.getMember().getRole();
     }
 
 }

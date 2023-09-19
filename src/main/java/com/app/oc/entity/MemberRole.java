@@ -5,6 +5,6 @@ package com.app.oc.entity;
  */
 public enum MemberRole {
 
-    BUYER, // 일반 회원
+    BUYER, //일반 회원
     SELLER // 판매자
 }

@@ -1,7 +1,10 @@
 package com.app.oc.dto.map;
 
+
+
 import com.app.oc.entity.ShoppingMal;
 import lombok.*;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +20,6 @@ public class MapResponDto {
     private String shopName;
 
     private String region;
-
     public MapResponDto(ShoppingMal shoppingMal) {
         this.shopId = shoppingMal.getShopId();
         this.addr1 = shoppingMal.getAddress().getAddress1();

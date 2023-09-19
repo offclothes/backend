@@ -1,5 +1,6 @@
 package com.app.oc.dto.paging;
 
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,5 +13,6 @@ public class ItemPageDto {
     Page<SearchDto> items;
     Integer startPage;
     Integer endPage;
+
 
 }

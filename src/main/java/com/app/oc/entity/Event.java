@@ -1,5 +1,6 @@
 package com.app.oc.entity;
 
+
 import com.app.oc.dto.event.EventRequestDto;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -17,8 +18,7 @@ import java.time.LocalDateTime;
  */
 @Entity
 @NoArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
 public class Event {
 
     @Id
@@ -30,12 +30,12 @@ public class Event {
     @Column(name = "type")
     private EventType eventType;
 
-    // 연관관계 매핑 필요.
-    // @ManyToOne
-    // @JoinColumn(name = "memberID")
-    // private Member member;
-    // ----------------------
-    @ManyToOne(cascade = { CascadeType.ALL })
+    //연관관계 매핑 필요.
+//    @ManyToOne
+//    @JoinColumn(name = "memberID")
+//    private Member member;
+//    ----------------------
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "shop_seq")
     private ShoppingMal shoppingmall;
 
@@ -44,7 +44,7 @@ public class Event {
     private String content;
 
     @CreatedDate
-    @Column(name = "writeDay", updatable = false)
+    @Column(name = "writeDay",updatable = false)
     private LocalDateTime WriteDay;
     @LastModifiedDate
     @Column(name = "modifiedDay")
@@ -56,18 +56,18 @@ public class Event {
     @Column(name = "endDay")
     private LocalDate endDay;
 
-    // 참조키를 걸어두고 풀 조인을 한다면?
-    // @Column(name = "shop_name")
-    // private String shopName;
-    //
-    // @Column(name = "shop_address")
-    // private String shopAdderss;
-    //
-    // @Column(name = "shop_tel")
-    // private String shopTel;
+    //참조키를 걸어두고 풀 조인을 한다면?
+//    @Column(name = "shop_name")
+//    private String shopName;
+//
+//    @Column(name = "shop_address")
+//    private String shopAdderss;
+//
+//    @Column(name = "shop_tel")
+//    private String shopTel;
 
     @Builder
-    public Event(Long id, String title, EventType eventType, LocalDate startDay, LocalDate endDay, String content) {
+    public Event(Long id, String title, EventType eventType, LocalDate startDay, LocalDate endDay  ,String content) {
         this.eventId = id;
         this.eventType = eventType;
         this.startDay = startDay;
@@ -76,7 +76,7 @@ public class Event {
         this.content = content;
     }
 
-    public Event updateEvent(EventRequestDto requestDto) {
+    public Event updateEvent(EventRequestDto requestDto){
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
         this.eventType = requestDto.getEventType();

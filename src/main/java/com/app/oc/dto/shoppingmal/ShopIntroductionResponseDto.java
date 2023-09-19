@@ -1,5 +1,7 @@
 package com.app.oc.dto.shoppingmal;
 
+
+
 import com.app.oc.entity.Address;
 import com.app.oc.entity.ShoppingMal;
 import lombok.AllArgsConstructor;
@@ -20,14 +22,17 @@ public class ShopIntroductionResponseDto {
     private String shopLogo;
     private String style;
     private String content;
+    private String shopName;
     private String shopTel;
     private Address address;
+
 
     public static ShopIntroductionResponseDto introductionResponseDto(ShoppingMal shoppingmall) {
         return ShopIntroductionResponseDto.builder()
                 .shopId(shoppingmall.getShopId())
                 .shopLogo(shoppingmall.getShopLogo())
                 .address(shoppingmall.getAddress())
+                .shopName(shoppingmall.getShopName())
                 .shopTel(shoppingmall.getShopTel())
                 .content(shoppingmall.getContent())
                 .style(shoppingmall.getStyle())

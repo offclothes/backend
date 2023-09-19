@@ -1,5 +1,6 @@
 package com.app.oc.service;
 
+
 import com.app.oc.dto.event.EventRequestDto;
 import com.app.oc.dto.event.MyPostResponseDto;
 import com.app.oc.dto.event.ResponseLists;
@@ -26,34 +27,36 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EventService {
 
+
     private final EventRepository eventRepository;
-    private final EventRepositoryImpl eventRepositoryImpl;
     private final MemberRepository memberRepository;
     private final ShopRepository shopRepository;
     private final ShopRepositoryImpl shopRepositoryImpl;
 
-    // 게시글 등록
-    public Event savePost(EventRequestDto requestDto, String memberId) {
 
+    //게시글 등록
+    public Event savePost(EventRequestDto requestDto, String memberId){
         Event post = requestDto.toEntity();
         post.setWriteDay(LocalDateTime.now());
 
         ShoppingMal findShop = shopRepositoryImpl.findByMember(memberId);
         post.setShoppingmall(findShop);
 
-        if (post.getEventId() != null) {
+        if(post.getEventId() != null){
             return null;
         }
         return eventRepository.save(post);
     }
 
-    // 게시글 수정
-    public Event updatePost(Long id, EventRequestDto requestDto) {
 
-        // 조회
-        Event target = eventRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("게시글이 없습니다."));
+    //게시글 등록
+    public Event updatePost(Long id, EventRequestDto requestDto){
 
-        // 업데이트
+        //조회
+        Event target = eventRepository.findById(id).
+                orElseThrow(() -> new IllegalArgumentException("게시글이 없습니다."));
+
+        //업데이트
         target.updateEvent(requestDto);
         Event updated = eventRepository.save(target);
 
@@ -62,7 +65,6 @@ public class EventService {
 
     /**
      * 전체 폐점 할인점 조회
-     * 
      * @return
      */
     public ResponseeventDto listAll(String state, HttpSession session) {
@@ -78,25 +80,24 @@ public class EventService {
 
         List<Event> total = null;
         switch (state) {
-            case "A": // 전체
-                total = eventRepository.findAll();
+            case "A": //전체
+                total=  eventRepository.findAll();
                 break;
-            case "D": // 할인
-                total = eventRepository.findEventByEventType(EventType.D);
+            case "D": //할인
+                total= eventRepository.findEventByEventType(EventType.D);
                 break;
-            case "C": // 폐점
-                total = eventRepository.findEventByEventType(EventType.C);
+            case "C": //폐점
+                total= eventRepository.findEventByEventType(EventType.C);
                 break;
         }
 
         List<ResponseLists> lists = total.stream().map(e -> new ResponseLists(e)).collect(Collectors.toList());
-        ResponseeventDto result = new ResponseeventDto(isSeller, lists);
+        ResponseeventDto result = new ResponseeventDto(isSeller,lists);
         return result;
     }
 
     /**
      * 내가 작성한 게시글 리스트 조회
-     * 
      * @param memberId
      * @return
      */
@@ -106,22 +107,21 @@ public class EventService {
         List<Event> findList = eventRepository.findAllByShoppingmall(findShop);
 
         return findList.stream().map(event -> {
-            return MyPostResponseDto.myPostResponseDto(findShop, event);
+           return MyPostResponseDto.myPostResponseDto(findShop, event);
         }).collect(Collectors.toList());
     }
 
     /**
      * 게시글 삭제
-     * 
      * @param eventSeq
      */
     public void deletePost(Long eventSeq) {
-        eventRepositoryImpl.deletePost(eventSeq);
+        Event findEvent = eventRepository.findEventByEventId(eventSeq);
+        eventRepository.deleteEventByEventId(findEvent.getEventId());
     }
 
     /**
      * 수정하려는 게시글의 기존 데이터 불러오기
-     * 
      * @param id
      * @return
      */

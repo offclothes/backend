@@ -9,11 +9,31 @@ function RegisterGoods() {
   let [mainFileImage, setMainFileImage] = useState("");
   let [addFileImage1, setAddFileImage1] = useState("");
   let [addFileImage2, setAddFileImage2] = useState("");
-  let [addFileImage3, setAddFileImage3] = useState("");
   let [category, setCategory] = useState("");
+  let [thumb, setThumb] = useState([]);
+  let [file, setFile] = useState([]);
 
   const formData = new FormData();
-  const formData1 = new FormData();
+  formData.append("shopId", 4);
+  formData.append("category", category);
+
+  formData.append("itemTitle", name);
+
+  formData.append("price", price);
+
+  formData.append("content", information);
+
+  for (let i = 0; i < thumb.length; i++) {
+    formData.append("thumb", file[i]);
+  }
+
+  for (let i = 0; i < file.length; i++) {
+    formData.append("imageFiles", file[i]);
+  }
+  for (let key of formData.entries()) {
+    console.log(key);
+  }
+
   // for (let i = 0; i < imageFiles.length; i++) {
   //   formData.append("imageFiles", imageFiles[i]);
   // }
@@ -28,16 +48,16 @@ function RegisterGoods() {
 
   function registerGoodsButton() {
     axios
-      .post("/shop/saveItem", {
-        shopId: 4,
-        itemTitle: name,
-        price: parseInt(price),
-        content: information,
-        category: category,
-        formData,
+      .post("/shop/saveItem", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       })
       .then((res) => {
         console.log(res);
+        for (let a of formData.entries()) {
+          console.log(a);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -63,9 +83,12 @@ function RegisterGoods() {
 
   const saveFileMainImage = (e) => {
     setMainFileImage(URL.createObjectURL(e.target.files[0]));
+    let copy = [...thumb];
+    copy.push(e.target.files[0]);
+    setThumb(copy);
     // console.log(e.target.files[0]);
 
-    formData.append("thumb", e.target.files[0]);
+    // formData.append("thumb", e.target.files[0]);
     for (let key of formData.entries()) {
       console.log(key);
     }
@@ -73,9 +96,12 @@ function RegisterGoods() {
 
   const saveFileAddImage1 = (e) => {
     setAddFileImage1(URL.createObjectURL(e.target.files[0]));
+    let copy = [...file];
+    copy.push(e.target.files[0]);
+    setFile(copy);
     // console.log(e.target.files[0]);
 
-    formData.append("imageFiles", e.target.files[0]);
+    // formData.append("imageFiles", e.target.files[0]);
     for (let key of formData.entries()) {
       console.log(key);
     }
@@ -83,19 +109,12 @@ function RegisterGoods() {
 
   const saveFileAddImage2 = (e) => {
     setAddFileImage2(URL.createObjectURL(e.target.files[0]));
+    let copy = [...file];
+    copy.push(e.target.files[0]);
+    setFile(copy);
     // console.log(e.target.files[0]);
 
-    formData.append("imageFiles", e.target.files[0]);
-    for (let key of formData.entries()) {
-      console.log(key);
-    }
-  };
-
-  const saveFileAddImage3 = (e) => {
-    setAddFileImage3(URL.createObjectURL(e.target.files[0]));
-    // console.log(e.target.files[0]);
-
-    formData.append("imageFiles", e.target.files[0]);
+    // formData.append("imageFiles", e.target.files[0]);
     for (let key of formData.entries()) {
       console.log(key);
     }
@@ -127,6 +146,12 @@ function RegisterGoods() {
                 className="input"
                 onChange={(e) => {
                   setName(e.target.value);
+                  // formData.append(
+                  //   "itemTitle",
+                  //   new Blob([JSON.stringify(name)], {
+                  //     type: "application/json",
+                  //   })
+                  // );
                   // formData1.append("itemTitle", name);
                   // for (let key of formData1.keys()) {
                   //   console.log(key);
@@ -199,23 +224,6 @@ function RegisterGoods() {
                   type="file"
                   accept="image/*"
                   onChange={saveFileAddImage2}
-                />
-              </div>
-              {addFileImage3 && (
-                <img className="imageUpload" alt="sample" src={addFileImage3} />
-              )}
-              <div
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <input
-                  style={{ marginLeft: "1.5em" }}
-                  name="imgUpload3"
-                  type="file"
-                  accept="image/*"
-                  onChange={saveFileAddImage3}
                 />
               </div>
             </th>

@@ -5,5 +5,5 @@ package com.app.oc.entity;
  * Y - 승인 허가, N - 거부
  */
 public enum Approval {
-    Y, N
+    Y,N
 }

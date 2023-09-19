@@ -23,4 +23,5 @@ public class AttenItem {
     @JoinColumn(name = "memberId")
     private Member member;
 
+
 }

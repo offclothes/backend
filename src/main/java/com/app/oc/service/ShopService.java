@@ -26,6 +26,7 @@ public class ShopService {
     @Autowired
     HttpSession session;
 
+
     private final ItemRepository itemRepository;
     private final ShopRepository shopRepository;
 
@@ -35,16 +36,16 @@ public class ShopService {
 
     private final EmailUtil emailUtil;
 
-    //
-    // // item
-    // public List<Item> findPerItem(Long id) {
-    // return ItemRepository.findByshopItem(id);
-    // }
+
+//
+//    // item
+//    public List<Item> findPerItem(Long id) {
+//        return ItemRepository.findByshopItem(id);
+//    }
 
     /**
      * 입점 신청 기능
      * 입점 신청 성공 시, 입점 신청할 때 입력한 이메일로 메일 발송.
-     * 
      * @param requestDto
      * @return
      */
@@ -58,12 +59,13 @@ public class ShopService {
             findMember.setRole(MemberRole.SELLER);
             shopRepositoryImpl.saveMember(findMember);
             ShoppingMal shoppingmal = requestDto.toShoppingmal();
-
-            shoppingmal.addShop(findMember); // 연관매핑
-
+            
+            shoppingmal.addShop(findMember); //연관매핑
+            
             shoppingmal.setMember(findMember);
             shoppingmal.setApproval(Approval.Y);
             shopRepositoryImpl.save(shoppingmal);
+
 
             return SellerResponseDto.of(findMember, shoppingmal);
         } else {
@@ -71,48 +73,47 @@ public class ShopService {
         }
     }
 
-    // 각 shop정보
-    public ShoppingMal findMyshopById(Long id) {
+    //각 shop정보
+    public ShoppingMal findMyshopById (Long id){
         ShoppingMal shoppingMal = shopRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("쇼핑몰 없습니다.")); // 영속화
+                .orElseThrow(() -> new IllegalArgumentException("쇼핑몰이 없습니다.")); //영속화
 
         return shoppingMal;
     }
 
     /**
      * Item 찾기
-     * 
      * @param id
      * @return
      */
-    public Item findByItem(Long id) {
+    public Item findByItem (Long id){
         return itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Item이 없습니다.."));
     }
 
     /**
      * Member 찾기
-     * 
      * @param id
      * @return
      */
-    public Member findByMember(String id) {
+    public Member findByMember (String id){
         return memberRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Id를 찾지 못했습니다."));
     }
+
 
     /**
      *
      * 쇼핑몰 상세 페이지
-     * 
      * @param id
      *
      */
-    public MyShoppingmalDto findShopDetail(Long id, Pageable pageable) {
+    public MyShoppingmalDto findShopDetail (Long id, Pageable pageable){
 
-        // 패치로 : member, shop들 전체
+        //패치로 : member, shop들 전체
         ShoppingMal findShop = findMyshopById(id);
 
-        // 세션으로 Id가지고 옴
+        //세션으로 Id가지고 옴
         String sessionId = (String) session.getAttribute("id");
+
 
         Boolean myShop = false;
         if (findShop.getMember().getMemberId().equals(sessionId)) {
@@ -121,15 +122,15 @@ public class ShopService {
 
         MyShoppingmalDto result = new MyShoppingmalDto(findShop, myShop);
 
-        // Item 구하기
+        //Item 구하기
         Page<MainItemDto> byShopITem = itemService.findByShopITem(id, pageable);
         result.setMainItemDtoList(byShopITem);
 
         return result;
     }
 
-    // 매장 정보 작성 하는 메서드, 불러오는 메서드.
-    // 매장 정보 작성 메서드
+    //매장 정보 작성 하는 메서드, 불러오는 메서드.
+    //매장 정보 작성 메서드
     @Transactional
     public ShopIntroductionResponseDto saveIntroduction(Long shopId, ShopIntroductionRequestDto requestDto) {
 
@@ -145,7 +146,6 @@ public class ShopService {
 
         return ShopIntroductionResponseDto.introductionResponseDto(newFindShop);
     }
-
     @org.springframework.transaction.annotation.Transactional
     public ShopIntroductionResponseDto getIntroduction(Long shopId) {
 
@@ -155,14 +155,14 @@ public class ShopService {
     /**
      * 이미지 파일로 받은 이미지 데이터를 Base64로 변환하는 함수
      */
-    // @SneakyThrows
-    // private byte[] encodeImageToBase64(MultipartFile image) {
-    // byte[] encodedImage = new byte[0];
-    //
-    // if (image != null) {
-    // Base64.Encoder encoder = Base64.getEncoder();
-    // encodedImage = encoder.encode(image.getBytes());
-    // }
-    // return encodedImage;
-    // }
+//    @SneakyThrows
+//    private byte[] encodeImageToBase64(MultipartFile image) {
+//        byte[] encodedImage = new byte[0];
+//
+//        if (image != null) {
+//            Base64.Encoder encoder = Base64.getEncoder();
+//            encodedImage = encoder.encode(image.getBytes());
+//        }
+//        return encodedImage;
+//    }
 }

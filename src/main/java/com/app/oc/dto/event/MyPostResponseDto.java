@@ -1,5 +1,7 @@
 package com.app.oc.dto.event;
 
+
+
 import com.app.oc.entity.Event;
 import com.app.oc.entity.EventType;
 import com.app.oc.entity.ShoppingMal;
@@ -30,6 +32,7 @@ public class MyPostResponseDto {
     private LocalDate startDay;
 
     private LocalDate endDay;
+
 
     public static MyPostResponseDto myPostResponseDto(ShoppingMal s, Event e) {
         return MyPostResponseDto.builder()

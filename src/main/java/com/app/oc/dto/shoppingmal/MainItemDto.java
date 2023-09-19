@@ -1,5 +1,7 @@
 package com.app.oc.dto.shoppingmal;
 
+
+
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.entity.Item;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -19,12 +21,15 @@ public class MainItemDto {
     private UploadFile uploadFile;
     private Integer category;
 
+
+
     public MainItemDto(Item item) {
-        this.item_seq = item.getItemId();
+        this.item_seq =item.getItemId();
         this.itemTitle = item.getItemTitle();
         this.price = item.getPrice();
         this.content = item.getContent();
         this.category = item.getCategory();
     }
+
 
 }

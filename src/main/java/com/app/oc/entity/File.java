@@ -22,7 +22,8 @@ public class File {
     @JoinColumn(name = "itemId")
     private Item item;
 
-    public File(String storefile, String datePath, String filename) {
+
+    public File(String storefile, String datePath,String filename) {
         this.storefile = storefile;
         this.datePath = datePath;
         this.filename = filename;
@@ -33,7 +34,7 @@ public class File {
     }
 
     @Builder
-    public File(String storefile, String datePath, Item item, String filename) {
+    public File(String storefile, String datePath, Item item,String filename) {
         this.storefile = storefile;
         this.datePath = datePath;
         this.filename = filename;

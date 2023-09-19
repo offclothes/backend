@@ -1,5 +1,7 @@
 package com.app.oc.dto.paging;
 
+
+
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.entity.Item;
 import lombok.Data;
@@ -13,10 +15,15 @@ public class SearchDto {
     private UploadFile uploadFile;
     private Integer category;
 
+
+
     public SearchDto(Item item) {
-        this.item_seq = item.getItemId();
+        this.item_seq =item.getItemId();
         this.itemTitle = item.getItemTitle();
         this.category = item.getCategory();
     }
 
+
+
 }
+
