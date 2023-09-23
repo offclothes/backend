@@ -16,7 +16,9 @@ public interface ItemRepositoryCustom {
 
 
     List<Item> searchByCategory(Integer category, Pageable pageable);
+    List<Item> searchByCategoryAndRegion(Integer category, Pageable pageable, String top, String mid, String dong);
     List<Item> searchByKeyword(String keyword, Pageable pageable);
+    List<Item> searchByKeywordAndRegion(String keyword, Pageable pageable,  String top, String mid, String dong);
     Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable);
     Page<SearchDto> pagingByKe(List<SearchDto> items, String keword, Pageable pageable);
 

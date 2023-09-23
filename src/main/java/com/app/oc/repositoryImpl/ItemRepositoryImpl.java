@@ -4,6 +4,7 @@ package com.app.oc.repositoryImpl;
 import com.app.oc.dto.paging.SearchDto;
 import com.app.oc.dto.shoppingmal.MainItemDto;
 import com.app.oc.entity.Item;
+import com.app.oc.entity.QShoppingMal;
 import com.app.oc.repository.ItemRepositoryCustom;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -15,6 +16,7 @@ import org.springframework.data.support.PageableExecutionUtils;
 import java.util.List;
 
 import static com.app.oc.entity.QItem.item;
+import static com.app.oc.entity.QShoppingMal.shoppingMal;
 
 
 public class ItemRepositoryImpl implements ItemRepositoryCustom {
@@ -71,9 +73,34 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     }
 
     @Override
+    public List<Item> searchByCategoryAndRegion(Integer category, Pageable pageable, String top, String mid, String dong) {
+        return queryFactory.selectFrom(item)
+                .join(item.shoppingMal, shoppingMal)
+                .where(item.category.eq(category)
+                        .and(shoppingMal.address.address1.contains(top)
+                                .and(shoppingMal.address.address1.contains(mid)
+                                        .and(shoppingMal.address.address1.contains(dong)))))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize()).fetch();
+
+    }
+
+    @Override
+    public List<Item> searchByKeywordAndRegion(String keyword, Pageable pageable,  String top, String mid, String dong) {
+        return queryFactory.selectFrom(item)
+                .join(item.shoppingMal,shoppingMal)
+                .where(item.itemTitle.eq(keyword)
+                        .and(shoppingMal.address.address1.contains(top)
+                                .and(shoppingMal.address.address1.contains(mid)
+                                        .and(shoppingMal.address.address1.contains(dong)))))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize()).fetch();
+    }
+
+    @Override
     public List<Item> searchByKeyword(String keyword, Pageable pageable) {
         return queryFactory.selectFrom(item)
-                .where(item.itemTitle.contains(keyword))
+                .where(item.itemTitle.eq(keyword))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize()).fetch();
     }

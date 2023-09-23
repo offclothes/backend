@@ -9,12 +9,18 @@ public class Address {
     private String postcode;
     private String address1;
     private String address2;
+    private String top;
+    private String mid;
+
+    private String dong;
 
     public Address(String postcode, String address1, String address2) {
         this.postcode = postcode;
         this.address1 = address1;
         this.address2 = address2;
     }
+
+
 
 
     protected Address() {

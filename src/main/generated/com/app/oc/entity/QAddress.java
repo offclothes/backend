@@ -23,7 +23,13 @@ public class QAddress extends BeanPath<Address> {
 
     public final StringPath address2 = createString("address2");
 
+    public final StringPath dong = createString("dong");
+
+    public final StringPath mid = createString("mid");
+
     public final StringPath postcode = createString("postcode");
+
+    public final StringPath top = createString("top");
 
     public QAddress(String variable) {
         super(Address.class, forVariable(variable));

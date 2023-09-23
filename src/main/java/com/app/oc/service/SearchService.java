@@ -3,12 +3,15 @@ package com.app.oc.service;
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.dto.paging.ItemPageDto;
 import com.app.oc.dto.paging.SearchDto;
+import com.app.oc.dto.paging.SearchRequestDto;
 import com.app.oc.entity.File;
 import com.app.oc.entity.Item;
+import com.app.oc.entity.Region;
 import com.app.oc.repository.FileRepository;
 import com.app.oc.repository.ItemRepository;
 import com.app.oc.repository.RegionRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.Null;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -19,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 
 @Slf4j
 @Service
@@ -32,78 +36,148 @@ public class SearchService {
 
     private final RegionRepository regionRepository;
 
-
-
     //카테고리
     @Transactional
-    public ItemPageDto getItemByCategory(Integer category, Pageable pageable){
+    public ItemPageDto getItemByCategory(Integer category, Pageable pageable, SearchRequestDto requestDto){
         ItemPageDto itemPageDto = new ItemPageDto();
+
+        String top = requestDto.getTop();
+        String mid = requestDto.getMid();
+        String dong = requestDto.getDong();
         //item List
-        List<Item> getItems = itemRepository.searchByCategory(category, pageable);
-        List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
+        if(top == null) {
+            List<Item> getItems = itemRepository.searchByCategory(category, pageable);
+            List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
-        List<File> fileIn = fileRepository.findFileIn(Ids);
-        List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+            List<File> fileIn = fileRepository.findFileIn(Ids);
+            List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
 
-        Map<Long, UploadFile> fileMap = new HashMap<>();
-        for (UploadFile uploadFile : uploadFiles) {
-            if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
-                fileMap.put(uploadFile.getItem_seq(), uploadFile);
+            Map<Long, UploadFile> fileMap = new HashMap<>();
+            for (UploadFile uploadFile : uploadFiles) {
+                if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+                    fileMap.put(uploadFile.getItem_seq(), uploadFile);
+                }
             }
+
+            List<SearchDto> items = getsearchDtos(getItems, fileMap);
+
+            Page<SearchDto> searchDtos = itemRepository.pagingByCa(items, category, pageable);
+
+
+            int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+            int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
+
+
+            //페이지 정보
+            itemPageDto.setItems(searchDtos);
+            itemPageDto.setStartPage(startPage);
+            itemPageDto.setEndPage(endPage);
+
+            return itemPageDto;
+        }
+        else{
+            List<Item> getItems = itemRepository.searchByCategoryAndRegion(category, pageable, top, mid, dong);
+            List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
+
+            List<File> fileIn = fileRepository.findFileIn(Ids);
+            List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+            Map<Long, UploadFile> fileMap = new HashMap<>();
+            for (UploadFile uploadFile : uploadFiles) {
+                if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+                    fileMap.put(uploadFile.getItem_seq(), uploadFile);
+                }
+            }
+
+            List<SearchDto> items = getsearchDtos(getItems, fileMap);
+
+            Page<SearchDto> searchDtos = itemRepository.pagingByCa(items, category, pageable);
+
+
+            int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+            int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
+
+
+            //페이지 정보
+            itemPageDto.setItems(searchDtos);
+            itemPageDto.setStartPage(startPage);
+            itemPageDto.setEndPage(endPage);
+
+            return itemPageDto;
         }
 
-        List<SearchDto> items = getsearchDtos(getItems, fileMap);
-
-        Page<SearchDto> searchDtos = itemRepository.pagingByCa(items, category, pageable);
-
-
-        int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
-        int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
-
-
-        //페이지 정보
-        itemPageDto.setItems(searchDtos);
-        itemPageDto.setStartPage(startPage);
-        itemPageDto.setEndPage(endPage);
-
-        return itemPageDto;
     }
 
 
     //키워드
     @Transactional
-    public ItemPageDto getItemByKeyword(String keyword, Pageable pageable){
+    public ItemPageDto getItemByKeyword(String keyword, Pageable pageable, SearchRequestDto requestDto){
         ItemPageDto itemPageDto = new ItemPageDto();
 
-        //item List
-        List<Item> getItems = itemRepository.searchByKeyword(keyword, pageable);
-        List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
+        String top = requestDto.getTop();
+        String mid = requestDto.getMid();
+        String dong = requestDto.getDong();
 
-        List<File> fileIn = fileRepository.findFileIn(Ids);
-        List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+        if(top==null) {        //item List
+            List<Item> getItems = itemRepository.searchByKeyword(keyword, pageable);
+            List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
-        Map<Long, UploadFile> fileMap = new HashMap<>();
-        for (UploadFile uploadFile : uploadFiles) {
-            if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
-                fileMap.put(uploadFile.getItem_seq(), uploadFile);
+            List<File> fileIn = fileRepository.findFileIn(Ids);
+            List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+            Map<Long, UploadFile> fileMap = new HashMap<>();
+            for (UploadFile uploadFile : uploadFiles) {
+                if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+                    fileMap.put(uploadFile.getItem_seq(), uploadFile);
+                }
             }
+
+            List<SearchDto> items = getsearchDtos(getItems, fileMap);
+            Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, keyword, pageable);
+
+
+            int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+            int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber() + 3);
+
+
+            //페이지 정보
+            itemPageDto.setItems(searchDtos);
+            itemPageDto.setStartPage(startPage);
+            itemPageDto.setEndPage(endPage);
+
+
+            return itemPageDto;
         }
+        else{
+            List<Item> getItems = itemRepository.searchByKeyword(keyword, pageable);
+            List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
-        List<SearchDto> items = getsearchDtos(getItems, fileMap);
-        Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, keyword, pageable);
+            List<File> fileIn = fileRepository.findFileIn(Ids);
+            List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+            Map<Long, UploadFile> fileMap = new HashMap<>();
+            for (UploadFile uploadFile : uploadFiles) {
+                if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+                    fileMap.put(uploadFile.getItem_seq(), uploadFile);
+                }
+            }
+
+            List<SearchDto> items = getsearchDtos(getItems, fileMap);
+            Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, keyword, pageable);
 
 
-        int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
-        int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
+            int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+            int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber() + 3);
 
 
-        //페이지 정보
-        itemPageDto.setItems(searchDtos);
-        itemPageDto.setStartPage(startPage);
-        itemPageDto.setEndPage(endPage);
+            //페이지 정보
+            itemPageDto.setItems(searchDtos);
+            itemPageDto.setStartPage(startPage);
+            itemPageDto.setEndPage(endPage);
 
 
-        return itemPageDto;
+            return itemPageDto;
+        }
     }
 
     private static List<SearchDto> getsearchDtos(List<Item> getItems, Map<Long, UploadFile> fileMap) {

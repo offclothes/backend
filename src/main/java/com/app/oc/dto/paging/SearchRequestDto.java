@@ -1,0 +1,11 @@
+package com.app.oc.dto.paging;
+
+import lombok.Data;
+
+@Data
+public class SearchRequestDto {
+    private String top;
+    private String mid;
+    private String dong;
+
+}
