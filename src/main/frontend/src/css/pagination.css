@@ -1,0 +1,36 @@
+.Nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: -80px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    border: 1px solid #A8DBA8;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 0;
+    background: #ffffff;
+    color: #789B78;
+    font-size: 1rem;
+
+    &:hover {
+    background-color: #ffffff;
+    cursor: pointer;
+    transform: translateY(-2px);
+    }
+
+    &[disabled] {
+    background: grey;
+    cursor: revert;
+    transform: revert;
+    }
+
+    &[aria-current] {
+    background: #A8DBA8;
+    font-weight: bold;
+    cursor: revert;
+    transform: revert;
+    }
+}

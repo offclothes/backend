@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/registerGoods.css";
+import { useNavigate } from "react-router-dom";
 
 function RegisterGoods() {
+  let navigate = useNavigate();
   let [name, setName] = useState("");
   let [price, setPrice] = useState();
   let [information, setInformation] = useState("");
@@ -53,11 +55,8 @@ function RegisterGoods() {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((res) => {
-        console.log(res);
-        for (let a of formData.entries()) {
-          console.log(a);
-        }
+      .then(() => {
+        navigate("/shop");
       })
       .catch((err) => {
         console.log(err);

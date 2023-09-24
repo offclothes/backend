@@ -14,6 +14,7 @@ export default function LocationSearch() {
   let [dong, setDong] = useState("");
   let [topSelect, setTopSelect] = useState("");
   let [middleSelect, setMiddleSelect] = useState("");
+  let [dongSelect, setDongSelect] = useState("");
 
   useEffect(() => {
     axios.get("/top").then((res) => {

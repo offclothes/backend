@@ -6,13 +6,20 @@ import Col from "react-bootstrap/Col";
 import Shop1Data from "../Shop1Data";
 import "../css/shop1.css";
 import axios from "axios";
+import Pagination from "./Pagination";
 
 const { kakao } = window;
 
 function Shop1() {
   let navigate = useNavigate();
-  const [shoes] = useState(Shop1Data);
+  // const [shoes] = useState(Shop1Data);
   const [myShop, setMyShop] = useState("");
+  const [imageFile, setImageFile] = useState([]);
+  const [imgSrc, setImageSrc] = useState([]);
+
+  const [limit, setLimit] = useState(4);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
 
   // const myShopBtn = () => {
   //   myShop === "true" ? "visible" : "hidden";
@@ -24,10 +31,12 @@ function Shop1() {
       .then((res) => {
         console.log(res);
         setMyShop(res.data.myshop);
+        setImageFile(res.data.mainItemDtoList.content);
       })
       .catch((err) => {
         console.log(err);
       });
+
     let container = document.getElementById("map");
     let options = {
       center: new kakao.maps.LatLng(37.5004, 127.028),
@@ -65,6 +74,43 @@ function Shop1() {
       "    </div>" +
       "</div>";
   }, []);
+
+  let copy = [];
+
+  useEffect(() => {
+    for (let i = 0; i < imageFile.length; i++) {
+      axios
+        .post(`/display/${imageFile[i]?.uploadFile.storeFileName}`)
+        .then((res) => {
+          copy = [...copy];
+          // console.log(res.data);
+          copy.push(res.data);
+          console.log(copy);
+          setImageSrc(copy, ...imgSrc);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [imageFile]);
+
+  useEffect(() => {
+    console.log(imgSrc.length);
+  }, [imgSrc]);
+
+  // console.log(imageFile[9]);
+
+  // useEffect(() => {
+  //   axios
+  //     .post(`/display/${imageFile}`)
+  //     .then((res) => {
+  //       setImageSrc(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [imageFile]);
+
   return (
     <div style={{ display: "flex" }}>
       <div style={{ width: "600px" }}>
@@ -228,17 +274,24 @@ function Shop1() {
         </div>
         <Container>
           <Row className="container">
-            {shoes.map(function (a, i) {
+            {imageFile?.slice(offset, offset + limit).map(function (a, i) {
               return (
                 <ShopGoods
-                  key={shoes[i].id}
+                  key={imageFile[i].item_seq}
                   i={i}
-                  shoes={shoes}
+                  imageFile={imageFile}
                   myShop={myShop}
+                  imgSrc={imgSrc}
                 ></ShopGoods>
               );
             })}
           </Row>
+          <Pagination
+            total={imageFile?.length}
+            limit={4}
+            page={page}
+            setPage={setPage}
+          />
         </Container>
       </div>
     </div>
@@ -248,17 +301,17 @@ function Shop1() {
 function ShopGoods(props) {
   let navigate = useNavigate();
   let [btn, setBtn] = useState("seller"); //setBtn에 서버에서 가져온 정보(판매자, 일반회원)를 btn에 넣어서 판매자면 버튼이 보이고 일반회원이면 버튼이 안보이도록
+
   return (
-    <Col md="5" style={{ textAlign: "start" }}>
+    <Col md="4" style={{ textAlign: "start" }}>
       <img
-        src={
-          "https://codingapple1.github.io/shop/shoes" + (props.i + 1) + ".jpg"
-        }
+        className="image"
+        src={props.imgSrc[props.i]}
         width="80%"
-        height="60%"
+        height="50%"
       ></img>
-      <h4>{props.shoes[props.i].title}</h4>
-      <h5>100,000원</h5>
+      <h4>{props.imageFile[props.i].itemTitle}</h4>
+      <h5>{props.imageFile[props.i].price}원</h5>
       <div className="shop1Button">
         <button
           className="registerShopBtn"
