@@ -1,6 +1,10 @@
 package com.app.oc.controller;
 
+
+
 import com.app.oc.dto.paging.ItemPageDto;
+import com.app.oc.dto.paging.SearchDto;
+import com.app.oc.dto.paging.SearchRequestDto;
 import com.app.oc.service.SearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -24,27 +28,42 @@ public class SearchController {
     카테고리 검색
      */
     @GetMapping("/category/male")
-    public ItemPageDto getItemPagingByMale(@PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        return searchService.getItemByCategory(0,pageable);
+    public ItemPageDto getItemPagingByMale(@RequestBody SearchRequestDto requestDto,
+                                           @PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        String fullAddress = requestDto.getTop().trim()+" " + requestDto.getMid().trim() + " " + requestDto.getDong().trim();
+        System.out.println("fullAddress = " + fullAddress);
+        return searchService.getItemByCategory(fullAddress, 0,pageable);
     }
 
     @GetMapping("/category/female")
-    public ItemPageDto getItemPagingByFemale(@PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        return searchService.getItemByCategory(1, pageable);
+    public ItemPageDto getItemPagingByFemale(@RequestBody SearchRequestDto requestDto,
+                                             @PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        String fullAddress = requestDto.getTop().trim()+" " + requestDto.getMid().trim() + " " + requestDto.getDong().trim();
+        System.out.println("fullAddress = " + fullAddress);
+        return searchService.getItemByCategory(fullAddress,1, pageable);
     }
 
     @GetMapping("/category/both")
-    public ItemPageDto getItemPagingByBoth(@PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        return searchService.getItemByCategory(2,pageable);
+    public ItemPageDto getItemPagingByBoth(@RequestBody SearchRequestDto requestDto,
+                                           @PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        String fullAddress = requestDto.getTop().trim()+" " + requestDto.getMid().trim() + " " + requestDto.getDong().trim();
+        System.out.println("fullAddress = " + fullAddress);
+        return searchService.getItemByCategory(fullAddress,2,pageable);
     }
 
     /*
    키워드 검색
     */
     @GetMapping("/research")
-    public ItemPageDto getItemPagingByKeyword(@PathVariable String keyword,@PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        return searchService.getItemByKeyword(keyword, pageable);
+    public ItemPageDto getItemPagingByKeyword(@RequestBody SearchRequestDto requestDto,
+                                              @PathVariable String keyword,
+                                              @PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        String fullAddress = requestDto.getTop().trim()+" " + requestDto.getMid().trim() + " " + requestDto.getDong().trim();
+        System.out.println("fullAddress = " + fullAddress);
+
+        return searchService.getItemByKeyword(fullAddress, keyword, pageable);
     }
+
 
     /**
      *
