@@ -92,6 +92,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .limit(pageable.getPageSize()).fetch();
     }
 
+    //키워드 리스트
     @Override
     public List<Item> searchByKeyword(String fullAddress, String keyword, Pageable pageable) {
         return queryFactory.selectFrom(item)
