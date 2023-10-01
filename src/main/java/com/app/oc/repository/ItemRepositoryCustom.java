@@ -14,9 +14,11 @@ public interface ItemRepositoryCustom {
 
     List<Item> getcontent(Long id, Pageable pageable);
 
+    List<Item> searchByCategoryAll(Integer category, Pageable pageable);
+    List<Item> searchByKeywordAll(String keyword, Pageable pageable);
 
-    List<Item> searchByCategory(Integer category, Pageable pageable);
-    List<Item> searchByKeyword(String keyword, Pageable pageable);
+    List<Item> searchByCategory(String fullAddress, Integer category, Pageable pageable);
+    List<Item> searchByKeyword(String fullAddress,String keyword, Pageable pageable);
     Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable);
     Page<SearchDto> pagingByKe(List<SearchDto> items, String keword, Pageable pageable);
 
