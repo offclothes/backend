@@ -21,6 +21,12 @@ public interface EventRepository extends JpaRepository<Event,Long> {
     List<Event> findEventByEventType(EventType type);
 
     /**
+     * 이벤트 삭제
+     * @param eventId
+     */
+    void deleteEventByEventId(Long eventId);
+    Event findEventByEventId(Long event);
+    /**
      * 내가 작성한 게시글 리스트 조회
      * @param shoppingMal
      * @return

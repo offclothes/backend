@@ -68,9 +68,7 @@ public class ShoppingMalController {
      * @return
      */
     @PatchMapping("/{shopId}/change")
-    public ResponseEntity<ShopIntroductionResponseDto> changeIntroduction(@PathVariable Long shopId,
-                                                                          @RequestBody ShopIntroductionRequestDto requestDto) {
-
+    public ResponseEntity<ShopIntroductionResponseDto> changeIntroduction(@PathVariable Long shopId, @RequestBody ShopIntroductionRequestDto requestDto) {
         return ResponseEntity.ok(shopService.saveIntroduction(shopId,requestDto));
     }
 
@@ -80,10 +78,8 @@ public class ShoppingMalController {
      */
     @PostMapping("/saveItem")
     public ResultDto SaveItem(ItemFileRequestDto itemFileRequestDto) throws IOException {
-
         //DB isert
         String name = itemService.saveItem(itemFileRequestDto);
-
         return new ResultDto("상품이 "+name+"되었습니다.");
     }
 
@@ -96,8 +92,8 @@ public class ShoppingMalController {
      *
      *           OK
      */
-    @GetMapping("/{id}")
-    public MyShoppingmalDto MyShopping(@PathVariable Long id,@RequestParam(defaultValue = "0",required = false) int page) {
+    @GetMapping("/shopDetail")
+    public MyShoppingmalDto MyShopping(@RequestParam("id") Long id, @RequestParam(defaultValue = "0",required = false) int page) {
         page = page == 0? page : page - 1;
         PageRequest pageRequest = PageRequest.of(page, 15, Sort.by(Sort.Direction.DESC, "itemId"));
         return shopService.findShopDetail(id,pageRequest);

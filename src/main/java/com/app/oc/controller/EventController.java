@@ -121,7 +121,7 @@ public class EventController {
      * 원하는 게시글 삭제
      * @param eventId 글 번호
      */
-    @GetMapping("/myPost/{eventId}")
+    @DeleteMapping("/myPost/{eventId}")
     public void deletePost(@PathVariable @RequestParam(name = "eventId") Long eventId) {
         eventService.deletePost(eventId);
     }

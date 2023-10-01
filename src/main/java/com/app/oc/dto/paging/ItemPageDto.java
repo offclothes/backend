@@ -1,7 +1,6 @@
 package com.app.oc.dto.paging;
 
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;

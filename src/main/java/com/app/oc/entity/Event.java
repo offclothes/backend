@@ -35,7 +35,7 @@ public class Event {
 //    @JoinColumn(name = "memberID")
 //    private Member member;
 //    ----------------------
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "shop_seq")
     private ShoppingMal shoppingmall;
 

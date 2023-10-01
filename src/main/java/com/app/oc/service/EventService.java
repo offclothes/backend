@@ -27,9 +27,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EventService {
 
-
     private final EventRepository eventRepository;
-    private final EventRepositoryImpl eventRepositoryImpl;
     private final MemberRepository memberRepository;
     private final ShopRepository shopRepository;
     private final ShopRepositoryImpl shopRepositoryImpl;
@@ -117,7 +115,8 @@ public class EventService {
      * @param eventSeq
      */
     public void deletePost(Long eventSeq) {
-        eventRepositoryImpl.deletePost(eventSeq);
+        Event findEvent = eventRepository.findEventByEventId(eventSeq);
+        eventRepository.deleteEventByEventId(findEvent.getEventId());
     }
 
     /**

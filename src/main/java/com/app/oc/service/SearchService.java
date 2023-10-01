@@ -106,6 +106,8 @@ public class SearchService {
         return itemPageDto;
     }
 
+
+
     private static List<SearchDto> getsearchDtos(List<Item> getItems, Map<Long, UploadFile> fileMap) {
         return getItems.stream().map(item -> {
             SearchDto searchDto = new SearchDto();

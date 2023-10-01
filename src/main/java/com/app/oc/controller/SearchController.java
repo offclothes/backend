@@ -1,7 +1,5 @@
 package com.app.oc.controller;
 
-
-
 import com.app.oc.dto.paging.ItemPageDto;
 import com.app.oc.service.SearchService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -46,7 +45,6 @@ public class SearchController {
     public ItemPageDto getItemPagingByKeyword(@PathVariable String keyword,@PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         return searchService.getItemByKeyword(keyword, pageable);
     }
-
 
     /**
      *
