@@ -30,6 +30,8 @@ public class QShoppingMal extends EntityPathBase<ShoppingMal> {
 
     public final StringPath email = createString("email");
 
+    public final ListPath<Event, QEvent> events = this.<Event, QEvent>createList("events", Event.class, QEvent.class, PathInits.DIRECT2);
+
     public final ListPath<Item, QItem> items = this.<Item, QItem>createList("items", Item.class, QItem.class, PathInits.DIRECT2);
 
     public final QMember member;

@@ -24,6 +24,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
+	compileJava { options.compilerArgs = [ '-Amapstruct.defaultComponentModel=spring', '-parameters' ] }
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 
@@ -41,6 +42,7 @@ dependencies {
 
 	////    validation
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 
 
 	//Querydsl 추가
@@ -61,6 +63,8 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+
 //Querydsl 추가, 자동 생성된 Q클래스 gradle clean으로 제거
 clean {
 	delete file('src/main/generated')
