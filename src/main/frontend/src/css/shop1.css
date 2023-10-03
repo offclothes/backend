@@ -8,9 +8,9 @@
     border: 1px solid black;
 }
 
-.shop1Button {
+/* .shop1Button {
     margin-left: 30%;
-}
+} */
 
 .registerShopBtn {
     width: 80px;
@@ -33,6 +33,7 @@
 }
 
 .shopInformation {
+    width: 500px;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 1em;

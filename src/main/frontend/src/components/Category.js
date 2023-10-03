@@ -16,22 +16,72 @@ import ChangeBoard from "../components/ChangeBoard";
 import Board from "../components/Board";
 import axios from "axios";
 import LocationSearch from "./LocationSearch";
+import Pagination from "./Pagination";
 
 function Category({ categoryBtn, setCategoryBtn }) {
-  let [gender, setGender] = useState("");
-  let navigate = useNavigate();
-  let [shoes, setShoes] = useState(data);
+  const [gender, setGender] = useState("");
+  const navigate = useNavigate();
+  const [female, setFemale] = useState([]);
+  const [male, setMale] = useState([]);
+  const [both, setBoth] = useState([]);
+  const [img, setImg] = useState([]);
+  const [goodsData, setGoodsData] = useState();
 
-  // useEffect(() => {
-  //   axios
-  //     .get("/map")
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  const [limit, setLimit] = useState(4);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
+
+  let copyMale = [];
+  let copyFemale = [];
+  let copyBoth = [];
+
+  const goodsGender =
+    gender === "남성" ? male : gender === "여성" ? female : both;
+
+  useEffect(() => {
+    axios
+      .get("/shop/shopDetail", { params: { id: 4, page: 0 } })
+      .then((res) => {
+        setGoodsData(res.data);
+        // setAll(res)
+        for (let i = 0; i < res.data.mainItemDtoList.content.length; i++) {
+          copyMale = [...copyMale];
+          copyFemale = [...copyFemale];
+          copyBoth = [...copyBoth];
+
+          if (res.data.mainItemDtoList.content[i].category === 0) {
+            copyMale.push(res.data.mainItemDtoList.content[i]);
+            setMale(copyMale, ...male);
+          } else if (res.data.mainItemDtoList.content[i].category === 1) {
+            copyFemale.push(res.data.mainItemDtoList.content[i]);
+            setFemale(copyFemale, ...female);
+          } else {
+            copyBoth.push(res.data.mainItemDtoList.content[i]);
+            setBoth(copyBoth, ...both);
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  let copy = [];
+
+  useEffect(() => {
+    for (let i = 0; i < goodsGender.length; i++) {
+      axios
+        .post(`/display/${goodsGender[i]?.uploadFile.storeFileName}`)
+        .then((res) => {
+          copy = [...copy];
+          copy.push(res.data);
+          setImg(copy, ...img);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [gender]);
 
   return (
     <div>
@@ -108,7 +158,10 @@ function Category({ categoryBtn, setCategoryBtn }) {
           <Route path="both" element={<Gender />} />
         </Route>
         <Route path="/eventAll" element={<Board />} />
-        <Route path="/shop/item" element={<Goods1 />} />
+        <Route
+          path="/shop/item/:id"
+          element={<Goods1 goodsData={goodsData} />}
+        />
         <Route path="/registerGoods" element={<RegisterGoods />} />
         <Route path="/changeGoods" element={<ChangeGoods />} />
         <Route path="/myPage" element={<MyPage />} />
@@ -167,11 +220,27 @@ function Category({ categoryBtn, setCategoryBtn }) {
         </p>
         <Container>
           <Row style={{ rowGap: "50px" }}>
-            {shoes.map((a, i) => {
-              return <Goods key={shoes[i].id} i={i} shoes={shoes}></Goods>;
+            {goodsGender?.slice(offset, offset + limit).map((a, i) => {
+              return (
+                <Goods
+                  offset={offset + i}
+                  key={goodsGender[i].item_seq}
+                  i={i}
+                  goodsGender={goodsGender}
+                  img={img}
+                ></Goods>
+              );
             })}
           </Row>
         </Container>
+        <div className="page">
+          <Pagination
+            total={img?.length}
+            limit={4}
+            page={page}
+            setPage={setPage}
+          />
+        </div>
       </div>
     );
   }
@@ -183,15 +252,14 @@ function Goods(props) {
     <Col md="4" style={{ textAlign: "center" }}>
       <img
         style={{ cursor: "pointer" }}
-        src={
-          "https://codingapple1.github.io/shop/shoes" + (props.i + 1) + ".jpg"
-        }
-        width="60%"
+        src={props.img[props.offset]}
+        width="250px"
+        height="300px"
         onClick={() => {
-          navigate("/shop/item/"); //아이템id추가
+          navigate(`/shop/item/${props.goodsGender[props.i].item_seq}`); //아이템id추가
         }}
       ></img>
-      <h4>{props.shoes[props.i].title}</h4>
+      <h4>{props.goodsGender[props.offset].itemTitle}</h4>
     </Col>
   );
 }

@@ -43,3 +43,9 @@
     color: #304F30;
     font-weight: 600;
 }
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

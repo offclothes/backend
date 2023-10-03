@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../css/pagination.css";
 
 // total(데이터 총 갯수), limit(한 페이지에 보여줄 갯수)

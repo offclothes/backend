@@ -29,7 +29,6 @@ function Shop1() {
     axios
       .get("/shop/shopDetail", { params: { id: 4, page: 0 } })
       .then((res) => {
-        console.log(res);
         setMyShop(res.data.myshop);
         setImageFile(res.data.mainItemDtoList.content);
       })
@@ -83,9 +82,7 @@ function Shop1() {
         .post(`/display/${imageFile[i]?.uploadFile.storeFileName}`)
         .then((res) => {
           copy = [...copy];
-          // console.log(res.data);
           copy.push(res.data);
-          console.log(copy);
           setImageSrc(copy, ...imgSrc);
         })
         .catch((err) => {
@@ -94,28 +91,12 @@ function Shop1() {
     }
   }, [imageFile]);
 
-  useEffect(() => {
-    console.log(imgSrc.length);
-  }, [imgSrc]);
-
-  // console.log(imageFile[9]);
-
-  // useEffect(() => {
-  //   axios
-  //     .post(`/display/${imageFile}`)
-  //     .then((res) => {
-  //       setImageSrc(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [imageFile]);
-
   return (
     <div style={{ display: "flex" }}>
       <div style={{ width: "600px" }}>
         <p
           style={{
+            width: "400px",
             marginLeft: "90px",
             color: "#194819",
             fontFamily: "Inter",
@@ -133,6 +114,7 @@ function Shop1() {
         <div>
           <p
             style={{
+              width: "400px",
               textAlign: "center",
               marginLeft: "90px",
               fontWeight: "400",
@@ -168,6 +150,7 @@ function Shop1() {
         ) : (
           <div
             style={{
+              width: "400px",
               height: "280px",
               display: "flex",
               flexDirection: "row",
@@ -211,6 +194,7 @@ function Shop1() {
         <div
           id="map"
           style={{
+            width: "400px",
             height: "300px",
             marginLeft: "90px",
             marginBottom: "20px",
@@ -277,6 +261,7 @@ function Shop1() {
             {imageFile?.slice(offset, offset + limit).map(function (a, i) {
               return (
                 <ShopGoods
+                  offset={offset + i}
                   key={imageFile[i].item_seq}
                   i={i}
                   imageFile={imageFile}
@@ -286,13 +271,13 @@ function Shop1() {
               );
             })}
           </Row>
-          <Pagination
-            total={imageFile?.length}
-            limit={4}
-            page={page}
-            setPage={setPage}
-          />
         </Container>
+        <Pagination
+          total={imageFile?.length}
+          limit={4}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </div>
   );
@@ -306,12 +291,12 @@ function ShopGoods(props) {
     <Col md="4" style={{ textAlign: "start" }}>
       <img
         className="image"
-        src={props.imgSrc[props.i]}
-        width="80%"
-        height="50%"
+        src={props.imgSrc[props.offset]}
+        width="280px"
+        height="250px"
       ></img>
-      <h4>{props.imageFile[props.i].itemTitle}</h4>
-      <h5>{props.imageFile[props.i].price}원</h5>
+      <h4>{props.imageFile[props.offset].itemTitle}</h4>
+      <h5>{props.imageFile[props.offset].price}원</h5>
       <div className="shop1Button">
         <button
           className="registerShopBtn"

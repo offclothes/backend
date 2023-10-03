@@ -1,57 +1,57 @@
+import { useParams } from "react-router-dom";
 import "../css/goods.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function Goods1() {
+function Goods1(props) {
+  const [img, setImg] = useState("");
+  //파라미터의 값이랑 itemSeq값이랑 같으면 보여주기
+  let { id } = useParams();
+  let data = props.goodsData.mainItemDtoList.content.find(
+    (x) => x.item_seq == id
+  );
+
+  useEffect(() => {
+    axios
+      .post(`/display/${data?.uploadFile.storeFileName}`)
+      .then((res) => {
+        setImg(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="GoodsMain">
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div className="shopTitle">MARITHÉ</div>
+        <div className="shopTitle">{props.goodsData.shopName}</div>
       </div>
-      <div className="goodsTitle">VINTAGE COLLEGE LOGO SWEAT TEE</div>
-      <div style={{ display: "flex" }}>
+      <div className="goodsTitle">{data.itemTitle}</div>
+      <div height="100%" style={{ display: "flex" }}>
         <div className="imageInformation">
-          <div>
-            <img
-              src={"https://codingapple1.github.io/shop/shoes1.jpg"}
-              width="100%"
-              height="70%"
-            />
-            <div>
+          <div className="asd">
+            <img src={img} width="100%" height="70%" />
+            <div className="subImg">
               <img
-                src={"https://codingapple1.github.io/shop/shoes1.jpg"}
-                width="30%"
+                className="subImage1"
+                src={img}
+                width="200px"
+                height="150px"
               />
-              <img
-                src={"https://codingapple1.github.io/shop/shoes1.jpg"}
-                width="30%"
-              />
-              <img
-                src={"https://codingapple1.github.io/shop/shoes1.jpg"}
-                width="30%"
-              />
+              <img src={img} width="200px" height="150px" />
             </div>
           </div>
         </div>
-        <div style={{ width: "45%", marginLeft: "20px" }}>
+        <div className="information">
           <div className="goodsInformation">상품 정보</div>
-          <p>
-            마리떼프랑소와저버는 BACHEELLERIE와
-            <br />
-            FRANÇOIS GIRBAUD가 만든 브랜드로, 1972년 프랑스에서
-            <br />
-            론칭한 이후, 스톤워싱, 배기진, 엔지니어드진 등을
-            <br />
-            세계 최초로 개발하였습니다. 데님을 기반으로 독창적이고
-            <br />
-            실험적인 컬렉션을 계속하여 선보이며, 40여 년간 <br />
-            그 명성을 이어오고 있는 브랜드입니다. 1990년대 국내에서 <br />
-            큰 인기를 끌었던 데님 브랜드를 현대식 라이프 <br />
-            스타일에 맞추어 캐쥬얼하게 재해석하여 2019년 새로운
-            <br /> ‘마리떼프랑소와저버’를 선보입니다.
-          </p>
-          <p className="priceInformation">가격 정보</p>
-          <p className="price">100,000원</p>
-          <div className="updateBtnSection">
-            <button className="updateBtn">수정</button>
+          <div style={{ height: "100%" }}>{data.content}</div>
+          <div className="priceData">
+            <p className="priceInformation">가격 정보</p>
+            <p className="price">{data.price}원</p>
+            <div className="updateBtnSection">
+              <button className="updateBtn">수정</button>
+            </div>
           </div>
         </div>
       </div>
