@@ -29,6 +29,7 @@ function Shop1() {
     axios
       .get("/shop/shopDetail", { params: { id: 4, page: 0 } })
       .then((res) => {
+        console.log(res);
         setMyShop(res.data.myshop);
         setImageFile(res.data.mainItemDtoList.content);
       })

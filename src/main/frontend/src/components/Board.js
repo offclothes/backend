@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { changeLogOutStatus } from "./store";
 import { increase } from "./store";
 import { useSelector } from "react-redux";
+import Pagination from "./Pagination";
 
 function Board() {
   let navigate = useNavigate();
@@ -15,6 +16,10 @@ function Board() {
   let [myPost, setMyPost] = useState([]);
   let [visible, setVisible] = useState(false);
   let [clickedBtn, setClickedBtn] = useState("전체");
+
+  const [limit, setLimit] = useState(2);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
 
   let loginStatus = useSelector((state) => {
     return state;
@@ -195,9 +200,10 @@ function Board() {
         </div>
       </div>
       <div>
-        {data.map(function (a, i) {
+        {data?.slice(offset, offset + limit).map(function (a, i) {
           return (
             <BoardList
+              offset={offset + i}
               visible={visible}
               key={data[i]?.eventId}
               i={i}
@@ -205,24 +211,32 @@ function Board() {
             />
           );
         })}
+        <div className="paging">
+          <Pagination
+            total={data?.length}
+            limit={2}
+            page={page}
+            setPage={setPage}
+          />
+        </div>
       </div>
     </div>
   );
 }
 
-function BoardList({ i, data, visible }) {
+function BoardList({ i, data, visible, offset }) {
   let navigate = useNavigate();
 
   return (
     <div>
       <div className="boardList">
         <div className="boardDetail">
-          <p className="boardName">{data[i]?.shopName}</p>
-          <p>제목 : {data[i]?.title}</p>
-          <p>주소 : {data[i]?.address.address1}</p>
-          <p>내용 : {data[i]?.content}</p>
+          <p className="boardName">{data[offset]?.shopName}</p>
+          <p>제목 : {data[offset]?.title}</p>
+          <p>주소 : {data[offset]?.address.address1}</p>
+          <p>내용 : {data[offset]?.content}</p>
           <p>
-            기간 : {data[i]?.startDay} ~ {data[i]?.endDay}
+            기간 : {data[offset]?.startDay} ~ {data[offset]?.endDay}
           </p>
           <div
             className="boardGoShop"

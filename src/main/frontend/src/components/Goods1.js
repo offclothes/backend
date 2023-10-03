@@ -4,7 +4,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Goods1(props) {
-  const [img, setImg] = useState("");
+  const [thumb, setThumb] = useState("");
+  const [sub1, setSub1] = useState("");
+  const [sub2, setSub2] = useState("");
+
+  const [thumbImg, setThumbImg] = useState("");
+  const [subImg1, setSubImg1] = useState("");
+  const [subImg2, setSubImg2] = useState("");
+
   //파라미터의 값이랑 itemSeq값이랑 같으면 보여주기
   let { id } = useParams();
   let data = props.goodsData.mainItemDtoList.content.find(
@@ -13,14 +20,33 @@ function Goods1(props) {
 
   useEffect(() => {
     axios
-      .post(`/display/${data?.uploadFile.storeFileName}`)
+      .get(`/shop/item/${id}`)
       .then((res) => {
-        setImg(res.data);
+        setThumb(res.data.thumb);
+        setSub1(res.data.imageFiles[0]);
+        setSub2(res.data.imageFiles[1]);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    Promise.all([
+      axios.post(`/display/${thumb?.storeFileName}`),
+      axios.post(`/display/${sub1?.storeFileName}`),
+      axios.post(`/display/${sub2?.storeFileName}`),
+    ])
+      .then((res) => {
+        console.log(res);
+        setThumbImg(res[0].data);
+        setSubImg1(res[1].data);
+        setSubImg2(res[2].data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [thumb, sub1, sub2]);
 
   return (
     <div className="GoodsMain">
@@ -31,15 +57,15 @@ function Goods1(props) {
       <div height="100%" style={{ display: "flex" }}>
         <div className="imageInformation">
           <div className="asd">
-            <img src={img} width="100%" height="70%" />
+            <img src={thumbImg} width="100%" height="70%" />
             <div className="subImg">
               <img
                 className="subImage1"
-                src={img}
+                src={subImg1}
                 width="200px"
                 height="150px"
               />
-              <img src={img} width="200px" height="150px" />
+              <img src={subImg2} width="200px" height="150px" />
             </div>
           </div>
         </div>

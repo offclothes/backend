@@ -1,7 +1,5 @@
 package com.app.oc.dto.shoppingmal;
 
-
-
 import com.app.oc.dto.fileDto.UploadFile;
 import com.app.oc.entity.Item;
 import com.app.oc.entity.SellState;
@@ -15,12 +13,12 @@ import java.util.List;
  */
 @Data
 @NoArgsConstructor
-//@JsonInclude(JsonInclude.Include.NON_NULL)
+// @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DetailItemDto {
     private Long item_seq;
     private Boolean myshop;
 
-    //private MemberRole role;
+    // private MemberRole role;
     private SellState sellState;
     private String itemTitle;
     private String shopName;

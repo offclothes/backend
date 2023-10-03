@@ -110,7 +110,7 @@ function RegisterBoard() {
                     content: shopDetail,
                   })
                   .then(() => {
-                    navigate("/eventAll");
+                    navigate("/event/all");
                   })
                   .catch((err) => console.log(err));
               }}
