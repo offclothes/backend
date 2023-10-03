@@ -132,7 +132,7 @@ function Category({ categoryBtn, setCategoryBtn }) {
             }
             onClick={() => {
               setCategoryBtn("게시판");
-              navigate("/eventAll");
+              navigate("/event/all");
             }}
           >
             할인/폐점
@@ -157,7 +157,12 @@ function Category({ categoryBtn, setCategoryBtn }) {
           <Route path="male" element={<Gender />} />
           <Route path="both" element={<Gender />} />
         </Route>
-        <Route path="/eventAll" element={<Board />} />
+        <Route path="/event">
+          <Route path="all" element={<Board />} />
+          <Route path="discount" element={<Board />} />
+          <Route path="close" element={<Board />} />
+          <Route path="myBoard" element={<Board />} />
+        </Route>
         <Route
           path="/shop/item/:id"
           element={<Goods1 goodsData={goodsData} />}

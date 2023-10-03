@@ -22,13 +22,16 @@ function Board() {
 
   let myBoard = () => {
     let error = () => {
-      navigate("/eventAll");
+      navigate("/event/all");
       alert("판매자가 아닙니다.");
     };
     setClickedBtn("내 글");
     setVisible(true);
+    navigate("/event/myBoard");
     axios.get("/eventAll").then((res) => {
-      console.log(res.data);
+      let copy = [...allData];
+      copy.push(...res.data.list);
+      setData(copy);
       res.data.seller === true ? (
         <MyPostBoard
           data={data}
@@ -48,14 +51,26 @@ function Board() {
   };
 
   useEffect(() => {
-    axios
-      .get("/eventAll")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.get("/eventAll", { params: { state: "A" } }).then((res) => {
+      let copy = [...allData];
+      console.log(res);
+      copy.push(...res.data.list);
+      setData(copy);
+      return (
+        <div>
+          {data.map(function (a, i) {
+            return (
+              <BoardList
+                visible={visible}
+                key={data[i]?.eventId}
+                i={i}
+                data={data}
+              />
+            );
+          })}
+        </div>
+      );
+    });
   }, []);
 
   return (
@@ -79,7 +94,7 @@ function Board() {
                     return (
                       <BoardList
                         visible={visible}
-                        key={data[i].eventId}
+                        key={data[i]?.eventId}
                         i={i}
                         data={data}
                       />
@@ -99,6 +114,7 @@ function Board() {
           onClick={() => {
             setClickedBtn("할인");
             setVisible(false);
+            navigate("/event/discount");
             axios.get("/eventAll", { params: { state: "D" } }).then((res) => {
               let copy = [...discountData];
               copy.push(...res.data.list);
@@ -109,7 +125,7 @@ function Board() {
                     return (
                       <BoardList
                         visible={visible}
-                        key={data[i].eventId}
+                        key={data[i]?.eventId}
                         i={i}
                         data={data}
                       />
@@ -129,6 +145,7 @@ function Board() {
           onClick={() => {
             setClickedBtn("폐점");
             setVisible(false);
+            navigate("/event/close");
             axios
               .get("/eventAll", { params: { state: "C" } })
               .then((res) => {
@@ -142,7 +159,7 @@ function Board() {
                       return (
                         <BoardList
                           visible={visible}
-                          key={data[i].eventId}
+                          key={data[i]?.eventId}
                           i={i}
                           data={data}
                         />
@@ -182,7 +199,7 @@ function Board() {
           return (
             <BoardList
               visible={visible}
-              key={data[i].eventId}
+              key={data[i]?.eventId}
               i={i}
               data={data}
             />
@@ -200,12 +217,12 @@ function BoardList({ i, data, visible }) {
     <div>
       <div className="boardList">
         <div className="boardDetail">
-          <p className="boardName">{data[i].shopName}</p>
-          <p>제목 : {data[i].title}</p>
-          <p>주소 : {data[i].address.address1}</p>
-          <p>내용 : {data[i].content}</p>
+          <p className="boardName">{data[i]?.shopName}</p>
+          <p>제목 : {data[i]?.title}</p>
+          <p>주소 : {data[i]?.address.address1}</p>
+          <p>내용 : {data[i]?.content}</p>
           <p>
-            기간 : {data[i].startDay} ~ {data[i].endDay}
+            기간 : {data[i]?.startDay} ~ {data[i]?.endDay}
           </p>
           <div
             className="boardGoShop"
@@ -235,7 +252,7 @@ function MyBoardButton({ data, i }) {
       .delete(`/myPost/${data[i].eventId}`)
       .then(() => {
         alert("삭제되었습니다.");
-        navigate("/eventAll");
+        navigate("/event/all");
       })
       .catch((err) => {
         console.log(err);
@@ -266,6 +283,7 @@ function MyPostBoard({ myPost, setData, visible, data }) {
     axios.get("/myPost").then((res) => {
       let copy = [...myPost];
       copy.push(...res.data);
+      console.log(res.data);
       setData(copy);
     }, []);
 
@@ -277,7 +295,7 @@ function MyPostBoard({ myPost, setData, visible, data }) {
               <div>
                 <BoardList
                   visible={visible}
-                  key={data[i].eventId}
+                  key={data[i]?.eventId}
                   i={i}
                   data={data}
                 />
