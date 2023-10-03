@@ -27,50 +27,29 @@ public class SearchController {
      */
     @GetMapping("/category/male")
     public ItemPageDto getItemPagingByMale(@RequestBody SearchRequestDto requestDto,
-<<<<<<< HEAD
             @PageableDefault(size = 6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         String fullAddress = requestDto.getTop().trim() + " " + requestDto.getMid().trim() + " "
                 + requestDto.getDong().trim();
         System.out.println("fullAddress = " + fullAddress);
         return searchService.getItemByCategory(fullAddress, 0, pageable);
-=======
-                                           @PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        String fullAddress = requestDto.getTop().trim()+" " + requestDto.getMid().trim() + " " + requestDto.getDong().trim();
-        System.out.println("fullAddress = " + fullAddress);
-        return searchService.getItemByCategory(fullAddress, 0,pageable);
->>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
     }
 
     @GetMapping("/category/female")
     public ItemPageDto getItemPagingByFemale(@RequestBody SearchRequestDto requestDto,
-<<<<<<< HEAD
             @PageableDefault(size = 6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         String fullAddress = requestDto.getTop().trim() + " " + requestDto.getMid().trim() + " "
                 + requestDto.getDong().trim();
         System.out.println("fullAddress = " + fullAddress);
         return searchService.getItemByCategory(fullAddress, 1, pageable);
-=======
-                                             @PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        String fullAddress = requestDto.getTop().trim()+" " + requestDto.getMid().trim() + " " + requestDto.getDong().trim();
-        System.out.println("fullAddress = " + fullAddress);
-        return searchService.getItemByCategory(fullAddress,1, pageable);
->>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
     }
 
     @GetMapping("/category/both")
     public ItemPageDto getItemPagingByBoth(@RequestBody SearchRequestDto requestDto,
-<<<<<<< HEAD
             @PageableDefault(size = 6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         String fullAddress = requestDto.getTop().trim() + " " + requestDto.getMid().trim() + " "
                 + requestDto.getDong().trim();
         System.out.println("fullAddress = " + fullAddress);
         return searchService.getItemByCategory(fullAddress, 2, pageable);
-=======
-                                           @PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        String fullAddress = requestDto.getTop().trim()+" " + requestDto.getMid().trim() + " " + requestDto.getDong().trim();
-        System.out.println("fullAddress = " + fullAddress);
-        return searchService.getItemByCategory(fullAddress,2,pageable);
->>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
     }
 
     /*
@@ -78,21 +57,11 @@ public class SearchController {
      */
     @GetMapping("/research")
     public ItemPageDto getItemPagingByKeyword(@RequestBody SearchRequestDto requestDto,
-<<<<<<< HEAD
             @PathVariable String keyword,
             @PageableDefault(size = 6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         String fullAddress = requestDto.getTop().trim() + " " + requestDto.getMid().trim() + " "
                 + requestDto.getDong().trim();
         System.out.println("fullAddress = " + fullAddress);
-=======
-                                              @PathVariable String keyword,
-                                              @PageableDefault(size =6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        String fullAddress = requestDto.getTop().trim()+" " + requestDto.getMid().trim() + " " + requestDto.getDong().trim();
-        System.out.println("fullAddress = " + fullAddress);
-
-        return searchService.getItemByKeyword(fullAddress, keyword, pageable);
-    }
->>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
 
         return searchService.getItemByKeyword(fullAddress, keyword, pageable);
     }
