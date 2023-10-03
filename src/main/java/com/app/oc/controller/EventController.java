@@ -1,6 +1,5 @@
 package com.app.oc.controller;
 
-
 import com.app.oc.dto.event.EventRequestDto;
 import com.app.oc.dto.event.MyPostResponseDto;
 import com.app.oc.dto.event.ResponseeventDto;
@@ -28,37 +27,36 @@ public class EventController {
 
     private final EventService eventService;
 
-
     /**
      * 게시글 등록
      */
 
     @PostMapping("/event/post")
-    public ResponseEntity<Event> savePost(@RequestBody EventRequestDto requestDto, @CookieValue String id) throws IOException {
+    public ResponseEntity<Event> savePost(@RequestBody EventRequestDto requestDto, @CookieValue String id)
+            throws IOException {
         System.out.println("cookie id = " + id);
         Event saved = eventService.savePost(requestDto, id);
-        return (saved != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(saved) :
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return (saved != null) ? ResponseEntity.status(HttpStatus.OK).body(saved)
+                : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-
 
     /**
      * 원하는 게시글 수정
+     * 
      * @param
      */
 
     @PatchMapping("/event/update/{id}")
-    public ResponseEntity<Event> updatePost(@PathVariable Long id, @RequestBody EventRequestDto requestDto) throws IOException {
+    public ResponseEntity<Event> updatePost(@PathVariable Long id, @RequestBody EventRequestDto requestDto)
+            throws IOException {
         Event updated = eventService.updatePost(id, requestDto);
-        return (updated != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(updated) :
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return (updated != null) ? ResponseEntity.status(HttpStatus.OK).body(updated)
+                : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-
 
     /**
      * 게시글 수정 시 원래 데이터 가져오기
+     * 
      * @param id
      * @return
      */
@@ -67,14 +65,14 @@ public class EventController {
         return ResponseEntity.ok(eventService.getPost(id));
     }
 
-
     /**
      * 폐점 전체 조회
      * 전체, 폐점 ,할인 A D C
      * buyer 구분
      */
     @GetMapping("/eventAll")
-    public ResponseeventDto responseeventDto(@RequestParam(defaultValue = "A",required = false, name = "state") String state , HttpSession session) {
+    public ResponseeventDto responseeventDto(
+            @RequestParam(defaultValue = "A", required = false, name = "state") String state, HttpSession session) {
 
         return eventService.listAll(state, session);
     }
@@ -84,13 +82,13 @@ public class EventController {
      *
      * @param id
      * @return
-     * postman에서 테스트 할 때는 nullPoint 에러 떴지만,
-     * 임의의 링크에서 세션을 생성하고 테스트 하면 값이 잘 넘어옴
+     *         postman에서 테스트 할 때는 nullPoint 에러 떴지만,
+     *         임의의 링크에서 세션을 생성하고 테스트 하면 값이 잘 넘어옴
      */
     @GetMapping("/myPost")
-    public ResponseEntity<List<MyPostResponseDto>> getMyEventList(@CookieValue String id) throws IOException{
+    public ResponseEntity<List<MyPostResponseDto>> getMyEventList(@CookieValue String id) throws IOException {
 
-        if(id == null) {
+        if (id == null) {
             throw new IOException("로그인 해주세요");
         }
 
@@ -111,7 +109,7 @@ public class EventController {
         cookie.setDomain("localhost");
         cookie.setPath("/");
         cookie.setHttpOnly(true);
-        cookie.setMaxAge(10*60);
+        cookie.setMaxAge(10 * 60);
         response.addCookie(cookie);
 
         return ResponseEntity.ok(session.getAttribute("id").toString());
@@ -119,20 +117,22 @@ public class EventController {
 
     /**
      * 원하는 게시글 삭제
+     * 
      * @param eventId 글 번호
      */
     @DeleteMapping("/myPost/{eventId}")
-    public void deletePost(@PathVariable @RequestParam(name = "eventId") Long eventId) {
+    public void deletePost(@PathVariable Long eventId) {
         eventService.deletePost(eventId);
     }
 
     /**
      * 매장 정보가 없을 때 발생하는 오류 처리
+     * 
      * @param e
      * @return
      */
     @ExceptionHandler(value = NoResultException.class)
-    public ResponseEntity<ErrorResult> joinExceptionHandler(NoResultException e){
+    public ResponseEntity<ErrorResult> joinExceptionHandler(NoResultException e) {
 
         ErrorResult response = new ErrorResult();
         response.setCode(HttpStatus.NOT_FOUND.value());
@@ -144,11 +144,12 @@ public class EventController {
 
     /**
      * 로그인 하지 않고 내가 작성한 게시글 조회 화면으로 들어온 경우 오류 메시지 출력
+     * 
      * @param e
      * @return
      */
     @ExceptionHandler(value = NullPointerException.class)
-    public ResponseEntity<ErrorResult> joinExceptionHandler(NullPointerException e){
+    public ResponseEntity<ErrorResult> joinExceptionHandler(NullPointerException e) {
 
         ErrorResult response = new ErrorResult();
         response.setCode(HttpStatus.BAD_REQUEST.value());

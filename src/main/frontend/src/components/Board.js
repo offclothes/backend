@@ -28,6 +28,7 @@ function Board() {
     setClickedBtn("내 글");
     setVisible(true);
     axios.get("/eventAll").then((res) => {
+      console.log(res.data);
       res.data.seller === true ? (
         <MyPostBoard
           data={data}
@@ -47,9 +48,14 @@ function Board() {
   };
 
   useEffect(() => {
-    axios.get("/eventAll").then((res) => {
-      console.log(res);
-    });
+    axios
+      .get("/eventAll")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
@@ -64,6 +70,7 @@ function Board() {
             setVisible(false);
             axios.get("/eventAll", { params: { state: "A" } }).then((res) => {
               let copy = [...allData];
+              console.log(res);
               copy.push(...res.data.list);
               setData(copy);
               return (
@@ -193,9 +200,9 @@ function BoardList({ i, data, visible }) {
     <div>
       <div className="boardList">
         <div className="boardDetail">
-          <p className="boardName">{data[i].shoppingMal.shopName}</p>
+          <p className="boardName">{data[i].shopName}</p>
           <p>제목 : {data[i].title}</p>
-          <p>주소 : {data[i].shoppingMal.address.address1}</p>
+          <p>주소 : {data[i].address.address1}</p>
           <p>내용 : {data[i].content}</p>
           <p>
             기간 : {data[i].startDay} ~ {data[i].endDay}
@@ -224,10 +231,15 @@ function MyBoardButton({ data, i }) {
   let { eventId } = useParams();
 
   const deleteBtn = () => {
-    axios.delete(`/myPost/${data[i].eventId}`).then(() => {
-      alert("삭제되었습니다.");
-      navigate("/eventAll");
-    });
+    axios
+      .delete(`/myPost/${data[i].eventId}`)
+      .then(() => {
+        alert("삭제되었습니다.");
+        navigate("/eventAll");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
