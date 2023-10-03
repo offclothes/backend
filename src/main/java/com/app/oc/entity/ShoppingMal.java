@@ -25,7 +25,7 @@ public class ShoppingMal {
     private String content;
     private String email;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "memberId")
     private Member member;
     private String shopName;
@@ -37,7 +37,8 @@ public class ShoppingMal {
     @OneToMany(mappedBy = "itemId")
     private List<Item> items = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "eventId")
+    private List<Event> events = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     private Approval approval;
 

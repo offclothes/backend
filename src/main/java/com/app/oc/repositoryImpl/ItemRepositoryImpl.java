@@ -1,11 +1,8 @@
 package com.app.oc.repositoryImpl;
 
-
 import com.app.oc.dto.paging.SearchDto;
 import com.app.oc.dto.shoppingmal.MainItemDto;
 import com.app.oc.entity.Item;
-import com.app.oc.entity.QShoppingMal;
-import com.app.oc.entity.ShoppingMal;
 import com.app.oc.repository.ItemRepositoryCustom;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -19,7 +16,6 @@ import java.util.List;
 import static com.app.oc.entity.QItem.item;
 import static com.app.oc.entity.QShoppingMal.shoppingMal;
 
-
 public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
@@ -27,7 +23,6 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     public ItemRepositoryImpl(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
     }
-
 
     /**
      * 쇼핑몰 페이징
@@ -43,12 +38,11 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
         JPAQuery<Item> total = getTotal(id);
 
-        return PageableExecutionUtils.getPage(shopItems,pageable, total::fetchCount);
-
+        return PageableExecutionUtils.getPage(shopItems, pageable, total::fetchCount);
 
     }
 
-    //List로 가져오기 - 원하는 페이지수까지
+    // List로 가져오기 - 원하는 페이지수까지
     @Override
     public List<Item> getcontent(Long id, Pageable pageable) {
         return queryFactory.selectFrom(item)
@@ -57,13 +51,10 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .limit(pageable.getPageSize()).fetch();
     }
 
-
-
-    //count
+    // count
     private JPAQuery<Item> getTotal(Long id) {
         return queryFactory.selectFrom(item).where(item.shoppingMal.shopId.eq(id));
     }
-
 
     @Override
     public List<Item> searchByCategoryAll(Integer category, Pageable pageable) {
@@ -81,7 +72,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .limit(pageable.getPageSize()).fetch();
     }
 
-    //카테고리 리스트
+    // 카테고리 리스트
     @Override
     public List<Item> searchByCategory(String fullAddress, Integer category, Pageable pageable) {
         return queryFactory.selectFrom(item)
@@ -92,6 +83,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .limit(pageable.getPageSize()).fetch();
     }
 
+    // 키워드 리스트
     @Override
     public List<Item> searchByKeyword(String fullAddress, String keyword, Pageable pageable) {
         return queryFactory.selectFrom(item)
@@ -101,7 +93,6 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize()).fetch();
     }
-
 
     @Override
     public Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable) {
@@ -117,7 +108,5 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
         return PageableExecutionUtils.getPage(items, pageable, total::fetchCount);
 
     }
-
-
 
 }

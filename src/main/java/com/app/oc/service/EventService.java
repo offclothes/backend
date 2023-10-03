@@ -9,7 +9,6 @@ import com.app.oc.entity.*;
 import com.app.oc.repository.EventRepository;
 import com.app.oc.repository.MemberRepository;
 import com.app.oc.repository.ShopRepository;
-import com.app.oc.repositoryImpl.EventRepositoryImpl;
 import com.app.oc.repositoryImpl.ShopRepositoryImpl;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
