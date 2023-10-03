@@ -17,6 +17,10 @@ import java.util.List;
 
 import static com.app.oc.entity.QItem.item;
 import static com.app.oc.entity.QShoppingMal.shoppingMal;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
 
 public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
@@ -53,11 +57,21 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .limit(pageable.getPageSize()).fetch();
     }
 
+<<<<<<< HEAD
     // count
+=======
+
+
+    //count
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
     private JPAQuery<Item> getTotal(Long id) {
         return queryFactory.selectFrom(item).where(item.shoppingMal.shopId.eq(id));
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
     @Override
     public List<Item> searchByCategoryAll(Integer category, Pageable pageable) {
         return queryFactory.selectFrom(item)
@@ -74,7 +88,11 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .limit(pageable.getPageSize()).fetch();
     }
 
+<<<<<<< HEAD
     // 카테고리 리스트
+=======
+    //카테고리 리스트
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
     @Override
     public List<Item> searchByCategory(String fullAddress, Integer category, Pageable pageable) {
         return queryFactory.selectFrom(item)
@@ -85,7 +103,11 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .limit(pageable.getPageSize()).fetch();
     }
 
+<<<<<<< HEAD
     // 키워드 리스트
+=======
+    //키워드 리스트
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
     @Override
     public List<Item> searchByKeyword(String fullAddress, String keyword, Pageable pageable) {
         return queryFactory.selectFrom(item)
@@ -95,6 +117,10 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize()).fetch();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
 
     @Override
     public Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable) {

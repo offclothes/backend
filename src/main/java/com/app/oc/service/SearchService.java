@@ -38,17 +38,29 @@ public class SearchService {
         ItemPageDto itemPageDto = new ItemPageDto();
 
         if (fullAddress == null) {
+<<<<<<< HEAD
             // item List
+=======
+            //item List
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
             List<Item> getItems = itemRepository.searchByCategoryAll(category, pageable);
             List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
             List<File> fileIn = fileRepository.findFileIn(Ids);
+<<<<<<< HEAD
             List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file))
                     .collect(Collectors.toList());
 
             Map<Long, UploadFile> fileMap = new HashMap<>();
             for (UploadFile uploadFile : uploadFiles) {
                 if (uploadFile.getStoreFileName().startsWith("s_")) { // 썸네일
+=======
+            List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+            Map<Long, UploadFile> fileMap = new HashMap<>();
+            for (UploadFile uploadFile : uploadFiles) {
+                if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
                     fileMap.put(uploadFile.getItem_seq(), uploadFile);
                 }
             }
@@ -57,25 +69,46 @@ public class SearchService {
 
             Page<SearchDto> searchDtos = itemRepository.pagingByCa(items, category, pageable);
 
+<<<<<<< HEAD
             int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
             int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber() + 3);
 
             // 페이지 정보
+=======
+
+            int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+            int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
+
+
+            //페이지 정보
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
             itemPageDto.setItems(searchDtos);
             itemPageDto.setStartPage(startPage);
             itemPageDto.setEndPage(endPage);
         } else {
+<<<<<<< HEAD
             // item List
+=======
+            //item List
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
             List<Item> getItems = itemRepository.searchByCategory(fullAddress, category, pageable);
             List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
             List<File> fileIn = fileRepository.findFileIn(Ids);
+<<<<<<< HEAD
             List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file))
                     .collect(Collectors.toList());
 
             Map<Long, UploadFile> fileMap = new HashMap<>();
             for (UploadFile uploadFile : uploadFiles) {
                 if (uploadFile.getStoreFileName().startsWith("s_")) { // 썸네일
+=======
+            List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+            Map<Long, UploadFile> fileMap = new HashMap<>();
+            for (UploadFile uploadFile : uploadFiles) {
+                if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
                     fileMap.put(uploadFile.getItem_seq(), uploadFile);
                 }
             }
@@ -84,10 +117,19 @@ public class SearchService {
 
             Page<SearchDto> searchDtos = itemRepository.pagingByCa(items, category, pageable);
 
+<<<<<<< HEAD
             int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
             int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber() + 3);
 
             // 페이지 정보
+=======
+
+            int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+            int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber() + 3);
+
+
+            //페이지 정보
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
             itemPageDto.setItems(searchDtos);
             itemPageDto.setStartPage(startPage);
             itemPageDto.setEndPage(endPage);
@@ -96,6 +138,7 @@ public class SearchService {
         return itemPageDto;
     }
 
+<<<<<<< HEAD
     // 키워드
     @Transactional
     public ItemPageDto getItemByKeyword(String fullAddress, String keyword, Pageable pageable) {
@@ -103,16 +146,33 @@ public class SearchService {
 
         if (fullAddress == null) {
             // item List
+=======
+    //키워드
+    @Transactional
+    public ItemPageDto getItemByKeyword(String fullAddress, String keyword, Pageable pageable){
+        ItemPageDto itemPageDto = new ItemPageDto();
+
+        if(fullAddress == null){
+            //item List
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
             List<Item> getItems = itemRepository.searchByKeywordAll(keyword, pageable);
             List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
             List<File> fileIn = fileRepository.findFileIn(Ids);
+<<<<<<< HEAD
             List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file))
                     .collect(Collectors.toList());
 
             Map<Long, UploadFile> fileMap = new HashMap<>();
             for (UploadFile uploadFile : uploadFiles) {
                 if (uploadFile.getStoreFileName().startsWith("s_")) { // 썸네일
+=======
+            List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+            Map<Long, UploadFile> fileMap = new HashMap<>();
+            for (UploadFile uploadFile : uploadFiles) {
+                if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
                     fileMap.put(uploadFile.getItem_seq(), uploadFile);
                 }
             }
@@ -120,6 +180,7 @@ public class SearchService {
             List<SearchDto> items = getsearchDtos(getItems, fileMap);
             Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, keyword, pageable);
 
+<<<<<<< HEAD
             int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
             int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber() + 3);
 
@@ -150,11 +211,51 @@ public class SearchService {
             int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber() + 3);
 
             // 페이지 정보
+=======
+
+            int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+            int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
+
+
+            //페이지 정보
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
             itemPageDto.setItems(searchDtos);
             itemPageDto.setStartPage(startPage);
             itemPageDto.setEndPage(endPage);
         }
+<<<<<<< HEAD
         // item List
+=======
+        else{
+            //item List
+            List<Item> getItems = itemRepository.searchByKeyword(fullAddress, keyword, pageable);
+            List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
+
+            List<File> fileIn = fileRepository.findFileIn(Ids);
+            List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+            Map<Long, UploadFile> fileMap = new HashMap<>();
+            for (UploadFile uploadFile : uploadFiles) {
+                if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+                    fileMap.put(uploadFile.getItem_seq(), uploadFile);
+                }
+            }
+
+            List<SearchDto> items = getsearchDtos(getItems, fileMap);
+            Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, keyword, pageable);
+
+
+            int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
+            int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
+
+
+            //페이지 정보
+            itemPageDto.setItems(searchDtos);
+            itemPageDto.setStartPage(startPage);
+            itemPageDto.setEndPage(endPage);
+        }
+        //item List
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
         return itemPageDto;
     }
 

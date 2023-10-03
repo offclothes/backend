@@ -15,6 +15,7 @@ public interface ItemRepositoryCustom {
     List<Item> getcontent(Long id, Pageable pageable);
 
     List<Item> searchByCategoryAll(Integer category, Pageable pageable);
+<<<<<<< HEAD
 
     List<Item> searchByKeywordAll(String keyword, Pageable pageable);
 
@@ -22,6 +23,12 @@ public interface ItemRepositoryCustom {
 
     List<Item> searchByKeyword(String fullAddress, String keyword, Pageable pageable);
 
+=======
+    List<Item> searchByKeywordAll(String keyword, Pageable pageable);
+
+    List<Item> searchByCategory(String fullAddress, Integer category, Pageable pageable);
+    List<Item> searchByKeyword(String fullAddress,String keyword, Pageable pageable);
+>>>>>>> ee3999c36f27b4fa8734a995341c2e7a310d739b
     Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable);
 
     Page<SearchDto> pagingByKe(List<SearchDto> items, String keword, Pageable pageable);
