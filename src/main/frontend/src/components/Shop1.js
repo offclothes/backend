@@ -267,6 +267,7 @@ function Shop1() {
                   imageFile={imageFile}
                   myShop={myShop}
                   imgSrc={imgSrc}
+                  item_seq={imageFile[i].item_seq}
                 ></ShopGoods>
               );
             })}
@@ -294,6 +295,9 @@ function ShopGoods(props) {
         src={props.imgSrc[props.offset]}
         width="280px"
         height="250px"
+        onClick={() => {
+          navigate(`/shop/item/${props.item_seq}`);
+        }}
       ></img>
       <h4>{props.imageFile[props.offset].itemTitle}</h4>
       <h5>{props.imageFile[props.offset].price}원</h5>

@@ -46,3 +46,7 @@
     border: 1px solid #000000;
     border-radius: 7px;
 }
+
+.image {
+    cursor: pointer;
+}
