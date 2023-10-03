@@ -200,7 +200,14 @@ function MyPage() {
             >
               저장
             </button>
-            <button className="cancelButton">취소</button>
+            <button
+              className="cancelButton"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              취소
+            </button>
           </td>
         </tr>
       </table>
