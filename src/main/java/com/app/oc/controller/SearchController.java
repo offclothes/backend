@@ -56,11 +56,11 @@ public class SearchController {
      * 키워드 검색
      */
     @GetMapping("/research")
-    public ItemPageDto getItemPagingByKeyword(@RequestBody SearchRequestDto requestDto,
+    public ItemPageDto getItemPagingByKeyword(String top, String mid, String dong,
             @PathVariable String keyword,
             @PageableDefault(size = 6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        String fullAddress = requestDto.getTop().trim() + " " + requestDto.getMid().trim() + " "
-                + requestDto.getDong().trim();
+        String fullAddress = top.trim() + " " + mid.trim() + " "
+                + dong.trim();
         System.out.println("fullAddress = " + fullAddress);
 
         return searchService.getItemByKeyword(fullAddress, keyword, pageable);

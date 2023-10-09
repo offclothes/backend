@@ -38,6 +38,12 @@ export default function LocationSearch() {
       });
   }, [middleSelect]);
 
+  // const onClickSearch = () => {
+  //   axios.get("/research").then((res) => {
+  //     console.log(res);
+  //   });
+  // };
+
   return (
     <div className="wrapper">
       <div className="wrapper__top">
@@ -75,7 +81,12 @@ export default function LocationSearch() {
             })}
         </Form.Select>
         <br />
-        <Form.Select size="lg">
+        <Form.Select
+          size="lg"
+          onChange={(e) => {
+            setDongSelect(e.target.value);
+          }}
+        >
           <option>동 선택</option>
           {dong &&
             dong.map((a, i) => {
@@ -88,7 +99,19 @@ export default function LocationSearch() {
         </Form.Select>
       </div>
       <div>
-        <button>검색</button>
+        <button
+          onClick={() => {
+            axios
+              .get("/research", {
+                params: { top: topSelect, mid: middleSelect, dong: dongSelect },
+              })
+              .then((res) => {
+                console.log(res);
+              });
+          }}
+        >
+          검색
+        </button>
       </div>
     </div>
   );
