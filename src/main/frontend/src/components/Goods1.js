@@ -39,14 +39,14 @@ function Goods1(props) {
     ])
       .then((res) => {
         console.log(res);
-        setThumbImg(res[0].data);
-        setSubImg1(res[1].data);
-        setSubImg2(res[2].data);
+        setThumbImg(res[0]?.data);
+        setSubImg1(res[1]?.data);
+        setSubImg2(res[2]?.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [thumb, sub1, sub2]);
+  }, [sub2]);
 
   return (
     <div className="GoodsMain">

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Shop1Data from "../Shop1Data";
 import "../css/shop1.css";
 import axios from "axios";
 import Pagination from "./Pagination";
@@ -16,6 +15,9 @@ function Shop1() {
   const [myShop, setMyShop] = useState("");
   const [imageFile, setImageFile] = useState([]);
   const [imgSrc, setImageSrc] = useState([]);
+  const [shopAddress1, setShopAddress1] = useState("");
+  const [shopAddress2, setShopAddress2] = useState("");
+  const [shopTel, setShopTel] = useState("");
 
   const [limit, setLimit] = useState(4);
   const [page, setPage] = useState(1);
@@ -31,6 +33,9 @@ function Shop1() {
       .then((res) => {
         console.log(res);
         setMyShop(res.data.myshop);
+        setShopAddress1(res.data.address.address1);
+        setShopAddress2(res.data.address.address2);
+        setShopTel(res.data.shopTel);
         setImageFile(res.data.mainItemDtoList.content);
       })
       .catch((err) => {
@@ -93,7 +98,7 @@ function Shop1() {
   }, [imageFile]);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", flexDirection: "row" }}>
       <div style={{ width: "600px" }}>
         <p
           style={{
@@ -203,28 +208,30 @@ function Shop1() {
             borderRadius: "20px",
           }}
         ></div>
-        <p
-          style={{
-            textAlign: "center",
-            marginLeft: "90px",
-            fontWeight: "400",
-            fontSize: "16px",
-            fontHeight: "29px",
-          }}
-        >
-          주소: 서울특별시 강남구 역삼동 817-31 10층
-        </p>
-        <p
-          style={{
-            textAlign: "center",
-            marginLeft: "90px",
-            fontWeight: "400",
-            fontSize: "16px",
-            fontHeight: "29px",
-          }}
-        >
-          전화번호: 010-1234-5678
-        </p>
+        <div width="100%">
+          <p
+            style={{
+              textAlign: "center",
+              marginLeft: "60px",
+              fontWeight: "400",
+              fontSize: "16px",
+              fontHeight: "29px",
+            }}
+          >
+            주소: {shopAddress1} {shopAddress2}
+          </p>
+          <p
+            style={{
+              textAlign: "center",
+              marginLeft: "60px",
+              fontWeight: "400",
+              fontSize: "16px",
+              fontHeight: "29px",
+            }}
+          >
+            전화번호: {shopTel}
+          </p>
+        </div>
       </div>
       <div style={{ marginLeft: "100px" }}>
         <div
@@ -287,7 +294,6 @@ function Shop1() {
 
 function ShopGoods(props) {
   let navigate = useNavigate();
-  let [btn, setBtn] = useState("seller"); //setBtn에 서버에서 가져온 정보(판매자, 일반회원)를 btn에 넣어서 판매자면 버튼이 보이고 일반회원이면 버튼이 안보이도록
 
   return (
     <Col md="4" style={{ textAlign: "start" }}>
