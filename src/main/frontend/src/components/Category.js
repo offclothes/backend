@@ -168,7 +168,7 @@ function Category({ categoryBtn, setCategoryBtn }) {
           element={<Goods1 goodsData={goodsData} />}
         />
         <Route path="/registerGoods" element={<RegisterGoods />} />
-        <Route path="/changeGoods" element={<ChangeGoods />} />
+        <Route path="/changeGoods/:id" element={<ChangeGoods />} />
         <Route path="/myPage" element={<MyPage />} />
         <Route path="/registerBoard" element={<RegisterBoard />} />
         <Route path="/changeBoard/:eventId" element={<ChangeBoard />} />

@@ -303,7 +303,7 @@ function ShopGoods(props) {
         width="280px"
         height="250px"
         onClick={() => {
-          navigate(`/shop/item/${props.item_seq}`);
+          navigate(`/shop/item/${props.offset + 1}`);
         }}
       ></img>
       <h4>{props.imageFile[props.offset].itemTitle}</h4>
@@ -312,7 +312,7 @@ function ShopGoods(props) {
         <button
           className="registerShopBtn"
           onClick={() => {
-            navigate("/changeGoods");
+            navigate(`/changeGoods/${props.item_seq}`);
           }}
           style={{ visibility: props.myShop === true ? "visible" : "hidden" }}
         >

@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Goods1(props) {
+  const [price, setPrice] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
   const [thumb, setThumb] = useState("");
   const [sub1, setSub1] = useState("");
   const [sub2, setSub2] = useState("");
@@ -22,6 +26,10 @@ function Goods1(props) {
     axios
       .get(`/shop/item/${id}`)
       .then((res) => {
+        console.log(res);
+        setPrice(res.data.price);
+        setTitle(res.data.itemTitle);
+        setContent(res.data.content);
         setThumb(res.data.thumb);
         setSub1(res.data.imageFiles[0]);
         setSub2(res.data.imageFiles[1]);
@@ -53,7 +61,7 @@ function Goods1(props) {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div className="shopTitle">{props.goodsData.shopName}</div>
       </div>
-      <div className="goodsTitle">{data.itemTitle}</div>
+      <div className="goodsTitle">{title}</div>
       <div height="100%" style={{ display: "flex" }}>
         <div className="imageInformation">
           <div className="asd">
@@ -71,10 +79,10 @@ function Goods1(props) {
         </div>
         <div className="information">
           <div className="goodsInformation">상품 정보</div>
-          <div style={{ height: "100%" }}>{data.content}</div>
+          <div style={{ height: "100%" }}>{content}</div>
           <div className="priceData">
             <p className="priceInformation">가격 정보</p>
-            <p className="price">{data.price}원</p>
+            <p className="price">{price}원</p>
             <div className="updateBtnSection">
               <button className="updateBtn">수정</button>
             </div>
