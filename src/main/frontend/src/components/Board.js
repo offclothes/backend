@@ -16,6 +16,7 @@ function Board() {
   let [myPost, setMyPost] = useState([]);
   let [visible, setVisible] = useState(false);
   let [clickedBtn, setClickedBtn] = useState("전체");
+  let [render, setRender] = useState(0);
 
   const [limit, setLimit] = useState(2);
   const [page, setPage] = useState(1);
@@ -76,7 +77,7 @@ function Board() {
         </div>
       );
     });
-  }, []);
+  }, [render]);
 
   return (
     <div className="boardMain">
@@ -208,6 +209,8 @@ function Board() {
               key={data[i]?.eventId}
               i={i}
               data={data}
+              render={render}
+              setRender={setRender}
             />
           );
         })}
@@ -224,7 +227,7 @@ function Board() {
   );
 }
 
-function BoardList({ i, data, visible, offset }) {
+function BoardList({ i, data, visible, offset, render, setRender }) {
   let navigate = useNavigate();
 
   return (
@@ -250,14 +253,21 @@ function BoardList({ i, data, visible, offset }) {
         <div style={{ marginBottom: "10px" }}></div>
       </div>
       <div>
-        {visible && <MyBoardButton data={data} i={i} />}
+        {visible && (
+          <MyBoardButton
+            data={data}
+            i={i}
+            render={render}
+            setRender={setRender}
+          />
+        )}
         <hr />
       </div>
     </div>
   );
 }
 
-function MyBoardButton({ data, i }) {
+function MyBoardButton({ data, i, render, setRender }) {
   let navigate = useNavigate();
   let { eventId } = useParams();
 
@@ -266,7 +276,7 @@ function MyBoardButton({ data, i }) {
       .delete(`/myPost/${data[i].eventId}`)
       .then(() => {
         alert("삭제되었습니다.");
-        navigate("/event/all");
+        setRender(render + 1);
       })
       .catch((err) => {
         console.log(err);

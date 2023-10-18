@@ -93,7 +93,7 @@ function MyPage() {
             <td>
               <input
                 className="myPageInput"
-                placeholder={myData[0]?.nickname}
+                defaultValue={myData[0]?.nickname}
                 onChange={(e) => {
                   setNickName(e.target.value);
                 }}
@@ -107,7 +107,7 @@ function MyPage() {
             <td>
               <input
                 className="myPageInput"
-                placeholder={myData[0]?.phoneNm}
+                defaultValue={myData[0]?.phoneNm}
                 onChange={(e) => {
                   setPhone(e.target.value);
                 }}
@@ -142,7 +142,7 @@ function MyPage() {
             <td>
               <input
                 className="myPageAddress"
-                placeholder={myData[0]?.address.address2}
+                defaultValue={myData[0]?.address.address2}
                 onChange={(e) => {
                   setAddress2(e.target.value);
                 }}
@@ -170,7 +170,7 @@ function MyPage() {
             <td>
               <input
                 className="myPageInput"
-                placeholder={myData[0]?.length}
+                defaultValue={myData[0]?.length}
                 onChange={(e) => {
                   setHeight(e.target.value);
                 }}
@@ -182,7 +182,7 @@ function MyPage() {
             <td>
               <input
                 className="myPageInput"
-                placeholder={myData[0]?.weight}
+                defaultValue={myData[0]?.weight}
                 onChange={(e) => {
                   setWeight(e.target.value);
                 }}

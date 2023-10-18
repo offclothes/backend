@@ -18,6 +18,7 @@ function Shop1() {
   const [shopAddress1, setShopAddress1] = useState("");
   const [shopAddress2, setShopAddress2] = useState("");
   const [shopTel, setShopTel] = useState("");
+  const [render, setRender] = useState(0);
 
   const [limit, setLimit] = useState(4);
   const [page, setPage] = useState(1);
@@ -78,7 +79,7 @@ function Shop1() {
       "        </div>" +
       "    </div>" +
       "</div>";
-  }, []);
+  }, [render]);
 
   let copy = [];
 
@@ -149,7 +150,7 @@ function Shop1() {
               fontWeight: "700",
               fontSize: "20px",
             }}
-            placeholder="  마리떼프랑소와저버는 BACHEELLERIE와 FRANÇOIS GIRBAUD가 만든
+            defaultValue="  마리떼프랑소와저버는 BACHEELLERIE와 FRANÇOIS GIRBAUD가 만든
           브랜드로, 1972년 프랑스에서 론칭한 이후, 스톤워싱, 배기진,
           엔지니어드진 등을 세계 최초로 개발하였습니다."
           />
@@ -276,6 +277,8 @@ function Shop1() {
                   myShop={myShop}
                   imgSrc={imgSrc}
                   item_seq={imageFile[i].item_seq}
+                  render={render}
+                  setRender={setRender}
                 ></ShopGoods>
               );
             })}
@@ -295,6 +298,20 @@ function Shop1() {
 function ShopGoods(props) {
   let navigate = useNavigate();
 
+  const onClickDelete = () => {
+    axios
+      .delete(`/shop/item/${props.imageFile[props.offset].item_seq}`)
+      .then((res) => {
+        console.log(res);
+        alert(res.data.message);
+        props.setRender(props.render + 1);
+        console.log(props.render);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Col md="4" style={{ textAlign: "start" }}>
       <img
@@ -303,7 +320,7 @@ function ShopGoods(props) {
         width="280px"
         height="250px"
         onClick={() => {
-          navigate(`/shop/item/${props.offset + 1}`);
+          navigate(`/shop/item/${props.imageFile[props.offset].item_seq}`);
         }}
       ></img>
       <h4>{props.imageFile[props.offset].itemTitle}</h4>
@@ -321,6 +338,7 @@ function ShopGoods(props) {
         <button
           style={{ visibility: props.myShop === true ? "visible" : "hidden" }}
           className="cancelShopBtn"
+          onClick={onClickDelete}
         >
           삭제
         </button>
