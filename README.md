@@ -24,6 +24,11 @@
 
 ### → 매장의 오프라인 매출 증가 유도
 
+## 1-6 시스템 구조도
+![image](https://github.com/offclothes/backend/assets/70208747/5d7f1793-f6b7-4137-b51e-6d9464565e3f)
+
+## 1-7 swagger 
+
 
 # 2. 팀 소개
 ### 팀명: OC
