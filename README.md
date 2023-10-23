@@ -28,6 +28,15 @@
 ![image](https://github.com/offclothes/backend/assets/70208747/5d7f1793-f6b7-4137-b51e-6d9464565e3f)
 
 ## 1-7 swagger 
+![image](https://github.com/offclothes/backend/assets/70208747/3ab11c10-bc59-4083-a7ad-82c9beab8cf8)
+![image](https://github.com/offclothes/backend/assets/70208747/87d8a302-ad0d-4c06-930f-9b77624965e6)
+![image](https://github.com/offclothes/backend/assets/70208747/7cdedb1f-6f54-4b67-a25e-31bc3ea45b28)
+![image](https://github.com/offclothes/backend/assets/70208747/94d118a7-bcfd-400b-986c-319cf5072872)
+![image](https://github.com/offclothes/backend/assets/70208747/c8a2a821-fcec-40c2-b6fa-
+f4abf26926a0)
+
+## 1-8 erd설계
+![image](https://github.com/offclothes/backend/assets/70208747/2d4bfae7-2cec-4a13-a4d7-351c1c2d0e4e)
 
 
 # 2. 팀 소개
