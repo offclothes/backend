@@ -120,11 +120,21 @@ function Main() {
   const [shopName, setShopName] = useState("");
   const [addr1, setAddr1] = useState("");
   const [addr2, setAddr2] = useState("");
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
+
+  const location = function () {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLat(position?.coords.latitude);
+      setLng(position?.coords.longitude);
+    });
+  };
 
   const markerPosition = {
     lat: 37.3807323,
     lng: 126.9284,
   };
+
   useEffect(() => {
     axios
       .get("/map")
@@ -137,7 +147,8 @@ function Main() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    location();
+  }, [lng]);
 
   return (
     <div
@@ -181,8 +192,8 @@ function Main() {
         id={`map`}
         center={{
           // 지도의 중심좌표
-          lat: 37.3807323,
-          lng: 126.9284,
+          lat: lat,
+          lng: lng,
         }}
         style={{
           // 지도의 크기
