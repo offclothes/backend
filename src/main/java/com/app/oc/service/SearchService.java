@@ -1,7 +1,6 @@
 package com.app.oc.service;
 
 import com.app.oc.dto.fileDto.UploadFile;
-import com.app.oc.dto.paging.ItemPageDto;
 import com.app.oc.dto.paging.SearchDto;
 import com.app.oc.entity.File;
 import com.app.oc.entity.Item;
@@ -15,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,11 +36,11 @@ public class SearchService {
 
     //카테고리
     @Transactional
-    public ItemPageDto getItemByCategory(String fullAddress, Integer category, Pageable pageable) {
-        ItemPageDto itemPageDto = new ItemPageDto();
+    public Page<SearchDto> getItemByCategory(Integer category, Pageable pageable) {
+        SearchDto itemPageDto = new SearchDto();
 
             //item List
-        List<Item> getItems = itemRepository.searchByCategory(fullAddress, category, pageable);
+        List<Item> getItems = itemRepository.searchByCategoryAll(category, pageable);
         List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
         List<File> fileIn = fileRepository.findFileIn(Ids);
@@ -57,26 +57,14 @@ public class SearchService {
 
         Page<SearchDto> searchDtos = itemRepository.pagingByCa(items, category, pageable);
 
-
-        int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
-        int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber() + 3);
-
-
-            //페이지 정보
-        itemPageDto.setItems(searchDtos);
-        itemPageDto.setStartPage(startPage);
-        itemPageDto.setEndPage(endPage);
-
-        return itemPageDto;
+        return searchDtos;
     }
 
     //키워드
     @Transactional
-    public ItemPageDto getItemByKeyword(String fullAddress, String keyword, Pageable pageable){
-        ItemPageDto itemPageDto = new ItemPageDto();
-
-            //item List
-        List<Item> getItems = itemRepository.searchByKeyword(fullAddress, keyword, pageable);
+    public Page<SearchDto> getItemByKeyword( String keyword, Pageable pageable){
+       //item List
+        List<Item> getItems = itemRepository.searchByKeywordAll(keyword, pageable);
         List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
         List<File> fileIn = fileRepository.findFileIn(Ids);
@@ -90,20 +78,33 @@ public class SearchService {
         }
 
         List<SearchDto> items = getsearchDtos(getItems, fileMap);
+
         Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, keyword, pageable);
 
+        return searchDtos;
+    }
 
-        int startPage = Math.max(1, searchDtos.getPageable().getPageNumber() - 1);
-        int endPage = Math.min(searchDtos.getTotalPages(), searchDtos.getPageable().getPageNumber()+3);
-
-
-        //페이지 정보
-        itemPageDto.setItems(searchDtos);
-        itemPageDto.setStartPage(startPage);
-        itemPageDto.setEndPage(endPage);
-
+    @Transactional
+    public Page<SearchDto> getItemByRegion(String fullAddress, Pageable pageable)throws IOException {
         //item List
-        return itemPageDto;
+        List<Item> getItems = itemRepository.searchByRegionAll(fullAddress, pageable);
+        List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
+
+        List<File> fileIn = fileRepository.findFileIn(Ids);
+        List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
+        Map<Long, UploadFile> fileMap = new HashMap<>();
+        for (UploadFile uploadFile : uploadFiles) {
+            if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+                fileMap.put(uploadFile.getItem_seq(), uploadFile);
+            }
+        }
+
+        List<SearchDto> items = getsearchDtos(getItems, fileMap);
+
+        Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, fullAddress, pageable);
+
+        return searchDtos;
     }
 
     private static List<SearchDto> getsearchDtos(List<Item> getItems, Map<Long, UploadFile> fileMap) {

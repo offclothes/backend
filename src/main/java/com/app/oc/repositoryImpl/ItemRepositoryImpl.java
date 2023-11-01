@@ -74,7 +74,41 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .limit(pageable.getPageSize()).fetch();
     }
 
-    // 카테고리 리스트
+    @Override
+    public List<Item> searchByRegionAll(String fulladdress, Pageable pageable) {
+        return queryFactory.selectFrom(item)
+                .where(item.shoppingMal.address.address1.contains(fulladdress))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize()).fetch();
+    }
+
+
+    @Override
+    public Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable) {
+        JPAQuery<Item> total = queryFactory.selectFrom(item).where(item.category.eq(category));
+
+        return PageableExecutionUtils.getPage(items, pageable, total::fetchCount);
+    }
+
+    @Override
+    public Page<SearchDto> pagingByKe(List<SearchDto> items, String keyword, Pageable pageable) {
+        JPAQuery<Item> total = queryFactory.selectFrom(item).where(item.itemTitle.contains(keyword));
+
+        return PageableExecutionUtils.getPage(items, pageable, total::fetchCount);
+
+    }
+
+    @Override
+    public Page<SearchDto> pagingByRe(List<SearchDto> items, String fulladdress, Pageable pageable) {
+        JPAQuery<Item> total = queryFactory.selectFrom(item).where(item.shoppingMal.address.address1.contains(fulladdress));
+
+        return PageableExecutionUtils.getPage(items, pageable, total::fetchCount);
+    }
+
+
+}
+
+/*
     @Override
     public List<Item> searchByCategory(String fullAddress, Integer category, Pageable pageable) {
         return queryFactory.selectFrom(item)
@@ -94,20 +128,4 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize()).fetch();
     }
-
-    @Override
-    public Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable) {
-        JPAQuery<Item> total = queryFactory.selectFrom(item).where(item.category.eq(category));
-
-        return PageableExecutionUtils.getPage(items, pageable, total::fetchCount);
-    }
-
-    @Override
-    public Page<SearchDto> pagingByKe(List<SearchDto> items, String keyword, Pageable pageable) {
-        JPAQuery<Item> total = queryFactory.selectFrom(item).where(item.itemTitle.contains(keyword));
-
-        return PageableExecutionUtils.getPage(items, pageable, total::fetchCount);
-
-    }
-
-}
+    */
