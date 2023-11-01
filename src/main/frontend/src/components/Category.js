@@ -40,7 +40,7 @@ function Category({ categoryBtn, setCategoryBtn }) {
 
   useEffect(() => {
     axios
-      .get("/shop/shopDetail", { params: { id: 4, page: 0 } })
+      .get("/shop/shopDetail", { params: { id: 1, page: 0 } })
       .then((res) => {
         setGoodsData(res.data);
         // setAll(res)
@@ -64,7 +64,7 @@ function Category({ categoryBtn, setCategoryBtn }) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [gender]);
 
   let copy = [];
 

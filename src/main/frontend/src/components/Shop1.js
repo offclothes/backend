@@ -30,7 +30,7 @@ function Shop1() {
 
   useEffect(() => {
     axios
-      .get("/shop/shopDetail", { params: { id: 4, page: 0 } })
+      .get("/shop/shopDetail", { params: { id: 1, page: 0 } })
       .then((res) => {
         console.log(res);
         setMyShop(res.data.myshop);
@@ -234,7 +234,7 @@ function Shop1() {
           </p>
         </div>
       </div>
-      <div style={{ marginLeft: "100px" }}>
+      <div style={{ marginLeft: "100px", marginRight: "150px" }}>
         <div
           style={{
             display: "flex",
@@ -282,14 +282,23 @@ function Shop1() {
                 ></ShopGoods>
               );
             })}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginTop: "-100px",
+              }}
+            >
+              <Pagination
+                total={imageFile?.length}
+                limit={4}
+                page={page}
+                setPage={setPage}
+              />
+            </div>
           </Row>
         </Container>
-        <Pagination
-          total={imageFile?.length}
-          limit={4}
-          page={page}
-          setPage={setPage}
-        />
       </div>
     </div>
   );
@@ -313,7 +322,7 @@ function ShopGoods(props) {
   };
 
   return (
-    <Col md="4" style={{ textAlign: "start" }}>
+    <Col md="5" style={{ textAlign: "start" }}>
       <img
         className="image"
         src={props.imgSrc[props.offset]}

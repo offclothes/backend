@@ -82,7 +82,6 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .limit(pageable.getPageSize()).fetch();
     }
 
-
     @Override
     public Page<SearchDto> pagingByCa(List<SearchDto> items, Integer category, Pageable pageable) {
         JPAQuery<Item> total = queryFactory.selectFrom(item).where(item.category.eq(category));
@@ -100,32 +99,34 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
     @Override
     public Page<SearchDto> pagingByRe(List<SearchDto> items, String fulladdress, Pageable pageable) {
-        JPAQuery<Item> total = queryFactory.selectFrom(item).where(item.shoppingMal.address.address1.contains(fulladdress));
+        JPAQuery<Item> total = queryFactory.selectFrom(item)
+                .where(item.shoppingMal.address.address1.contains(fulladdress));
 
         return PageableExecutionUtils.getPage(items, pageable, total::fetchCount);
     }
 
-
 }
 
 /*
-    @Override
-    public List<Item> searchByCategory(String fullAddress, Integer category, Pageable pageable) {
-        return queryFactory.selectFrom(item)
-                .join(item.shoppingMal, shoppingMal)
-                .where(item.category.eq(category)
-                        .and(shoppingMal.address.address1.contains(fullAddress)))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize()).fetch();
-    }
-
-    @Override
-    public List<Item> searchByKeyword(String fullAddress, String keyword, Pageable pageable) {
-        return queryFactory.selectFrom(item)
-                .join(item.shoppingMal, shoppingMal)
-                .where(item.itemTitle.contains(keyword)
-                        .and(shoppingMal.address.address1.contains(fullAddress)))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize()).fetch();
-    }
-    */
+ * @Override
+ * public List<Item> searchByCategory(String fullAddress, Integer category,
+ * Pageable pageable) {
+ * return queryFactory.selectFrom(item)
+ * .join(item.shoppingMal, shoppingMal)
+ * .where(item.category.eq(category)
+ * .and(shoppingMal.address.address1.contains(fullAddress)))
+ * .offset(pageable.getOffset())
+ * .limit(pageable.getPageSize()).fetch();
+ * }
+ * 
+ * @Override
+ * public List<Item> searchByKeyword(String fullAddress, String keyword,
+ * Pageable pageable) {
+ * return queryFactory.selectFrom(item)
+ * .join(item.shoppingMal, shoppingMal)
+ * .where(item.itemTitle.contains(keyword)
+ * .and(shoppingMal.address.address1.contains(fullAddress)))
+ * .offset(pageable.getOffset())
+ * .limit(pageable.getPageSize()).fetch();
+ * }
+ */

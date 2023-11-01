@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../css/goods.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -7,6 +7,7 @@ function Goods1(props) {
   const [price, setPrice] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [myShop, setMyShop] = useState("");
 
   const [thumb, setThumb] = useState("");
   const [sub1, setSub1] = useState("");
@@ -21,6 +22,7 @@ function Goods1(props) {
   let data = props.goodsData.mainItemDtoList.content.find(
     (x) => x.item_seq == id
   );
+  let navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -33,6 +35,7 @@ function Goods1(props) {
         setThumb(res.data.thumb);
         setSub1(res.data.imageFiles[0]);
         setSub2(res.data.imageFiles[1]);
+        setMyShop(res.data.myshop);
       })
       .catch((err) => {
         console.log(err);
@@ -55,6 +58,10 @@ function Goods1(props) {
         console.log(err);
       });
   }, [sub2]);
+
+  const goToChangeGoods = () => {
+    navigate(`/changeGoods/${id}`);
+  };
 
   return (
     <div className="GoodsMain">
@@ -84,7 +91,13 @@ function Goods1(props) {
             <p className="priceInformation">가격 정보</p>
             <p className="price">{price}원</p>
             <div className="updateBtnSection">
-              <button className="updateBtn">수정</button>
+              <button
+                className="updateBtn"
+                onClick={goToChangeGoods}
+                style={{ visibility: myShop === true ? "visible" : "hidden" }}
+              >
+                수정
+              </button>
             </div>
           </div>
         </div>

@@ -32,14 +32,12 @@ public class SearchService {
 
     private final RegionRepository regionRepository;
 
-
-
-    //카테고리
+    // 카테고리
     @Transactional
     public Page<SearchDto> getItemByCategory(Integer category, Pageable pageable) {
         SearchDto itemPageDto = new SearchDto();
 
-            //item List
+        // item List
         List<Item> getItems = itemRepository.searchByCategoryAll(category, pageable);
         List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
@@ -48,7 +46,7 @@ public class SearchService {
 
         Map<Long, UploadFile> fileMap = new HashMap<>();
         for (UploadFile uploadFile : uploadFiles) {
-            if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+            if (uploadFile.getStoreFileName().startsWith("s_")) { // 썸네일
                 fileMap.put(uploadFile.getItem_seq(), uploadFile);
             }
         }
@@ -60,10 +58,10 @@ public class SearchService {
         return searchDtos;
     }
 
-    //키워드
+    // 키워드
     @Transactional
-    public Page<SearchDto> getItemByKeyword( String keyword, Pageable pageable){
-       //item List
+    public Page<SearchDto> getItemByKeyword(String keyword, Pageable pageable) {
+        // item List
         List<Item> getItems = itemRepository.searchByKeywordAll(keyword, pageable);
         List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
@@ -72,7 +70,7 @@ public class SearchService {
 
         Map<Long, UploadFile> fileMap = new HashMap<>();
         for (UploadFile uploadFile : uploadFiles) {
-            if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+            if (uploadFile.getStoreFileName().startsWith("s_")) { // 썸네일
                 fileMap.put(uploadFile.getItem_seq(), uploadFile);
             }
         }
@@ -85,8 +83,8 @@ public class SearchService {
     }
 
     @Transactional
-    public Page<SearchDto> getItemByRegion(String fullAddress, Pageable pageable)throws IOException {
-        //item List
+    public Page<SearchDto> getItemByRegion(String fullAddress, Pageable pageable) throws IOException {
+        // item List
         List<Item> getItems = itemRepository.searchByRegionAll(fullAddress, pageable);
         List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
@@ -95,7 +93,7 @@ public class SearchService {
 
         Map<Long, UploadFile> fileMap = new HashMap<>();
         for (UploadFile uploadFile : uploadFiles) {
-            if (uploadFile.getStoreFileName().startsWith("s_")) { //썸네일
+            if (uploadFile.getStoreFileName().startsWith("s_")) { // 썸네일
                 fileMap.put(uploadFile.getItem_seq(), uploadFile);
             }
         }
@@ -119,12 +117,10 @@ public class SearchService {
         return regionRepository.findTop();
     }
 
-
     public List<String> findMiddleRegion(String topRegion) {
         System.out.println("topRegion = " + topRegion);
         return regionRepository.findMid(topRegion);
     }
-
 
     public List<String> findDongRegion(String topRegion, String middleRegion) {
         return regionRepository.findDong(topRegion, middleRegion);

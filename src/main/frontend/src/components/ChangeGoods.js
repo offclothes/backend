@@ -65,7 +65,7 @@ function RegisterGoods() {
   }, [sub2]);
 
   const formData = new FormData();
-  formData.append("shopId", 4);
+  formData.append("shopId", 1);
   formData.append("category", category);
 
   formData.append("itemTitle", name);

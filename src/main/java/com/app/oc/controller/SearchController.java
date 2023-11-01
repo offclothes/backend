@@ -25,35 +25,35 @@ public class SearchController {
      * 카테고리 검색
      */
     @GetMapping("/category/male")
-    public Page<SearchDto> getItemPagingByMale(@RequestParam(defaultValue = "0",required = false) int page){
-        page = page == 0? page : page - 1;
+    public Page<SearchDto> getItemPagingByMale(@RequestParam(defaultValue = "0", required = false) int page) {
+        page = page == 0 ? page : page - 1;
         PageRequest pageRequest = PageRequest.of(page, 15, Sort.by(Sort.Direction.DESC, "itemId"));
         return searchService.getItemByCategory(0, pageRequest);
     }
 
     @GetMapping("/category/female")
-    public Page<SearchDto> getItemPagingByFemale(@RequestParam(defaultValue = "0",required = false) int page) {
-        page = page == 0? page : page - 1;
+    public Page<SearchDto> getItemPagingByFemale(@RequestParam(defaultValue = "0", required = false) int page) {
+        page = page == 0 ? page : page - 1;
         PageRequest pageRequest = PageRequest.of(page, 15, Sort.by(Sort.Direction.DESC, "itemId"));
         return searchService.getItemByCategory(1, pageRequest);
     }
 
     @GetMapping("/category/both")
-    public Page<SearchDto> getItemPagingByBoth(@RequestParam(defaultValue = "0",required = false) int page) {
-        page = page == 0? page : page - 1;
+    public Page<SearchDto> getItemPagingByBoth(@RequestParam(defaultValue = "0", required = false) int page) {
+        page = page == 0 ? page : page - 1;
         PageRequest pageRequest = PageRequest.of(page, 15, Sort.by(Sort.Direction.DESC, "itemId"));
         return searchService.getItemByCategory(2, pageRequest);
-}
+    }
 
     /*
      * 키워드 검색
      */
     @GetMapping("/research")
-    public Page<SearchDto> getItemByRegion(@RequestBody SearchRequestDto requestDto,
-                                                  @RequestParam(defaultValue = "0",required = false) int page) throws IOException {
+    public Page<SearchDto> getItemByRegion(SearchRequestDto requestDto,
+            @RequestParam(defaultValue = "0", required = false) int page) throws IOException {
         String fullAddress = requestDto.getTop().trim() + " " + requestDto.getMid().trim() + " "
                 + requestDto.getDong().trim();
-        page = page == 0? page : page - 1;
+        page = page == 0 ? page : page - 1;
         PageRequest pageRequest = PageRequest.of(page, 15, Sort.by(Sort.Direction.DESC, "itemId"));
         System.out.println("fullAddress = " + fullAddress);
 
@@ -62,8 +62,8 @@ public class SearchController {
 
     @GetMapping("/keyword")
     public Page<SearchDto> getItemPagingByKeyword(@PathVariable String keyword,
-                                                 @RequestParam(defaultValue = "0",required = false) int page) throws IOException {
-        page = page == 0? page : page - 1;
+            @RequestParam(defaultValue = "0", required = false) int page) throws IOException {
+        page = page == 0 ? page : page - 1;
         PageRequest pageRequest = PageRequest.of(page, 15, Sort.by(Sort.Direction.DESC, "itemId"));
 
         return searchService.getItemByKeyword(keyword, pageRequest);

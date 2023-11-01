@@ -1,16 +1,17 @@
 .goodsRegisterButton {
     width: 150px;
     height: 30px;
-    margin: 53px 160px 0 0;
+    margin: 53px 60px 0 0;
     border-radius: 8px;
     background-color: #C9E79D;
     font-size: 15px;
     border: 1px solid black;
 }
 
-/* .shop1Button {
-    margin-left: 30%;
-} */
+.shop1Button {
+    width: 270px;
+    /* margin-left: 30%; */
+}
 
 .registerShopBtn {
     width: 80px;
@@ -28,8 +29,8 @@
 }
 
 .container {
-    gap: 50px;
-    justify-content: s;
+    gap: 100px;
+    /* justify-content: space-around; */
 }
 
 .shopInformation {

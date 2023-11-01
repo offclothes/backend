@@ -20,10 +20,20 @@ const { kakao } = window;
 function NavBar() {
   let navigate = useNavigate();
   let [categoryBtn, setCategoryBtn] = useState("");
+  let [searchWord, setSearchWord] = useState("");
   let loginStatus = useSelector((state) => {
     return state;
   });
   let dispatch = useDispatch();
+
+  const onClickSearch = () => {
+    axios
+      .get("/keyword", { params: { keyword: searchWord } })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div>
@@ -53,8 +63,13 @@ function NavBar() {
                 className="me-2"
                 aria-label="Search"
                 style={{ width: "50em", marginLeft: "10em" }}
+                onChange={(e) => {
+                  setSearchWord(e.target.value);
+                }}
               />
-              <Button variant="outline-success">Search</Button>
+              <Button variant="outline-success" onClick={onClickSearch}>
+                Search
+              </Button>
             </Form>
           </Navbar.Collapse>
           {loginStatus.loginStatus === "true" ? (
@@ -139,7 +154,7 @@ function Main() {
     axios
       .get("/map")
       .then((res) => {
-        console.log(res.data[0]);
+        // console.log(res.data[0]);
         setShopName(res.data[0].shopName);
         setAddr1(res.data[0].addr1);
         setAddr2(res.data[0].addr2);
