@@ -50,7 +50,8 @@ public class ShopService {
      * @return
      */
     @Transactional
-    public SellerResponseDto sellerSignup(SellerRequestDto requestDto) {
+    public SellerResponseDto sellerSignup(SellerRequestDto requestDto, HttpSession session) {
+        requestDto.setMemberId((String) session.getAttribute("id"));
 
         Map<String, Object> result = emailUtil.sendEmail(requestDto.getEmail());
 

@@ -7,19 +7,24 @@ import { Form, Divider, Input, InputNumber, Button, Upload } from "antd";
 
 function EntryStore() {
   let navigate = useNavigate();
-  let [userName, setUserName] = useState("");
-  let [storeName, setStoreName] = useState();
+  let [myData, setMyData] = useState([]);
+  let [memberId, setMemberId] = useState("");
+  let [shopName, setShopName] = useState();
+  let [address, setAddress] = useState("");
+  let [address1, setAddress1] = useState("");
+  let [address2, setAddress2] = useState("");
   let [storeNum, setStoreNum] = useState("");
   let [storeLocation, setStoreLocation] = useState("");
   let [file, setFile] = useState([]);
   let [contract, setContract] = useState("");
   let [thumb, setThumb] = useState([]);
   let [email, setEmail] = useState("");
+  let [shopTel, setShopTel] = useState("");
 
   const formData = new FormData();
 
-  formData.append("userName", userName);
-  formData.append("storeName", storeName);
+  formData.append("userName", memberId);
+  formData.append("storeName", shopName);
   formData.append("storeNum", storeNum);
   formData.append("storeLocation", storeLocation);
 
@@ -34,12 +39,20 @@ function EntryStore() {
 
   function EntryRegisterButton() {
     axios
-      .post("/shop/saveItem", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
+      .post("/shop/signup", {
+        memberId: null,
+        shopName: shopName === undefined ? myData[0].password : shopName,
+        shopTel: shopTel === undefined ? myData[0]?.phoneNm : shopTel,
+        address: {
+          postcode: myData[0]?.address.postcode,
+          address1: myData[0]?.address.address1,
+          address2:
+            address2 === undefined ? myData[0]?.address.address2 : address2,
         },
+        email: email === undefined ? myData[0]?.email : email,
       })
       .then(() => {
+        alert("입점 신청 성공");
         navigate("/shop");
       })
       .catch((err) => {
@@ -76,7 +89,7 @@ function EntryStore() {
               <input
                 className="input"
                 onChange={(e) => {
-                  setUserName(e.target.value);
+                  setShopName(e.target.value);
                 }}
               ></input>
             </th>
@@ -90,7 +103,7 @@ function EntryStore() {
               <input
                 className="input"
                 onChange={(e) => {
-                  setStoreName(e.target.value);
+                  setShopName(e.target.value);
                 }}
               ></input>
             </th>
@@ -103,7 +116,7 @@ function EntryStore() {
               <input
                 className="input"
                 onChange={(e) => {
-                  setStoreNum(e.target.value);
+                  setShopTel(e.target.value);
                 }}
               ></input>
             </th>

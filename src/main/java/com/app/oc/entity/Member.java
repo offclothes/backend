@@ -73,7 +73,7 @@ public class Member {
         this.gender = member.getGender();
         this.length = member.getLength();
         this.weight = member.getWeight();
-        this.role = MemberRole.SELLER;
+        this.role = MemberRole.BUYER;
     }
 
     /**

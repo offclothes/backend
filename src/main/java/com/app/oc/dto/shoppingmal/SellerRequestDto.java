@@ -20,17 +20,15 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SellerRequestDto {
 
-    @JsonProperty("member_id")
-    @NotNull
+    
+  
     private String memberId;
-    @JsonProperty("shop_name")
     @NotNull
     private String shopName;
     @NotNull
     private Address address;
     @NotNull
     private String email;
-    @JsonProperty("shop_tel")
     @NotNull
     private String shopTel;
 

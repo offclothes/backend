@@ -18,7 +18,7 @@ public class EmailUtilImpl implements EmailUtil {
 
     @Override
     public Map<String, Object> sendEmail(String toAddress) {
-
+        System.out.println("toAddress = " + toAddress);
         Map<String, Object> result = new HashMap<String, Object>();
         MimeMessage message = sender.createMimeMessage();
 

@@ -6,6 +6,8 @@ import com.app.oc.dto.ResultDto;
 import com.app.oc.dto.shoppingmal.*;
 import com.app.oc.service.ItemService;
 import com.app.oc.service.ShopService;
+
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
@@ -32,8 +34,8 @@ public class ShoppingMalController {
      * @return
      */
     @PostMapping("/signup")
-    public ResponseEntity<SellerResponseDto> sellerJoin(@RequestBody SellerRequestDto requestDto) {
-        ResponseEntity<SellerResponseDto> responseDto = ResponseEntity.ok(shopService.sellerSignup(requestDto));
+    public ResponseEntity<SellerResponseDto> sellerJoin(@RequestBody SellerRequestDto requestDto, HttpSession session) {
+        ResponseEntity<SellerResponseDto> responseDto = ResponseEntity.ok(shopService.sellerSignup(requestDto, session));
         return responseDto;
     }
 

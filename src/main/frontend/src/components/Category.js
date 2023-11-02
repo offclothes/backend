@@ -150,6 +150,17 @@ function Category({ categoryBtn, setCategoryBtn }) {
           >
             지역별 상품 보기
           </Nav.Link>
+          <Nav.Link
+            className={
+              categoryBtn === "입점" ? "genderClicked" : "goToLocation"
+            }
+            onClick={() => {
+              setCategoryBtn("입점");
+              navigate("/entry");
+            }}
+          >
+            입점 신청
+          </Nav.Link>
         </Nav>
       </Navbar>
 
