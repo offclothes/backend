@@ -17,6 +17,8 @@ import Board from "../components/Board";
 import axios from "axios";
 import LocationSearch from "./LocationSearch";
 import Pagination from "./Pagination";
+import EntryStore from "./EntryStore";
+import SingUp from "./SingUp";
 
 function Category({ categoryBtn, setCategoryBtn }) {
   const [gender, setGender] = useState("");
@@ -173,6 +175,13 @@ function Category({ categoryBtn, setCategoryBtn }) {
         <Route path="/registerBoard" element={<RegisterBoard />} />
         <Route path="/changeBoard/:eventId" element={<ChangeBoard />} />
         <Route path="/LocationSearch" element={<LocationSearch />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/entry" element={<EntryStore />} />
+      </Routes>
+      <Routes>
+        <Route path="/signup" element={<SingUp />} />
       </Routes>
       {/* <button
         className="registerButton"

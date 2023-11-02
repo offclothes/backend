@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 function SingUp() {
   let [myData, setMyData] = useState([]);
+  let [id, setId] = useState("");
+  let [password, setPassword] = useState("");
   let [nickName, setNickName] = useState("");
   let [phone, setPhone] = useState("");
+  let [category, setCategory] = useState("");
   let [postCode, setPostCode] = useState("");
   let [address1, setAddress1] = useState("");
   let [address2, setAddress2] = useState("");
@@ -18,45 +21,38 @@ function SingUp() {
 
   function saveInformationButton() {
     axios
-      .patch("/Member/myPage", {
+      .post("/Member/signup", {
+        memberId: id === undefined ? myData[0].memberId : id,
+        password: password === undefined ? myData[0].password : password,
         nickname: nickName === undefined ? myData[0].nickname : nickName,
         phoneNm: phone === undefined ? myData[0]?.phoneNm : phone,
-        postcode: myData[0]?.address.postcode,
-        address1: myData[0]?.address.address1,
-        address2:
-          address2 === undefined ? myData[0]?.address.address2 : address2,
+        address: {
+          postcode: myData[0]?.address.postcode,
+          address1: myData[0]?.address.address1,
+          address2:
+            address2 === undefined ? myData[0]?.address.address2 : address2,
+        },
         length: height === undefined ? myData[0]?.length : height,
         weight: weight === undefined ? myData[0]?.weight : weight,
         gender: myData[0]?.gender,
       })
       .then((res) => {
-        alert(res.data.message);
-        console.log(nickName, phone, address2);
+        alert("회원가입 성공");
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  useEffect(() => {
-    axios
-      .get("/Member/myPage")
-      .then((res) => {
-        setMyData([...myData, res.data]);
-        setNickName(myData[0]?.nickname);
-        setPhone(myData[0]?.phoneNm);
-        setPostCode(myData[0]?.address.postcode);
-        setAddress1(myData[0]?.address.address1);
-        setAddress2(myData[0]?.address.address2);
-        setHeight(myData[0]?.length);
-        setWeight(myData[0]?.weight);
-        setGender(myData[0]?.gender);
-      })
-      .catch(() => {
-        alert("로그인을 해주세요.");
-        navigate("/login");
-      });
-  }, []);
+  const categoryRadio = (e) => {
+    let gender = e.target.value;
+    gender === "male"
+      ? setCategory(0)
+      : gender === "female"
+      ? setCategory(1)
+      : setCategory(2);
+  };
 
   return (
     <div className="myPageMain">
@@ -77,9 +73,29 @@ function SingUp() {
           <td>
             <th className="myPageList">아이디</th>
             <td>
-              <p className="myPageInput" disabled="true">
+              <input
+                className="myPageInput"
+                onChange={(e) => {
+                  setId(e.target.value);
+                }}
+              >
                 {myData[0]?.memberId}
-              </p>
+              </input>
+            </td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <th className="myPageList">비밀번호</th>
+            <td>
+              <input
+                className="myPageInput"
+                type="password"
+                defaultValue={myData[0]?.nickname}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              ></input>
             </td>
           </td>
         </tr>
@@ -115,9 +131,9 @@ function SingUp() {
           <td>
             <th className="myPageList">주소</th>
             <td>
-              <p className="myPageAddressInput">
+              <input className="myPageAddressInput">
                 {myData[0]?.address.postcode}
-              </p>
+              </input>
             </td>
             <td>
               <button className="myPagePostCodeButton">우편번호 찾기</button>
@@ -128,7 +144,9 @@ function SingUp() {
           <td>
             <th className="myPageList"></th>
             <td>
-              <p className="myPageAddress">{myData[0]?.address.address1}</p>
+              <input className="myPageAddress">
+                {myData[0]?.address.address1}
+              </input>
             </td>
           </td>
         </tr>
@@ -154,9 +172,32 @@ function SingUp() {
         </tr>
         <tr>
           <td>
-            <th className="myPageList">성별</th>
+            <th className="myPageList">나이</th>
             <td>
-              <p className="myPageInput">{myData[0]?.gender}</p>
+              <input className="myPageInput">{myData[0]?.gender}</input>
+            </td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <th className="myPageList">카테고리</th>
+            <td className="radioButton">
+              <input
+                type="radio"
+                id="female"
+                name="gender"
+                value="female"
+                onChange={categoryRadio}
+              />
+              <label for="">여성</label>
+              <input
+                type="radio"
+                id="male"
+                name="gender"
+                value="male"
+                onChange={categoryRadio}
+              />
+              <label for="">남성</label>
             </td>
           </td>
         </tr>

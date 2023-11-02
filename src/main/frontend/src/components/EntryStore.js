@@ -3,6 +3,7 @@ import axios from "axios";
 import "../css/EntryStore.css";
 import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
+import { Form, Divider, Input, InputNumber, Button, Upload } from "antd";
 
 function EntryStore() {
   let navigate = useNavigate();
@@ -11,6 +12,8 @@ function EntryStore() {
   let [storeNum, setStoreNum] = useState("");
   let [storeLocation, setStoreLocation] = useState("");
   let [file, setFile] = useState([]);
+  let [contract, setContract] = useState("");
+  let [thumb, setThumb] = useState([]);
   let [email, setEmail] = useState("");
 
   const formData = new FormData();
@@ -44,14 +47,18 @@ function EntryStore() {
       });
   }
 
-  // const categoryRadio = (e) => {
-  //   let gender = e.target.value;
-  //   gender === "male"
-  //     ? setCategory(0)
-  //     : gender === "female"
-  //     ? setCategory(1)
-  //     : setCategory(2);
-  // };
+  const saveContractFile = (e) => {
+    setContract(URL.createObjectURL(e.target.files[0]));
+    let copy = [...thumb];
+    copy.push(e.target.files[0]);
+    setThumb(copy);
+    // console.log(e.target.files[0]);
+
+    // formData.append("thumb", e.target.files[0]);
+    for (let key of formData.entries()) {
+      console.log(key);
+    }
+  };
 
   return (
     <div className="registerMain">
@@ -76,37 +83,6 @@ function EntryStore() {
           </td>
         </tr>
 
-        {/* <tr>
-          <td>
-            <th className="registerList">카테고리</th>
-            <td className="radioButton">
-              <input
-                type="radio"
-                id="female"
-                name="gender"
-                value="female"
-                onChange={categoryRadio}
-              />
-              <label for="">여성</label>
-              <input
-                type="radio"
-                id="male"
-                name="gender"
-                value="male"
-                onChange={categoryRadio}
-              />
-              <label for="">남성</label>
-              <input
-                type="radio"
-                id="both"
-                name="gender"
-                value="both"
-                onChange={categoryRadio}
-              />
-              <label for="">공용</label>
-            </td>
-          </td>
-        </tr> */}
         <tr>
           <td>
             <th className="registerList">상호명</th>
@@ -149,10 +125,34 @@ function EntryStore() {
         {/* 임대차 계약서 */}
         <tr>
           <td>
+            <th className="registerList">임대차 계약서</th>
+            <th>
+              {contract && (
+                <img className="imageUpload" alt="sample" src={contract} />
+              )}
+              <div
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <input
+                  style={{ marginLeft: "1.5em" }}
+                  name="imgUpload"
+                  type="file"
+                  accept="image/*"
+                  onChange={saveContractFile}
+                />
+              </div>
+            </th>
+          </td>
+        </tr>
+        <tr>
+          <td>
             <th className="registerList">이메일</th>
             <th>
               <input
-                className="informationInput"
+                className="input"
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
@@ -168,10 +168,10 @@ function EntryStore() {
           </td>
         </tr>
       </table>
-
+      {/* 
       <Routes>
         <Route path="/entry" element={<EntryStore />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }

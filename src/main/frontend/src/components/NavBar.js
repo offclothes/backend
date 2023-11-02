@@ -168,8 +168,8 @@ function Main() {
           marginBottom: "15px",
           background: "#F5F5F5",
 
-          paddingTop: "20px",
-          paddingBottom: "20px",
+          paddingTop: "80px",
+          paddingBottom: "80px",
         }}
       >
         <p
@@ -182,7 +182,7 @@ function Main() {
           오프라인 의류 매장을 한 눈에 확인해 볼 수 있는 웹사이트입니다.
           <br /> OffClothes에서 내 주변 매장을 확인해보세요!
         </p>
-        <img style={{ width: "300px", height: "200px " }} src={MainImage}></img>
+        {/* <img style={{ width: "300px", height: "200px " }} src={MainImage}></img> */}
       </div>
       <Map // 지도를 표시할 Container
         id={`map`}

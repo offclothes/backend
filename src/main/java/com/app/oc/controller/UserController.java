@@ -35,7 +35,12 @@ public class UserController {
 
     //Long  : Null을 넣을 수 있다
 
-
+    @PostMapping("/signup")
+    public MemberResponseDto create(@RequestBody MemberRequestDto requestDTO) {
+        System.out.println("requestDTO.getMemberId() = " + requestDTO.getMemberId());
+        MemberResponseDto newMember = memberService.signup(requestDTO);
+        return newMember;
+    }
 
     /**
      * 로그인
