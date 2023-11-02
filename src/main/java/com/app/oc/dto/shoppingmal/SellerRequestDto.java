@@ -18,6 +18,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SellerRequestDto {
 
+<<<<<<< HEAD
+=======
+    
+  
+>>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
     private String memberId;
     @NotNull
     private String shopName;

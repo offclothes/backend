@@ -16,10 +16,15 @@ import Board from "../components/Board";
 import axios from "axios";
 import LocationSearch from "./LocationSearch";
 import Pagination from "./Pagination";
+<<<<<<< HEAD
 import LoadingPage from "./Loading";
 import EntryStore from "./EntryStore";
 import SingUp from "./SingUp";
 import { useSelector } from "react-redux";
+=======
+import EntryStore from "./EntryStore";
+import SingUp from "./SingUp";
+>>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
 
 function Category({ categoryBtn, setCategoryBtn }) {
   const [gender, setGender] = useState("");
@@ -154,6 +159,7 @@ function Category({ categoryBtn, setCategoryBtn }) {
           >
             지역별 상품 보기
           </Nav.Link>
+<<<<<<< HEAD
           {loginStatus.loginStatus === "true" ? (
             <Nav.Link
               className={
@@ -169,6 +175,19 @@ function Category({ categoryBtn, setCategoryBtn }) {
           ) : (
             ""
           )}
+=======
+          <Nav.Link
+            className={
+              categoryBtn === "입점" ? "genderClicked" : "goToLocation"
+            }
+            onClick={() => {
+              setCategoryBtn("입점");
+              navigate("/entry");
+            }}
+          >
+            입점 신청
+          </Nav.Link>
+>>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
         </Nav>
       </Navbar>
 
@@ -197,6 +216,46 @@ function Category({ categoryBtn, setCategoryBtn }) {
         <Route path="/entry" element={<EntryStore />} />
         <Route path="/signup" element={<SingUp />} />
       </Routes>
+<<<<<<< HEAD
+=======
+
+      <Routes>
+        <Route path="/entry" element={<EntryStore />} />
+      </Routes>
+      <Routes>
+        <Route path="/signup" element={<SingUp />} />
+      </Routes>
+      {/* <button
+        className="registerButton"
+        onClick={() => {
+          axios
+            .get("/myPost")
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }}
+      >
+        mypost
+      </button>
+      <button
+        className="registerButton"
+        onClick={() => {
+          axios
+            .get("/Member/myPage")
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }}
+      >
+        저장
+      </button> */}
+>>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
     </div>
   );
 

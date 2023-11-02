@@ -65,6 +65,12 @@ function EntryStore() {
     let copy = [...thumb];
     copy.push(e.target.files[0]);
     setThumb(copy);
+<<<<<<< HEAD
+=======
+    // console.log(e.target.files[0]);
+
+    // formData.append("thumb", e.target.files[0]);
+>>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
     for (let key of formData.entries()) {
       console.log(key);
     }
@@ -132,6 +138,10 @@ function EntryStore() {
             </th>
           </td>
         </tr>
+<<<<<<< HEAD
+=======
+        {/* 임대차 계약서 */}
+>>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
         <tr>
           <td>
             <th className="registerList">임대차 계약서</th>
@@ -177,6 +187,13 @@ function EntryStore() {
           </td>
         </tr>
       </table>
+<<<<<<< HEAD
+=======
+      {/* 
+      <Routes>
+        <Route path="/entry" element={<EntryStore />} />
+      </Routes> */}
+>>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
     </div>
   );
 }
