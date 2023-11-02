@@ -100,7 +100,7 @@ public class SearchService {
 
         List<SearchDto> items = getsearchDtos(getItems, fileMap);
 
-        Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, fullAddress, pageable);
+        Page<SearchDto> searchDtos = itemRepository.pagingByRe(items, fullAddress, pageable);
 
         return searchDtos;
     }
