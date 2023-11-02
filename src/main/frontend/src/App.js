@@ -6,6 +6,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import LogIn from "./components/LogIn";
 import { useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import EntryStore from "./components/EntryStore";
 
 function App() {
   let location = useLocation();
@@ -16,7 +18,14 @@ function App() {
   //     .then((res) => console.log(res.data))
   //     .catch();
   // });
-  return <div>{location.pathname === "/login" ? <LogIn /> : <NavBar />}</div>;
+  return (
+    // <Router>
+    <div>{location.pathname === "/login" ? <LogIn /> : <NavBar />}</div>
+    // <Routes>
+    // <Route path="/entry" element={<EntryStore />} />
+    // </Routes>
+    // </Router>
+  );
 }
 
 export default App;

@@ -20,20 +20,10 @@ const { kakao } = window;
 function NavBar() {
   let navigate = useNavigate();
   let [categoryBtn, setCategoryBtn] = useState("");
-  let [searchWord, setSearchWord] = useState("");
   let loginStatus = useSelector((state) => {
     return state;
   });
   let dispatch = useDispatch();
-
-  const onClickSearch = () => {
-    axios
-      .get("/keyword", { params: { keyword: searchWord } })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  };
 
   return (
     <div>
@@ -63,13 +53,8 @@ function NavBar() {
                 className="me-2"
                 aria-label="Search"
                 style={{ width: "50em", marginLeft: "10em" }}
-                onChange={(e) => {
-                  setSearchWord(e.target.value);
-                }}
               />
-              <Button variant="outline-success" onClick={onClickSearch}>
-                Search
-              </Button>
+              <Button variant="outline-success">Search</Button>
             </Form>
           </Navbar.Collapse>
           {loginStatus.loginStatus === "true" ? (
@@ -154,7 +139,7 @@ function Main() {
     axios
       .get("/map")
       .then((res) => {
-        // console.log(res.data[0]);
+        console.log(res.data[0]);
         setShopName(res.data[0].shopName);
         setAddr1(res.data[0].addr1);
         setAddr2(res.data[0].addr2);
@@ -175,15 +160,14 @@ function Main() {
     >
       <div
         style={{
-          width: "80%",
+          width: "100%",
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
-          marginTop: "15px",
+          alignItems: "center",
           marginBottom: "15px",
           background: "#F5F5F5",
-          boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
-          borderRadius: "20px",
+
           paddingTop: "20px",
           paddingBottom: "20px",
         }}
@@ -195,11 +179,8 @@ function Main() {
             fontWeight: "550",
           }}
         >
-          OffClothes는 내 주변 오프라인 의류 매장을
-          <br /> 한 눈에 확인해 볼 수 있는 웹사이트입니다.
-          <br /> 소개소개
-          <br /> 소개소개
-          <br /> 소개소개
+          오프라인 의류 매장을 한 눈에 확인해 볼 수 있는 웹사이트입니다.
+          <br /> OffClothes에서 내 주변 매장을 확인해보세요!
         </p>
         <img style={{ width: "300px", height: "200px " }} src={MainImage}></img>
       </div>

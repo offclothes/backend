@@ -70,7 +70,7 @@ function LogIn() {
           <button
             className="signUpButton"
             onClick={() => {
-              navigate("/registerGoods");
+              navigate("/entry");
             }}
           >
             회원가입
