@@ -49,7 +49,7 @@ public class SearchController {
      * 키워드 검색
      */
     @GetMapping("/research")
-    public Page<SearchDto> getItemByRegion(SearchRequestDto requestDto,
+    public Page<SearchDto> getItemByRegion(@RequestBody SearchRequestDto requestDto,
             @RequestParam(defaultValue = "0", required = false) int page) throws IOException {
         String fullAddress = requestDto.getTop().trim() + " " + requestDto.getMid().trim() + " "
                 + requestDto.getDong().trim();
@@ -57,7 +57,7 @@ public class SearchController {
         PageRequest pageRequest = PageRequest.of(page, 15, Sort.by(Sort.Direction.DESC, "itemId"));
         System.out.println("fullAddress = " + fullAddress);
 
-        return searchService.getItemByKeyword(fullAddress, pageRequest);
+        return searchService.getItemByRegion(fullAddress, pageRequest);
     }
 
     @GetMapping("/keyword")
