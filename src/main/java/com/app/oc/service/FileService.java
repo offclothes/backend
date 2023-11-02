@@ -1,7 +1,5 @@
 package com.app.oc.service;
 
-
-
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.app.oc.entity.File;
 import com.app.oc.repository.FileRepository;
@@ -24,52 +22,29 @@ public class FileService {
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
 
-
     private final AmazonS3Client amazonS3;
-
-
-
-
 
     /**
      * 파일 삭제
      */
     public void fileOneDelete(String storeFileName) throws UnsupportedEncodingException {
 
+        // 디비 파일 삭제
+        File fileDB = fileRepository.findById(storeFileName)
+                .orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
+        fileRepository.deleteById(fileDB.getStorefile()); // 파일 삭제
 
-        boolean isObjectExist = amazonS3.doesObjectExist(bucketName,storeFileName );
-
-
-        if (isObjectExist) {
-            amazonS3.deleteObject(bucketName, storeFileName);
-        }
-
-        //디비 파일 삭제
-        File fileDB = fileRepository.findById(storeFileName).orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
-        fileRepository.delete(fileDB);
-    }
-
-
-
-    public void fileDelete(String storeFileName) throws UnsupportedEncodingException {
-
-
-        boolean isObjectExist = amazonS3.doesObjectExist(bucketName,storeFileName );
-
+        boolean isObjectExist = amazonS3.doesObjectExist(bucketName, storeFileName);
 
         if (isObjectExist) {
             amazonS3.deleteObject(bucketName, storeFileName);
         }
 
-        //디비 파일 삭제
-        File fileDB = fileRepository.findById(storeFileName).orElseThrow(() -> new IllegalStateException("삭제할 파일이 없습니다."));
-        fileRepository.delete(fileDB);
     }
-
 
     /**
      * 파일 찾기
-     *  item_Seq
+     * item_Seq
      */
 
     public List<File> fileFindPerItem(Long itemId) {

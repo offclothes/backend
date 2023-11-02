@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 function RegisterBoard() {
   let [shopName, setShopName] = useState("");
-  let [shopAddress, setShopAddress] = useState("");
   let [shopStartPeriod, setShopStartPeriod] = useState("");
   let [shopEndPeriod, setShopEndPeriod] = useState("");
   let [shopDetail, setShopDetail] = useState("");
@@ -145,7 +144,6 @@ function StartCalendar(props) {
         className="shopPeriodButton"
         onClick={() => {
           props.setShopStartPeriod(moment(value).format("YYYY-MM-DD"));
-          console.log(props.shopStartPeriod);
         }}
       >
         시작 날짜
@@ -167,7 +165,6 @@ function EndCalendarApp(props) {
         className="shopPeriodButton"
         onClick={() => {
           props.setShopEndPeriod(moment(value).format("YYYY-MM-DD"));
-          console.log(props.shopEndPeriod);
         }}
       >
         끝 날짜

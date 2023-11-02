@@ -16,10 +16,6 @@ function MyPage() {
 
   let navigate = useNavigate();
 
-  // let count = useSelector((state) => {
-  //   return state.count;
-  // });
-
   function saveInformationButton() {
     axios
       .patch("/Member/myPage", {
@@ -35,7 +31,6 @@ function MyPage() {
       })
       .then((res) => {
         alert(res.data.message);
-        console.log(nickName, phone, address2);
       })
       .catch((err) => {
         console.log(err);

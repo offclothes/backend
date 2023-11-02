@@ -51,13 +51,15 @@ public class SearchController {
     @GetMapping("/research")
     public Page<SearchDto> getItemByRegion(SearchRequestDto requestDto,
             @RequestParam(defaultValue = "0", required = false) int page) throws IOException {
+
         String fullAddress = requestDto.getTop().trim() + " " + requestDto.getMid().trim() + " "
                 + requestDto.getDong().trim();
+
         page = page == 0 ? page : page - 1;
         PageRequest pageRequest = PageRequest.of(page, 15, Sort.by(Sort.Direction.DESC, "itemId"));
-        System.out.println("fullAddress = " + fullAddress);
 
-        return searchService.getItemByKeyword(fullAddress, pageRequest);
+        Page<SearchDto> itemByRegion = searchService.getItemByRegion(fullAddress, pageRequest);
+        return itemByRegion;
     }
 
     @GetMapping("/keyword")

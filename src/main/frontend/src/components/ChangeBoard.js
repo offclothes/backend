@@ -32,7 +32,7 @@ function RegisterBoard() {
           shopEndPeriod === undefined ? boardData[0].endDate : shopEndPeriod,
         content: shopDetail === undefined ? boardData[0].content : shopDetail,
       })
-      .then((res) => {
+      .then(() => {
         navigate("/eventAll");
       });
   };
@@ -166,7 +166,6 @@ function StartCalendar(props) {
         className="shopPeriodButton"
         onClick={() => {
           props.setShopStartPeriod(moment(value).format("YYYY-MM-DD"));
-          console.log(props.shopStartPeriod);
         }}
       >
         시작 날짜
@@ -188,7 +187,6 @@ function EndCalendarApp(props) {
         className="shopPeriodButton"
         onClick={() => {
           props.setShopEndPeriod(moment(value).format("YYYY-MM-DD"));
-          console.log(props.shopEndPeriod);
         }}
       >
         끝 날짜

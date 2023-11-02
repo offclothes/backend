@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../css/logIn.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLoginStatus } from "./store";
@@ -58,9 +58,8 @@ function LogIn() {
                   .then(() => {
                     dispatch(changeLoginStatus());
                   })
-                  .catch(function (err) {
+                  .catch(() => {
                     alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-                    console.log(err);
                   });
               }
             }}
@@ -70,7 +69,7 @@ function LogIn() {
           <button
             className="signUpButton"
             onClick={() => {
-              navigate("/registerGoods");
+              navigate("/signup");
             }}
           >
             회원가입

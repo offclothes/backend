@@ -1,24 +1,22 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../css/board.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { changeLogOutStatus } from "./store";
-import { increase } from "./store";
 import { useSelector } from "react-redux";
 import Pagination from "./Pagination";
 
 function Board() {
   let navigate = useNavigate();
   let [data, setData] = useState([]);
-  let [allData, setAllData] = useState([]);
-  let [discountData, setDiscountData] = useState([]);
-  let [closeData, setCloseData] = useState([]);
-  let [myPost, setMyPost] = useState([]);
+  let [allData] = useState([]);
+  let [discountData] = useState([]);
+  let [closeData] = useState([]);
+  let [myPost] = useState([]);
   let [visible, setVisible] = useState(false);
   let [clickedBtn, setClickedBtn] = useState("전체");
   let [render, setRender] = useState(0);
 
-  const [limit, setLimit] = useState(2);
+  const [limit] = useState(2);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
@@ -59,7 +57,6 @@ function Board() {
   useEffect(() => {
     axios.get("/eventAll", { params: { state: "A" } }).then((res) => {
       let copy = [...allData];
-      console.log(res);
       copy.push(...res.data.list);
       setData(copy);
       return (
@@ -91,7 +88,6 @@ function Board() {
             setVisible(false);
             axios.get("/eventAll", { params: { state: "A" } }).then((res) => {
               let copy = [...allData];
-              console.log(res);
               copy.push(...res.data.list);
               setData(copy);
               return (
@@ -155,7 +151,6 @@ function Board() {
             axios
               .get("/eventAll", { params: { state: "C" } })
               .then((res) => {
-                console.log(res);
                 let copy = [...closeData];
                 copy.push(...res.data.list);
                 setData(copy);
@@ -307,7 +302,6 @@ function MyPostBoard({ myPost, setData, visible, data }) {
     axios.get("/myPost").then((res) => {
       let copy = [...myPost];
       copy.push(...res.data);
-      console.log(res.data);
       setData(copy);
     }, []);
 

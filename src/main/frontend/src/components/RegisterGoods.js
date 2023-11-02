@@ -32,21 +32,6 @@ function RegisterGoods() {
   for (let i = 0; i < file.length; i++) {
     formData.append("imageFiles", file[i]);
   }
-  for (let key of formData.entries()) {
-    console.log(key);
-  }
-
-  // for (let i = 0; i < imageFiles.length; i++) {
-  //   formData.append("imageFiles", imageFiles[i]);
-  // }
-
-  // images.forEach((image) => formData.append("multipartFile", image));
-
-  // const formData1 = new FormData();
-
-  // for(let i = 0; i < formData1.length; i++) {
-  //   formData1("imageFiles", formData1[i])
-  // }
 
   function registerGoodsButton() {
     axios
@@ -61,23 +46,6 @@ function RegisterGoods() {
       .catch((err) => {
         console.log(err);
       });
-
-    // axios
-    //   .post(
-    //     "/shop/saveItem",
-    //     { shopId: 4, formData },
-    //     {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     }
-    //   )
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   }
 
   const saveFileMainImage = (e) => {
@@ -85,12 +53,6 @@ function RegisterGoods() {
     let copy = [...thumb];
     copy.push(e.target.files[0]);
     setThumb(copy);
-    // console.log(e.target.files[0]);
-
-    // formData.append("thumb", e.target.files[0]);
-    for (let key of formData.entries()) {
-      console.log(key);
-    }
   };
 
   const saveFileAddImage1 = (e) => {
@@ -98,12 +60,6 @@ function RegisterGoods() {
     let copy = [...file];
     copy.push(e.target.files[0]);
     setFile(copy);
-    // console.log(e.target.files[0]);
-
-    // formData.append("imageFiles", e.target.files[0]);
-    for (let key of formData.entries()) {
-      console.log(key);
-    }
   };
 
   const saveFileAddImage2 = (e) => {
@@ -111,12 +67,6 @@ function RegisterGoods() {
     let copy = [...file];
     copy.push(e.target.files[0]);
     setFile(copy);
-    // console.log(e.target.files[0]);
-
-    // formData.append("imageFiles", e.target.files[0]);
-    for (let key of formData.entries()) {
-      console.log(key);
-    }
   };
 
   const categoryRadio = (e) => {
@@ -145,19 +95,6 @@ function RegisterGoods() {
                 className="input"
                 onChange={(e) => {
                   setName(e.target.value);
-                  // formData.append(
-                  //   "itemTitle",
-                  //   new Blob([JSON.stringify(name)], {
-                  //     type: "application/json",
-                  //   })
-                  // );
-                  // formData1.append("itemTitle", name);
-                  // for (let key of formData1.keys()) {
-                  //   console.log(key);
-                  // }
-                  // for (let value of formData1.values()) {
-                  //   console.log(value);
-                  // }
                 }}
               ></input>
             </th>

@@ -2,7 +2,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import data from "../constants/Data";
 import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -17,6 +16,10 @@ import Board from "../components/Board";
 import axios from "axios";
 import LocationSearch from "./LocationSearch";
 import Pagination from "./Pagination";
+import LoadingPage from "./Loading";
+import EntryStore from "./EntryStore";
+import SingUp from "./SingUp";
+import { useSelector } from "react-redux";
 
 function Category({ categoryBtn, setCategoryBtn }) {
   const [gender, setGender] = useState("");
@@ -26,8 +29,11 @@ function Category({ categoryBtn, setCategoryBtn }) {
   const [both, setBoth] = useState([]);
   const [img, setImg] = useState([]);
   const [goodsData, setGoodsData] = useState();
+  let loginStatus = useSelector((state) => {
+    return state;
+  });
 
-  const [limit, setLimit] = useState(4);
+  const [limit] = useState(4);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
@@ -42,8 +48,8 @@ function Category({ categoryBtn, setCategoryBtn }) {
     axios
       .get("/shop/shopDetail", { params: { id: 1, page: 0 } })
       .then((res) => {
+        console.log(res);
         setGoodsData(res.data);
-        // setAll(res)
         for (let i = 0; i < res.data.mainItemDtoList.content.length; i++) {
           copyMale = [...copyMale];
           copyFemale = [...copyFemale];
@@ -148,6 +154,21 @@ function Category({ categoryBtn, setCategoryBtn }) {
           >
             지역별 상품 보기
           </Nav.Link>
+          {loginStatus.loginStatus === "true" ? (
+            <Nav.Link
+              className={
+                categoryBtn === "입점" ? "genderClicked" : "goToLocation"
+              }
+              onClick={() => {
+                setCategoryBtn("입점");
+                navigate("/entry");
+              }}
+            >
+              입점 신청
+            </Nav.Link>
+          ) : (
+            ""
+          )}
         </Nav>
       </Navbar>
 
@@ -173,37 +194,9 @@ function Category({ categoryBtn, setCategoryBtn }) {
         <Route path="/registerBoard" element={<RegisterBoard />} />
         <Route path="/changeBoard/:eventId" element={<ChangeBoard />} />
         <Route path="/LocationSearch" element={<LocationSearch />} />
+        <Route path="/entry" element={<EntryStore />} />
+        <Route path="/signup" element={<SingUp />} />
       </Routes>
-      {/* <button
-        className="registerButton"
-        onClick={() => {
-          axios
-            .get("/myPost")
-            .then((res) => {
-              console.log(res);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }}
-      >
-        mypost
-      </button>
-      <button
-        className="registerButton"
-        onClick={() => {
-          axios
-            .get("/Member/myPage")
-            .then((res) => {
-              console.log(res);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }}
-      >
-        저장
-      </button> */}
     </div>
   );
 
@@ -237,15 +230,15 @@ function Category({ categoryBtn, setCategoryBtn }) {
               );
             })}
           </Row>
+          <div className="page">
+            <Pagination
+              total={img?.length}
+              limit={6}
+              page={page}
+              setPage={setPage}
+            />
+          </div>
         </Container>
-        <div className="page">
-          <Pagination
-            total={img?.length}
-            limit={4}
-            page={page}
-            setPage={setPage}
-          />
-        </div>
       </div>
     );
   }
@@ -255,15 +248,20 @@ function Goods(props) {
   let navigate = useNavigate();
   return (
     <Col md="4" style={{ textAlign: "center" }}>
-      <img
-        style={{ cursor: "pointer" }}
-        src={props.img[props.offset]}
-        width="250px"
-        height="300px"
-        onClick={() => {
-          navigate(`/shop/item/${props.goodsGender[props.i].item_seq}`); //아이템id추가
-        }}
-      ></img>
+      {props.img ? (
+        <img
+          style={{ cursor: "pointer" }}
+          src={props.img[props.offset]}
+          width="250px"
+          height="300px"
+          referrerPolicy="no-referrer"
+          onClick={() => {
+            navigate(`/shop/item/${props.goodsGender[props.i].item_seq}`);
+          }}
+        ></img>
+      ) : (
+        <LoadingPage />
+      )}
       <h4>{props.goodsGender[props.offset].itemTitle}</h4>
     </Col>
   );

@@ -2,6 +2,10 @@ import Form from "react-bootstrap/Form";
 import "../css/locationSearch.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import LocationSearchResultPage from "./LocationSearchResult";
+import Pagination from "./Pagination";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 export default function LocationSearch() {
   //시, 구, 동 axios로 받아와서 top, middle, dong에 넣기
@@ -15,6 +19,12 @@ export default function LocationSearch() {
   let [topSelect, setTopSelect] = useState("");
   let [middleSelect, setMiddleSelect] = useState("");
   let [dongSelect, setDongSelect] = useState("");
+  let [data, setData] = useState([]);
+  let [img, setImg] = useState([]);
+
+  const [limit] = useState(4);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
 
   useEffect(() => {
     axios.get("/top").then((res) => {
@@ -37,6 +47,23 @@ export default function LocationSearch() {
         setDong(res.data);
       });
   }, [middleSelect]);
+
+  let copy = [];
+
+  useEffect(() => {
+    for (let i = 0; i < data.length; i++) {
+      axios
+        .post(`/display/${data[i]?.uploadFile.storeFileName}`)
+        .then((res) => {
+          copy = [...copy];
+          copy.push(res.data);
+          setImg(copy, ...img);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [data]);
 
   // const onClickSearch = () => {
   //   axios.get("/research").then((res) => {
@@ -97,22 +124,54 @@ export default function LocationSearch() {
               );
             })}
         </Form.Select>
-      </div>
-      <div>
         <button
+          style={{
+            width: "300px",
+            marginLeft: "10px",
+            background: "#C9E79D",
+            border: "1px solid #000000",
+            borderRadius: "7px",
+          }}
           onClick={() => {
+            // URL에 쿼리 매개변수를 추가하고 Axios를 사용하여 서버에 요청을 보냅니다.
+            const url = `/research?top=${topSelect}&mid=${middleSelect}&dong=${dongSelect}`;
             axios
-              .get("/research", {
-                params: { top: topSelect, mid: middleSelect, dong: dongSelect },
-              })
+              .get(url)
               .then((res) => {
                 console.log(res);
+                setData(res.data.content);
+              })
+              .catch((err) => {
+                console.log(err);
               });
           }}
         >
           검색
         </button>
       </div>
+      <Container>
+        <Row style={{ rowGap: "50px", marginTop: "20px" }}>
+          {data?.slice(offset, offset + limit).map((a, i) => {
+            return (
+              <LocationSearchResultPage
+                offset={offset + i}
+                key={data[i].uploadFile.item_seq}
+                i={i}
+                data={data}
+                img={img}
+              />
+            );
+          })}
+        </Row>
+        <div className="page">
+          <Pagination
+            total={img?.length}
+            limit={6}
+            page={page}
+            setPage={setPage}
+          />
+        </div>
+      </Container>
     </div>
   );
 }

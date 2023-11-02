@@ -1,7 +1,5 @@
 package com.app.oc.entity;
 
-
-
 import com.app.oc.dto.mypage.MemberDto;
 import com.app.oc.dto.mypage.MemberRequestDto;
 import com.app.oc.dto.mypage.ResponseMemberDto;
@@ -15,13 +13,12 @@ import java.util.List;
  * 회원 엔티티
  */
 @Entity
-@Table(name ="member")
+@Table(name = "member")
 @Getter
 @ToString
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED) //무분별한 객체 생성대해 한번 더 체크
+@NoArgsConstructor(access = AccessLevel.PROTECTED) // 무분별한 객체 생성대해 한번 더 체크
 public class Member {
-
 
     @Id
     @Column(name = "memberID")
@@ -30,15 +27,12 @@ public class Member {
     private String password;
     private String phoneNm;
 
-    //주소
+    // 주소
     @Embedded
     private Address address;
 
-
     @OneToMany(mappedBy = "shopId")
     private List<ShoppingMal> shoppingMals = new ArrayList<>();
-
-
 
     private String gender;
     private Integer length;
@@ -46,7 +40,6 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private MemberRole role;
-
 
     @OneToMany(mappedBy = "attens_seq")
     private List<AttenShop> aiShop = new ArrayList<>();
@@ -73,7 +66,7 @@ public class Member {
         this.gender = member.getGender();
         this.length = member.getLength();
         this.weight = member.getWeight();
-        this.role = member.getRole();
+        this.role = MemberRole.BUYER;
     }
 
     /**
@@ -94,10 +87,11 @@ public class Member {
 
     /**
      * 비밀번호 수정
+     * 
      * @param npwd
      */
     public void updatePwd(String npwd) {
-        this.password=npwd;
+        this.password = npwd;
     }
 
 }

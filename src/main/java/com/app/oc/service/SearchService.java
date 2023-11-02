@@ -86,9 +86,11 @@ public class SearchService {
     public Page<SearchDto> getItemByRegion(String fullAddress, Pageable pageable) throws IOException {
         // item List
         List<Item> getItems = itemRepository.searchByRegionAll(fullAddress, pageable);
-        List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
+
+        List<Long> Ids = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList()); // item id
 
         List<File> fileIn = fileRepository.findFileIn(Ids);
+
         List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
 
         Map<Long, UploadFile> fileMap = new HashMap<>();
@@ -99,8 +101,9 @@ public class SearchService {
         }
 
         List<SearchDto> items = getsearchDtos(getItems, fileMap);
+        System.out.println("items = " + items.toString());
 
-        Page<SearchDto> searchDtos = itemRepository.pagingByKe(items, fullAddress, pageable);
+        Page<SearchDto> searchDtos = itemRepository.pagingByRe(items, fullAddress, pageable);
 
         return searchDtos;
     }
@@ -108,6 +111,7 @@ public class SearchService {
     private static List<SearchDto> getsearchDtos(List<Item> getItems, Map<Long, UploadFile> fileMap) {
         return getItems.stream().map(item -> {
             SearchDto searchDto = new SearchDto();
+            searchDto.setItemTitle(item.getItemTitle());
             searchDto.setUploadFile(fileMap.get(item.getItemId()));
             return searchDto;
         }).collect(Collectors.toList());
@@ -118,7 +122,6 @@ public class SearchService {
     }
 
     public List<String> findMiddleRegion(String topRegion) {
-        System.out.println("topRegion = " + topRegion);
         return regionRepository.findMid(topRegion);
     }
 

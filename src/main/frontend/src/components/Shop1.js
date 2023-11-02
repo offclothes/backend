@@ -6,12 +6,12 @@ import Col from "react-bootstrap/Col";
 import "../css/shop1.css";
 import axios from "axios";
 import Pagination from "./Pagination";
+import ImgLoading from "./ImgLoading";
 
 const { kakao } = window;
 
 function Shop1() {
   let navigate = useNavigate();
-  // const [shoes] = useState(Shop1Data);
   const [myShop, setMyShop] = useState("");
   const [imageFile, setImageFile] = useState([]);
   const [imgSrc, setImageSrc] = useState([]);
@@ -19,25 +19,22 @@ function Shop1() {
   const [shopAddress2, setShopAddress2] = useState("");
   const [shopTel, setShopTel] = useState("");
   const [render, setRender] = useState(0);
+  const [style, setStyle] = useState("");
 
-  const [limit, setLimit] = useState(4);
+  const [limit] = useState(4);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
-
-  // const myShopBtn = () => {
-  //   myShop === "true" ? "visible" : "hidden";
-  // };
 
   useEffect(() => {
     axios
       .get("/shop/shopDetail", { params: { id: 1, page: 0 } })
       .then((res) => {
-        console.log(res);
         setMyShop(res.data.myshop);
         setShopAddress1(res.data.address.address1);
         setShopAddress2(res.data.address.address2);
         setShopTel(res.data.shopTel);
         setImageFile(res.data.mainItemDtoList.content);
+        setStyle(res.data.style);
       })
       .catch((err) => {
         console.log(err);
@@ -129,7 +126,7 @@ function Shop1() {
               fontHeight: "29px",
             }}
           >
-            스타일: 캐주얼
+            스타일: {style}
           </p>
         </div>
         {myShop === true ? (
@@ -287,7 +284,7 @@ function Shop1() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                marginTop: "-100px",
+                marginTop: "-20px",
               }}
             >
               <Pagination
@@ -311,10 +308,8 @@ function ShopGoods(props) {
     axios
       .delete(`/shop/item/${props.imageFile[props.offset].item_seq}`)
       .then((res) => {
-        console.log(res);
         alert(res.data.message);
         props.setRender(props.render + 1);
-        console.log(props.render);
       })
       .catch((err) => {
         console.log(err);
@@ -323,15 +318,20 @@ function ShopGoods(props) {
 
   return (
     <Col md="5" style={{ textAlign: "start" }}>
-      <img
-        className="image"
-        src={props.imgSrc[props.offset]}
-        width="280px"
-        height="250px"
-        onClick={() => {
-          navigate(`/shop/item/${props.imageFile[props.offset].item_seq}`);
-        }}
-      ></img>
+      {props.imgSrc ? (
+        <img
+          className="image"
+          src={props.imgSrc[props.offset]}
+          width="280px"
+          height="250px"
+          referrerPolicy="no-referrer"
+          onClick={() => {
+            navigate(`/shop/item/${props.imageFile[props.offset].item_seq}`);
+          }}
+        />
+      ) : (
+        <ImgLoading />
+      )}
       <h4>{props.imageFile[props.offset].itemTitle}</h4>
       <h5>{props.imageFile[props.offset].price}원</h5>
       <div className="shop1Button">

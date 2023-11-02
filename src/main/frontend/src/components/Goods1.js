@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../css/goods.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ImgLoading from "./ImgLoading";
 
 function Goods1(props) {
   const [price, setPrice] = useState("");
@@ -28,7 +29,6 @@ function Goods1(props) {
     axios
       .get(`/shop/item/${id}`)
       .then((res) => {
-        console.log(res);
         setPrice(res.data.price);
         setTitle(res.data.itemTitle);
         setContent(res.data.content);
@@ -49,7 +49,6 @@ function Goods1(props) {
       axios.post(`/display/${sub2?.storeFileName}`),
     ])
       .then((res) => {
-        console.log(res);
         setThumbImg(res[0]?.data);
         setSubImg1(res[1]?.data);
         setSubImg2(res[2]?.data);
@@ -72,15 +71,38 @@ function Goods1(props) {
       <div height="100%" style={{ display: "flex" }}>
         <div className="imageInformation">
           <div className="asd">
-            <img src={thumbImg} width="100%" height="70%" />
-            <div className="subImg">
+            {thumbImg ? (
               <img
-                className="subImage1"
-                src={subImg1}
-                width="200px"
-                height="150px"
+                src={thumbImg}
+                width="100%"
+                height="70%"
+                referrerPolicy="no-referrer"
               />
-              <img src={subImg2} width="200px" height="150px" />
+            ) : (
+              <ImgLoading />
+            )}
+            <div className="subImg">
+              {subImg1 ? (
+                <img
+                  className="subImage1"
+                  src={subImg1}
+                  width="200px"
+                  height="150px"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <ImgLoading />
+              )}
+              {subImg2 ? (
+                <img
+                  src={subImg2}
+                  width="200px"
+                  height="150px"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <ImgLoading />
+              )}
             </div>
           </div>
         </div>

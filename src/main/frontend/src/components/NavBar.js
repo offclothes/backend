@@ -8,10 +8,10 @@ import { useEffect, useState } from "react";
 import Category from "../components/Category";
 import Shop1 from "../components/Shop1";
 import MainImage from "../assets/image/clothes.jpg";
+import LoadingPage from "./Loading";
 import "../css/navBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLogOutStatus } from "./store";
-import { increase } from "./store";
 import { Map, MapMarker, CustomOverlayMap } from "react-kakao-maps-sdk";
 import { cookie } from "react-cookie";
 
@@ -28,7 +28,7 @@ function NavBar() {
 
   const onClickSearch = () => {
     axios
-      .get("/keyword", { params: { keyword: searchWord } })
+      .get(`/keyword/${searchWord}`)
       .then((res) => {
         console.log(res);
       })
@@ -98,7 +98,6 @@ function NavBar() {
                 className="myPageButton"
                 onClick={() => {
                   navigate("/myPage");
-                  // axios.get("/{id}", {}).then((res) => console.log(res));
                 }}
               ></div>
             </div>
@@ -123,7 +122,6 @@ function NavBar() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/shop/" element={<Shop1 />} />
-        {/* /shop/shopid값추가 */}
       </Routes>
     </div>
   );
@@ -154,7 +152,6 @@ function Main() {
     axios
       .get("/map")
       .then((res) => {
-        // console.log(res.data[0]);
         setShopName(res.data[0].shopName);
         setAddr1(res.data[0].addr1);
         setAddr2(res.data[0].addr2);
@@ -179,13 +176,14 @@ function Main() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
+          alignItems: "center",
           marginTop: "15px",
           marginBottom: "15px",
           background: "#F5F5F5",
           boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
           borderRadius: "20px",
-          paddingTop: "20px",
-          paddingBottom: "20px",
+          paddingTop: "80px",
+          paddingBottom: "80px",
         }}
       >
         <p
@@ -197,72 +195,76 @@ function Main() {
         >
           OffClothes는 내 주변 오프라인 의류 매장을
           <br /> 한 눈에 확인해 볼 수 있는 웹사이트입니다.
-          <br /> 소개소개
-          <br /> 소개소개
-          <br /> 소개소개
         </p>
         <img style={{ width: "300px", height: "200px " }} src={MainImage}></img>
       </div>
-      <Map // 지도를 표시할 Container
-        id={`map`}
-        center={{
-          // 지도의 중심좌표
-          lat: lat,
-          lng: lng,
-        }}
-        style={{
-          // 지도의 크기
-          width: "80%",
-          height: "450px",
-          borderRadius: "20px",
-        }}
-        level={3} // 지도의 확대 레벨
-      >
-        <MapMarker position={markerPosition} onClick={() => setIsOpen(true)} />
-        {isOpen && (
-          <CustomOverlayMap position={markerPosition}>
-            <div className="wrap">
-              <div className="info">
-                <div className="title">
-                  {shopName}
-                  <div
-                    className="close"
-                    onClick={() => setIsOpen(false)}
-                    title="닫기"
-                  ></div>
-                </div>
-                <div className="body">
-                  <div className="img">
-                    <img
-                      src="//t1.daumcdn.net/thumb/C84x76/?fname=http://t1.daumcdn.net/cfile/2170353A51B82DE005"
-                      width="73"
-                      height="70"
-                      alt={shopName}
-                    />
+      {lng ? (
+        <Map // 지도를 표시할 Container
+          id={`map`}
+          center={{
+            // 지도의 중심좌표
+            lat: lat,
+            lng: lng,
+          }}
+          style={{
+            // 지도의 크기
+            width: "80%",
+            height: "450px",
+            borderRadius: "20px",
+          }}
+          level={3} // 지도의 확대 레벨
+        >
+          <MapMarker
+            position={markerPosition}
+            onClick={() => setIsOpen(true)}
+          />
+          {isOpen && (
+            <CustomOverlayMap position={markerPosition}>
+              <div className="wrap">
+                <div className="info">
+                  <div className="title">
+                    {shopName}
+                    <div
+                      className="close"
+                      onClick={() => setIsOpen(false)}
+                      title="닫기"
+                    ></div>
                   </div>
-                  <div className="desc">
-                    <div className="ellipsis">{addr1}</div>
-                    <div className="jibun ellipsis">{addr2}</div>
-                    <div>
-                      <div
-                        onClick={() => {
-                          navigate("/shop");
-                        }}
-                        target="_blank"
-                        className="link"
-                        rel="noreferrer"
-                      >
-                        홈페이지
+                  <div className="body">
+                    <div className="img">
+                      <img
+                        src="//t1.daumcdn.net/thumb/C84x76/?fname=http://t1.daumcdn.net/cfile/2170353A51B82DE005"
+                        width="73"
+                        height="70"
+                        alt={shopName}
+                      />
+                    </div>
+                    <div className="desc">
+                      <div className="ellipsis">{addr1}</div>
+                      <div className="jibun ellipsis">{addr2}</div>
+                      <div>
+                        <div
+                          onClick={() => {
+                            navigate("/shop");
+                          }}
+                          target="_blank"
+                          className="link"
+                          rel="noreferrer"
+                        >
+                          홈페이지
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            ;
-          </CustomOverlayMap>
-        )}
-      </Map>
+              ;
+            </CustomOverlayMap>
+          )}
+        </Map>
+      ) : (
+        <LoadingPage />
+      )}
     </div>
   );
 }

@@ -207,6 +207,7 @@ public class ItemService {
     }
 
     /**
+     * 
      * Item삭제
      * 
      * @param id item
@@ -214,13 +215,12 @@ public class ItemService {
     public void DeleteOneItem(Long id) throws UnsupportedEncodingException {
         Item item = findByItem(id);
 
-        // file 삭제
         List<File> files = fileService.fileFindPerItem(id);
         files.forEach(file -> item.setFile(file)); // 연관관계 매핑(file)연관관계
 
         // 기존 파일 삭제 - s3 삭제
         if (files != null) {
-            for (File file : files) { // 파일 삭제
+            for (File file : files) { // 파일 삭제npmnpm
                 fileService.fileOneDelete(file.getStorefile());
             }
         }
@@ -228,5 +228,4 @@ public class ItemService {
         // item 삭제
         itemRepository.deleteById(id);
     }
-
 }
