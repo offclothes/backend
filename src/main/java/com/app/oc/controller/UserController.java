@@ -32,11 +32,7 @@ public class UserController {
     HttpServletRequest request;
     private final MemberService memberService;
 
-<<<<<<< HEAD
     // Long : Null을 넣을 수 있다
-=======
-    //Long  : Null을 넣을 수 있다
->>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
 
     @PostMapping("/signup")
     public MemberResponseDto create(@RequestBody MemberRequestDto requestDTO) {

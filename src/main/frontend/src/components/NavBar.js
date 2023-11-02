@@ -25,18 +25,6 @@ function NavBar() {
   });
   let dispatch = useDispatch();
 
-<<<<<<< HEAD
-  const onClickSearch = () => {
-    axios
-      .get(`/keyword/${searchWord}`)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  };
-
-=======
->>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
   return (
     <div>
       <Navbar expand="lg">
@@ -149,10 +137,6 @@ function Main() {
     axios
       .get("/map")
       .then((res) => {
-<<<<<<< HEAD
-=======
-        console.log(res.data[0]);
->>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
         setShopName(res.data[0].shopName);
         setAddr1(res.data[0].addr1);
         setAddr2(res.data[0].addr2);
@@ -178,17 +162,11 @@ function Main() {
           flexDirection: "row",
           justifyContent: "space-around",
           alignItems: "center",
-<<<<<<< HEAD
           marginTop: "15px",
           marginBottom: "15px",
           background: "#F5F5F5",
           boxShadow: "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
           borderRadius: "20px",
-=======
-          marginBottom: "15px",
-          background: "#F5F5F5",
-
->>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
           paddingTop: "80px",
           paddingBottom: "80px",
         }}
@@ -200,13 +178,8 @@ function Main() {
             fontWeight: "550",
           }}
         >
-<<<<<<< HEAD
-          OffClothes는 내 주변 오프라인 의류 매장을
-          <br /> 한 눈에 확인해 볼 수 있는 웹사이트입니다.
-=======
           오프라인 의류 매장을 한 눈에 확인해 볼 수 있는 웹사이트입니다.
           <br /> OffClothes에서 내 주변 매장을 확인해보세요!
->>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
         </p>
         {/* <img style={{ width: "300px", height: "200px " }} src={MainImage}></img> */}
       </div>

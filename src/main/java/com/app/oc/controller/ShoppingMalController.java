@@ -33,12 +33,8 @@ public class ShoppingMalController {
      */
     @PostMapping("/signup")
     public ResponseEntity<SellerResponseDto> sellerJoin(@RequestBody SellerRequestDto requestDto, HttpSession session) {
-<<<<<<< HEAD
         ResponseEntity<SellerResponseDto> responseDto = ResponseEntity
                 .ok(shopService.sellerSignup(requestDto, session));
-=======
-        ResponseEntity<SellerResponseDto> responseDto = ResponseEntity.ok(shopService.sellerSignup(requestDto, session));
->>>>>>> 6d7c7736aeeb35cb758fec566679ec2577862650
         return responseDto;
     }
 
