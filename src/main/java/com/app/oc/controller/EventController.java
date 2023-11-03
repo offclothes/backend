@@ -30,7 +30,6 @@ public class EventController {
     /**
      * 게시글 등록
      */
-
     @PostMapping("/event/post")
     public ResponseEntity<Event> savePost(@RequestBody EventRequestDto requestDto, @CookieValue String id)
             throws IOException {

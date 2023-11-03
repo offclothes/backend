@@ -48,7 +48,6 @@ function Category({ categoryBtn, setCategoryBtn }) {
     axios
       .get("/shop/shopDetail", { params: { id: 1, page: 0 } })
       .then((res) => {
-        console.log(res);
         setGoodsData(res.data);
         for (let i = 0; i < res.data.mainItemDtoList.content.length; i++) {
           copyMale = [...copyMale];

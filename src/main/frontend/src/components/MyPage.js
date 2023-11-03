@@ -18,7 +18,7 @@ function MyPage() {
 
   function saveInformationButton() {
     axios
-      .patch("/Member/myPage", {
+      .put("/Member/myPage", {
         nickname: nickName === undefined ? myData[0].nickname : nickName,
         phoneNm: phone === undefined ? myData[0]?.phoneNm : phone,
         postcode: myData[0]?.address.postcode,
