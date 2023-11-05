@@ -98,8 +98,8 @@ public class ShoppingMalController {
     @GetMapping("/shopDetail")
     public MyShoppingmalDto MyShopping(@RequestParam("id") Long id,
             @RequestParam(defaultValue = "0", required = false) int page) {
-        page = page == 0 ? page : page - 1;
-        PageRequest pageRequest = PageRequest.of(page, 15, Sort.by(Sort.Direction.DESC, "itemId"));
+        // page = page == 0 ? page : page - 1;
+        PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Sort.Direction.DESC, "itemId"));
         return shopService.findShopDetail(id, pageRequest);
     }
 

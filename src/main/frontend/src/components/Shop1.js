@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../css/shop1.css";
 import axios from "axios";
-import Pagination from "./Pagination";
+import ShopDetailPagination from "./ShopDetailPagination";
 import ImgLoading from "./ImgLoading";
 
 const { kakao } = window;
@@ -20,21 +20,21 @@ function Shop1() {
   const [shopTel, setShopTel] = useState("");
   const [render, setRender] = useState(0);
   const [style, setStyle] = useState("");
-
-  const [limit] = useState(4);
   const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
+  const [totalPage, setTotalPage] = useState("");
 
   useEffect(() => {
     axios
-      .get("/shop/shopDetail", { params: { id: 1, page: 0 } })
+      .get("/shop/shopDetail", { params: { id: 1, page: page - 1 } })
       .then((res) => {
+        console.log(res);
         setMyShop(res.data.myshop);
         setShopAddress1(res.data.address.address1);
         setShopAddress2(res.data.address.address2);
         setShopTel(res.data.shopTel);
         setImageFile(res.data.mainItemDtoList.content);
         setStyle(res.data.style);
+        setTotalPage(res.data.mainItemDtoList.totalPages);
       })
       .catch((err) => {
         console.log(err);
@@ -76,7 +76,7 @@ function Shop1() {
       "        </div>" +
       "    </div>" +
       "</div>";
-  }, [render]);
+  }, [page]);
 
   let copy = [];
 
@@ -264,10 +264,9 @@ function Shop1() {
         </div>
         <Container>
           <Row className="container">
-            {imageFile?.slice(offset, offset + limit).map(function (a, i) {
+            {imageFile?.map(function (a, i) {
               return (
                 <ShopGoods
-                  offset={offset + i}
                   key={imageFile[i].item_seq}
                   i={i}
                   imageFile={imageFile}
@@ -287,9 +286,8 @@ function Shop1() {
                 marginTop: "-20px",
               }}
             >
-              <Pagination
-                total={imageFile?.length}
-                limit={4}
+              <ShopDetailPagination
+                totalPage={totalPage}
                 page={page}
                 setPage={setPage}
               />
@@ -306,7 +304,7 @@ function ShopGoods(props) {
 
   const onClickDelete = () => {
     axios
-      .delete(`/shop/item/${props.imageFile[props.offset].item_seq}`)
+      .delete(`/shop/item/${props.imageFile[props.i].item_seq}`)
       .then((res) => {
         alert(res.data.message);
         props.setRender(props.render + 1);
@@ -321,19 +319,19 @@ function ShopGoods(props) {
       {props.imgSrc ? (
         <img
           className="image"
-          src={props.imgSrc[props.offset]}
+          src={props.imgSrc[props.i]}
           width="280px"
           height="250px"
           referrerPolicy="no-referrer"
           onClick={() => {
-            navigate(`/shop/item/${props.imageFile[props.offset].item_seq}`);
+            navigate(`/shop/item/${props.imageFile[props.i].item_seq}`);
           }}
         />
       ) : (
         <ImgLoading />
       )}
-      <h4>{props.imageFile[props.offset].itemTitle}</h4>
-      <h5>{props.imageFile[props.offset].price}원</h5>
+      <h4>{props.imageFile[props.i].itemTitle}</h4>
+      <h5>{props.imageFile[props.i].price}원</h5>
       <div className="shop1Button">
         <button
           className="registerShopBtn"
