@@ -32,7 +32,7 @@ public class ShopRepositoryImpl {
      */
     public ShoppingMal findByMember(String memberId) {
         return em.createQuery(
-                "select s from ShoppingMal s where s.member.memberId = :memberId and s.address.address1 is not null",
+                "select s from ShoppingMal s where s.member.memberId = :memberId",
                 ShoppingMal.class)
                 .setParameter("memberId", memberId)
                 .getSingleResult();
