@@ -48,6 +48,7 @@ public class ShoppingMalController {
     @PostMapping("/{shopId}")
     public ResponseEntity<ShopIntroductionResponseDto> setIntroduction(@PathVariable Long shopId,
             @RequestBody ShopIntroductionRequestDto requestDto) {
+
         return ResponseEntity.ok(shopService.saveIntroduction(shopId, requestDto));
     }
 
@@ -90,17 +91,15 @@ public class ShoppingMalController {
      *
      * @param id :
      *           ShoppingMal 상세 보기
+     *           추후 세션으로 ID가져오기
      *
      *           OK
      */
     @GetMapping("/shopDetail")
     public MyShoppingmalDto MyShopping(@RequestParam("id") Long id,
             @RequestParam(defaultValue = "0", required = false) int page) {
-        System.out.println("id = " + id);
-        //page = page == 0 ? page : page - 1;
-        System.out.println("page = " + page);
+        // page = page == 0 ? page : page - 1;
         PageRequest pageRequest = PageRequest.of(page, 4, Sort.by(Sort.Direction.DESC, "itemId"));
-
         return shopService.findShopDetail(id, pageRequest);
     }
 
