@@ -115,7 +115,7 @@ public class ShopService {
         // 세션으로 Id가지고 옴
         String sessionId = (String) session.getAttribute("id");
 
-        Boolean myShop = false;
+        boolean myShop = false;
         if (findShop.getMember().getMemberId().equals(sessionId)) {
             myShop = true;
         }

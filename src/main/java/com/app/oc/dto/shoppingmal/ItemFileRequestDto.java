@@ -28,7 +28,7 @@ public class ItemFileRequestDto {
     //수정 시 변경 할 수 있음
     private SellState sellState;
 
-    //cateGoryNum
+    //cateGoryNumg
     private Integer category;
 
     //shop_id

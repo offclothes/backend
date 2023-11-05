@@ -72,7 +72,6 @@ public class EventController {
     @GetMapping("/eventAll")
     public ResponseeventDto responseeventDto(
             @RequestParam(defaultValue = "A", required = false, name = "state") String state, HttpSession session) {
-
         return eventService.listAll(state, session);
     }
 
