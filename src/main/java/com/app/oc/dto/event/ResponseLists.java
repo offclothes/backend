@@ -16,6 +16,8 @@ public class ResponseLists {
 
     private String title;
 
+    private Long shopId;
+
     private String shopName;
 
     private String content;
@@ -38,6 +40,7 @@ public class ResponseLists {
         this.writeDay = event.getWriteDay();
         this.startDay = event.getStartDay();
         this.endDay = event.getEndDay();
+        this.shopId = event.getShoppingmall().getShopId();
     }
 
 }
