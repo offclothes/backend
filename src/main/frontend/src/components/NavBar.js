@@ -106,7 +106,7 @@ function NavBar() {
 
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/shop/" element={<Shop1 />} />
+        <Route path="/shop/:id" element={<Shop1 />} />
       </Routes>
     </div>
   );
@@ -120,6 +120,7 @@ function Main() {
   const [addr2, setAddr2] = useState("");
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
+  const [shopId, setShopId] = useState("");
 
   const location = function () {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -137,6 +138,8 @@ function Main() {
     axios
       .get("/map")
       .then((res) => {
+        console.log(res);
+        setShopId(res.data[0].shopId);
         setShopName(res.data[0].shopName);
         setAddr1(res.data[0].addr1);
         setAddr2(res.data[0].addr2);
@@ -230,7 +233,7 @@ function Main() {
                       <div>
                         <div
                           onClick={() => {
-                            navigate("/shop");
+                            navigate(`/shop/${shopId}`);
                           }}
                           target="_blank"
                           className="link"

@@ -33,6 +33,7 @@ function Board() {
     setVisible(true);
     navigate("/event/myBoard");
     axios.get("/eventAll").then((res) => {
+      console.log(res);
       let copy = [...allData];
       copy.push(...res.data.list);
       setData(copy);
@@ -56,6 +57,7 @@ function Board() {
 
   useEffect(() => {
     axios.get("/eventAll", { params: { state: "A" } }).then((res) => {
+      console.log(res);
       let copy = [...allData];
       copy.push(...res.data.list);
       setData(copy);
@@ -118,6 +120,7 @@ function Board() {
             setVisible(false);
             navigate("/event/discount");
             axios.get("/eventAll", { params: { state: "D" } }).then((res) => {
+              console.log(res);
               let copy = [...discountData];
               copy.push(...res.data.list);
               setData(copy);
@@ -151,6 +154,7 @@ function Board() {
             axios
               .get("/eventAll", { params: { state: "C" } })
               .then((res) => {
+                console.log(res);
                 let copy = [...closeData];
                 copy.push(...res.data.list);
                 setData(copy);
@@ -239,7 +243,7 @@ function BoardList({ i, data, visible, offset, render, setRender }) {
           <div
             className="boardGoShop"
             onClick={() => {
-              navigate("/shop");
+              navigate(`/shop/${data[offset]?.shopId}`);
             }}
           >
             매장 페이지 이동하기
