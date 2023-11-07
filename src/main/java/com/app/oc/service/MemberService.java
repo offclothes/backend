@@ -1,13 +1,7 @@
 package com.app.oc.service;
 
-import com.app.oc.dto.mypage.MemberRequestDto;
-import com.app.oc.dto.mypage.MemberResponseDto;
-import com.app.oc.dto.mypage.PwdDto;
-import com.app.oc.dto.mypage.ResponseMemberDto;
-import com.app.oc.entity.Address;
-import com.app.oc.entity.AttenItem;
-import com.app.oc.entity.AttenShop;
-import com.app.oc.entity.Member;
+import com.app.oc.dto.mypage.*;
+import com.app.oc.entity.*;
 import com.app.oc.repository.AttenShopRepository;
 import com.app.oc.repository.MemberRepository;
 import com.app.oc.repository.ShopRepository;
@@ -18,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 //기능을 정의할 수 있고 ,트잭션 관리
 @Service
@@ -59,10 +54,30 @@ public class MemberService {
     //Member 1명 찾기
     @Transactional(readOnly=true)
     public Member findOne(String memberId) {
-        return memberRepository.findById(memberId)
+        Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("ID가 없습니다."));
+        return member;
+
     }
 
+    @Transactional(readOnly=true)
+    public MyPageResponse findMyPageOne(String memberId) {
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new IllegalArgumentException("ID가 없습니다."));
+
+        MyPageResponse myPageResponse = new MyPageResponse(member);
+
+        if (member.getRole().equals(MemberRole.SELLER)) {
+            List<ShoppingMal> myShop = shopRepository.findShoppingMalByMember(memberId);
+            for (int i = 0; i < myShop.size(); i++) {
+            }
+
+            List<MyPageShoppingMal> collect = myShop.stream().map(i -> new MyPageShoppingMal(i)).collect(Collectors.toList());
+            myPageResponse.setMyPageShoppingMal(collect);
+        }
+
+        return myPageResponse;
+    }
 
     //member 수정
     public String updateMember(String id, ResponseMemberDto buyer) {
@@ -104,3 +119,4 @@ public class MemberService {
 
 
 }
+

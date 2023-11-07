@@ -15,7 +15,6 @@ import java.util.List;
 @Entity
 @Table(name = "member")
 @Getter
-@ToString
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // 무분별한 객체 생성대해 한번 더 체크
 public class Member {

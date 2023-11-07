@@ -131,8 +131,10 @@ public class ItemService {
         // id들로만 한번에
         List<Long> collectItemIds = getItems.stream().map(item -> item.getItemId()).collect(Collectors.toList());
 
+
         List<File> fileIn = fileRepository.findFileIn(collectItemIds);
         List<UploadFile> uploadFiles = fileIn.stream().map(file -> new UploadFile(file)).collect(Collectors.toList());
+
 
         Map<Long, UploadFile> fileMap = new HashMap<>();
         for (UploadFile uploadFile : uploadFiles) {
@@ -141,10 +143,14 @@ public class ItemService {
             }
         }
 
+
         List<MainItemDto> items = getMainItemDtos(getItems, fileMap);
 
         // 페이징으로 변환
         Page<MainItemDto> mainItemDtos = itemRepository.shopMainItems(items, id, pageable);
+        List<MainItemDto> content = mainItemDtos.getContent();
+        System.out.println(content);
+
 
         return mainItemDtos;
 
@@ -153,7 +159,8 @@ public class ItemService {
     private static List<MainItemDto> getMainItemDtos(List<Item> getItems, Map<Long, UploadFile> fileMap) {
         return getItems.stream().map(item -> {
             MainItemDto mainItemDto = new MainItemDto(item);
-            mainItemDto.setUploadFile(fileMap.get(item.getItemId()));
+            UploadFile uploadFile = fileMap.get(item.getItemId());
+            mainItemDto.setUploadFile(uploadFile);
             return mainItemDto;
         }).collect(Collectors.toList());
     }
