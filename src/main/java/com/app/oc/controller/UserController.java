@@ -96,8 +96,9 @@ public class UserController {
      *         OK
      */
     @GetMapping("/myPage")
-    public MemberDto findById(@CookieValue String id) {
-        return new MemberDto(memberService.findOne(id));
+    public MyPageResponse findById(@SessionAttribute("id") String id) {
+        MyPageResponse myPageOne = memberService.findMyPageOne(id);
+        return myPageOne;
     }
 
     // 회원수정
@@ -111,7 +112,7 @@ public class UserController {
      *         OK
      */
     @PutMapping("/myPage")
-    public ResultDto updateMember(@CookieValue String id, @RequestBody ResponseMemberDto buyer) {
+    public ResultDto updateMember(@RequestBody ResponseMemberDto buyer,@SessionAttribute("id") String id) {
         memberService.updateMember(id, buyer);
         return new ResultDto("회원이 수정되었습니다.");
     }
