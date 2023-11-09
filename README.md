@@ -1,3 +1,6 @@
+### 설계 전체 파일
+[[OC]설계.zip](https://github.com/offclothes/backend/files/13310759/OC.zip)
+
 # 1.프로그램 소개
 ## 1-1. 프로그램명 및 간단한 소개
 ### 프로그램명: OffClothes
@@ -50,6 +53,10 @@
 |할인폐점게시글|마이페이지|입점심사|쇼핑몰|
 |-----|---|---|---|
 |<img src="https://github.com/offclothes/demo2/assets/122541575/a63b9d9f-985c-4bf8-9b47-57ebf580975d.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/4def8e08-bbae-46ea-b026-83483ffe8bcc.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/c38128fa-64a4-4bb2-9dc5-26c45cb0cf1e.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/f5c22037-c01f-48c7-abf7-986f86b8040e.png" width="150" height="70"/>|
+
+
+* 스크린촬영 : 
+[이미지.zip](https://github.com/offclothes/backend/files/13310736/default.zip)
 
 
 # 2. 팀 소개
