@@ -41,15 +41,15 @@
 ## 1-9 주요 페이지
 |메인페이지|로그인|로그아웃|회원가입|
 |-----|---|---|---|
-|<img src="https://github.com/offclothes/demo2/assets/122541575/e561f28a-9200-4385-943d-5d7670969490.png" width="150" height="100"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/050e9b8e-ed9c-4b85-a5e1-dc7f0a7c34c0.png" width="150" height="100"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/a3e23267-2fcc-4f72-9dc4-986dad807cb6.png" width="150" height="100"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/9be7b433-c906-4106-93db-f30e6383a27c.png" width="150" height="100"/>|
+|<img src="https://github.com/offclothes/demo2/assets/122541575/e561f28a-9200-4385-943d-5d7670969490.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/050e9b8e-ed9c-4b85-a5e1-dc7f0a7c34c0.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/a3e23267-2fcc-4f72-9dc4-986dad807cb6.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/9be7b433-c906-4106-93db-f30e6383a27c.png" width="150" height="70"/>|
 
 |(검색)지역별|상품등록|상품정보|입점심사|
 |-----|---|---|---|
-|<img src="https://github.com/offclothes/demo2/assets/122541575/30a39c8a-1476-48c7-9130-f768b125c27f.png" width="150" height="100"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/5d1405f7-a750-43b2-85a0-de05bedd797f.png" width="150" height="100"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/b7f33ad1-7d8c-4746-9d6b-74b544e715e5.png" width="150" height="100"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/c38128fa-64a4-4bb2-9dc5-26c45cb0cf1e.png" width="150" height="100"/>|
+|<img src="https://github.com/offclothes/demo2/assets/122541575/30a39c8a-1476-48c7-9130-f768b125c27f.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/5d1405f7-a750-43b2-85a0-de05bedd797f.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/b7f33ad1-7d8c-4746-9d6b-74b544e715e5.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/c38128fa-64a4-4bb2-9dc5-26c45cb0cf1e.png" width="150" height="70"/>|
 
 |할인폐점게시글|마이페이지|상품상세|쇼핑몰|
 |-----|---|---|---|
-|<img src="https://github.com/offclothes/demo2/assets/122541575/a63b9d9f-985c-4bf8-9b47-57ebf580975d.png" width="150" height="100"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/4def8e08-bbae-46ea-b026-83483ffe8bcc.png" width="150" height="100"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/dd6d491e-6c1b-465b-9774-4756f6f5091b.png" width="150" height="100"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/f5c22037-c01f-48c7-abf7-986f86b8040e.png" width="150" height="100"/>|
+|<img src="https://github.com/offclothes/demo2/assets/122541575/a63b9d9f-985c-4bf8-9b47-57ebf580975d.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/4def8e08-bbae-46ea-b026-83483ffe8bcc.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/dd6d491e-6c1b-465b-9774-4756f6f5091b.png" width="150" height="70"/>|<img src="https://github.com/offclothes/demo2/assets/122541575/f5c22037-c01f-48c7-abf7-986f86b8040e.png" width="150" height="70"/>|
 
 
 # 2. 팀 소개
