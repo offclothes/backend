@@ -145,6 +145,8 @@ public class ItemService {
 
         // 페이징으로 변환
         Page<MainItemDto> mainItemDtos = itemRepository.shopMainItems(items, id, pageable);
+        List<MainItemDto> content = mainItemDtos.getContent();
+        System.out.println(content);
 
         return mainItemDtos;
 
@@ -153,7 +155,8 @@ public class ItemService {
     private static List<MainItemDto> getMainItemDtos(List<Item> getItems, Map<Long, UploadFile> fileMap) {
         return getItems.stream().map(item -> {
             MainItemDto mainItemDto = new MainItemDto(item);
-            mainItemDto.setUploadFile(fileMap.get(item.getItemId()));
+            UploadFile uploadFile = fileMap.get(item.getItemId());
+            mainItemDto.setUploadFile(uploadFile);
             return mainItemDto;
         }).collect(Collectors.toList());
     }

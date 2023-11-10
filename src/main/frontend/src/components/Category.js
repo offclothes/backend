@@ -20,6 +20,7 @@ import LoadingPage from "./Loading";
 import EntryStore from "./EntryStore";
 import SingUp from "./SingUp";
 import { useSelector } from "react-redux";
+import MyShopPage from "./MyShop";
 
 function Category({ categoryBtn, setCategoryBtn }) {
   const [gender, setGender] = useState("");
@@ -195,6 +196,7 @@ function Category({ categoryBtn, setCategoryBtn }) {
         <Route path="/LocationSearch" element={<LocationSearch />} />
         <Route path="/entry" element={<EntryStore />} />
         <Route path="/signup" element={<SingUp />} />
+        <Route path="/MyShop" element={<MyShopPage />} />
       </Routes>
     </div>
   );

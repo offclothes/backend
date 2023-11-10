@@ -13,6 +13,8 @@ function MyPage() {
   let [height, setHeight] = useState("");
   let [weight, setWeight] = useState("");
   let [gender, setGender] = useState("");
+  let [role, setRole] = useState("");
+  let [pageOrShop, setPageOrShop] = useState("myPage");
 
   let navigate = useNavigate();
 
@@ -41,6 +43,7 @@ function MyPage() {
     axios
       .get("/Member/myPage")
       .then((res) => {
+        console.log(res);
         setMyData([...myData, res.data]);
         setNickName(myData[0]?.nickname);
         setPhone(myData[0]?.phoneNm);
@@ -50,6 +53,7 @@ function MyPage() {
         setHeight(myData[0]?.length);
         setWeight(myData[0]?.weight);
         setGender(myData[0]?.gender);
+        setRole(res.data.role);
       })
       .catch(() => {
         alert("로그인을 해주세요.");
@@ -57,14 +61,43 @@ function MyPage() {
       });
   }, []);
 
+  const onClickMyPage = () => {
+    navigate("/myPage");
+    setPageOrShop("myPage");
+  };
+
+  const onClickMyShop = () => {
+    navigate("/myShop");
+    setPageOrShop("myShop");
+  };
+
   return (
     <div className="myPageMain">
       <table width="100%">
         <tr>
           <th className="myPageTitle">OffClothes</th>
         </tr>
-        <tr>
-          <th className="myPageTop">My Page</th>
+        <tr className="MyPageShop">
+          <th
+            className={
+              pageOrShop === "myPage" ? "myPageTopClicked" : "myPageTop"
+            }
+            onClick={onClickMyPage}
+          >
+            My Page
+          </th>
+          {role === "SELLER" ? (
+            <th
+              className={
+                pageOrShop === "myShop" ? "myShopTopClicked" : "myShopTop"
+              }
+              onClick={onClickMyShop}
+            >
+              My Shop
+            </th>
+          ) : (
+            ""
+          )}
         </tr>
         <hr />
         <tr>

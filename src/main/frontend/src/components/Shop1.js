@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -23,9 +23,11 @@ function Shop1() {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState("");
 
+  let { id } = useParams();
+
   useEffect(() => {
     axios
-      .get("/shop/shopDetail", { params: { id: 1, page: page - 1 } })
+      .get("/shop/shopDetail", { params: { id: id, page: page - 1 } })
       .then((res) => {
         console.log(res);
         setMyShop(res.data.myshop);
@@ -81,17 +83,19 @@ function Shop1() {
   let copy = [];
 
   useEffect(() => {
-    for (let i = 0; i < imageFile.length; i++) {
-      axios
-        .post(`/display/${imageFile[i]?.uploadFile.storeFileName}`)
-        .then((res) => {
-          copy = [...copy];
-          copy.push(res.data);
-          setImageSrc(copy, ...imgSrc);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    if (imageFile) {
+      for (let i = 0; i < imageFile.length; i++) {
+        axios
+          .post(`/display/${imageFile[i]?.uploadFile.storeFileName}`)
+          .then((res) => {
+            copy = [...copy];
+            copy.push(res.data);
+            setImageSrc(copy, ...imgSrc);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     }
   }, [imageFile]);
 

@@ -134,3 +134,9 @@
   margin-right: 5px;
   margin-left: 3em;
 }
+
+.addressInput {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}

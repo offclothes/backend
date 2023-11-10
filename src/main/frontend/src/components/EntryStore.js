@@ -1,74 +1,38 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "../css/EntryStore.css";
 import { useNavigate } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
-import { Form, Divider, Input, InputNumber, Button, Upload } from "antd";
 
 function EntryStore() {
   let navigate = useNavigate();
-  let [myData, setMyData] = useState([]);
-  let [memberId, setMemberId] = useState("");
   let [shopName, setShopName] = useState();
-  let [address, setAddress] = useState("");
+  let [postCode, setPostCode] = useState("");
   let [address1, setAddress1] = useState("");
   let [address2, setAddress2] = useState("");
-  let [storeNum, setStoreNum] = useState("");
-  let [storeLocation, setStoreLocation] = useState("");
-  let [file, setFile] = useState([]);
-  let [contract, setContract] = useState("");
-  let [thumb, setThumb] = useState([]);
   let [email, setEmail] = useState("");
   let [shopTel, setShopTel] = useState("");
-
-  const formData = new FormData();
-
-  formData.append("userName", memberId);
-  formData.append("storeName", shopName);
-  formData.append("storeNum", storeNum);
-  formData.append("storeLocation", storeLocation);
-
-  formData.append("email", email);
-
-  for (let i = 0; i < file.length; i++) {
-    formData.append("imageFiles", file[i]);
-  }
-  for (let key of formData.entries()) {
-    console.log(key);
-  }
 
   function EntryRegisterButton() {
     axios
       .post("/shop/signup", {
         memberId: null,
-        shopName: shopName === undefined ? myData[0].password : shopName,
-        shopTel: shopTel === undefined ? myData[0]?.phoneNm : shopTel,
+        shopName: shopName,
+        shopTel: shopTel,
         address: {
-          postcode: myData[0]?.address.postcode,
-          address1: myData[0]?.address.address1,
-          address2:
-            address2 === undefined ? myData[0]?.address.address2 : address2,
+          postcode: postCode,
+          address1: address1,
+          address2: address2,
         },
-        email: email === undefined ? myData[0]?.email : email,
+        email: email,
       })
       .then(() => {
         alert("입점 신청 성공");
-        navigate("/shop");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
       });
   }
-
-  const saveContractFile = (e) => {
-    setContract(URL.createObjectURL(e.target.files[0]));
-    let copy = [...thumb];
-    copy.push(e.target.files[0]);
-    setThumb(copy);
-    for (let key of formData.entries()) {
-      console.log(key);
-    }
-  };
 
   return (
     <div className="registerMain">
@@ -88,6 +52,7 @@ function EntryStore() {
                 onChange={(e) => {
                   setShopName(e.target.value);
                 }}
+                placeholder="이름을 입력해 주세요."
               ></input>
             </th>
           </td>
@@ -102,6 +67,7 @@ function EntryStore() {
                 onChange={(e) => {
                   setShopName(e.target.value);
                 }}
+                placeholder="상호명을 입력해 주세요."
               ></input>
             </th>
           </td>
@@ -115,6 +81,7 @@ function EntryStore() {
                 onChange={(e) => {
                   setShopTel(e.target.value);
                 }}
+                placeholder="매장 전화번호를 입력해 주세요."
               ></input>
             </th>
           </td>
@@ -126,34 +93,31 @@ function EntryStore() {
               <input
                 className="input"
                 onChange={(e) => {
-                  setStoreLocation(e.target.value);
+                  setPostCode(e.target.value);
                 }}
+                placeholder="우편번호를 입력해 주세요."
               ></input>
             </th>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <th className="registerList">임대차 계약서</th>
-            <th>
-              {contract && (
-                <img className="imageUpload" alt="sample" src={contract} />
-              )}
-              <div
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+            <td className="addressInput">
+              <th>
                 <input
-                  style={{ marginLeft: "1.5em" }}
-                  name="imgUpload"
-                  type="file"
-                  accept="image/*"
-                  onChange={saveContractFile}
-                />
-              </div>
-            </th>
+                  className="input"
+                  onChange={(e) => {
+                    setAddress1(e.target.value);
+                  }}
+                  placeholder="도로명 주소를 입력해 주세요."
+                ></input>
+              </th>
+              <th>
+                <input
+                  className="input"
+                  onChange={(e) => {
+                    setAddress2(e.target.value);
+                  }}
+                  placeholder="상세 주소를 입력해 주세요."
+                ></input>
+              </th>
+            </td>
           </td>
         </tr>
         <tr>
@@ -165,6 +129,7 @@ function EntryStore() {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
+                placeholder="이메일을 입력해 주세요."
               ></input>
             </th>
           </td>

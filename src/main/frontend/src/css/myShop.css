@@ -25,6 +25,7 @@
     display: flex;
     flex-direction: row;
     justify-content: start;
+    margin-bottom: 2em;
 }
 
 .myPageTop {
@@ -77,92 +78,36 @@
     border-bottom: 1px solid #194819;
 }
 
-.myPageEssential {
-    width: 250px;
-    padding-left: 1em;
-    padding-bottom: 1em;
-    font-weight: 600;
-    font-size: 15px;
-    color: #145914;
-}
-
-.myPageSelection {
-    width: 250px;
-    padding-left: 1em;
-    padding-bottom: 1em;
-    font-weight: 600;
-    font-size: 15px;
-    color: #145914;
-}
-
-.myPageList {
-    width: 150px;
-    padding-left: 3em;
-    margin-top: 10px;
-}
-
-.myPageInput {
-    width: 250px;
-    height: 40px;
-    margin-left: 4em;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 20px;
-    background: rgba(230, 230, 230, 0.35);
-    border: 1px solid #000000;
-    border-radius: 5px;
-    color: black;
-    font-size: 18px;
-    padding-left: 10px;
-    padding-top: 5px
-    
-}
-
-.myPageAddressInput {
-    width: 110px;
-    height: 40px;
-    margin-left: 4em;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 20px;
-    background: rgba(230, 230, 230, 0.35);
-    border: 1px solid #000000;
-    border-radius: 5px;
-    color: black;
-    font-size: 18px;
-    padding-left: 10px;
-    padding-top: 5px
-}
-
-
-.myPageRadio {
-    margin-left: 70px;
-    background: #FFFFFF;
-
-}
-
-.myPageInfo {
+.myShopWrapper {
     display: flex;
     flex-direction: column;
+    /* justify-content: space-around; */
 }
 
-.myPagePostCodeButton{
+.wrapperTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    font-weight: 600;
+    font-size: 15px;
+    color: #145914;
+}
+
+.wrapperMid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.shopNum {
+    margin-left: 0.5em;
+}
+
+.goToMyShopBtn {
     background-color: #E8EDE0;
     border: 1px solid black;
     border-radius: 5px;
-}
-
-.myPageAddress {
-    width: 250px;
-    margin-left: 4.7em;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 20px;
-    background: rgba(230, 230, 230, 0.35);
-    border: 1px solid #000000;
-    border-radius: 5px;
-    color: black;
-    font-size: 15px;
-    padding-left: 10px;
-    padding-top: 8px;
+    margin-right: 1em;
 }
