@@ -88,8 +88,9 @@ function RegisterGoods() {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then(() => {
-        navigate("/shop");
+      .then((res) => {
+        alert(res.data.message);
+        navigate(-1);
       })
       .catch((err) => {
         console.log(err);
