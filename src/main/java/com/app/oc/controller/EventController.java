@@ -33,7 +33,6 @@ public class EventController {
     @PostMapping("/event/post")
     public ResponseEntity<Event> savePost(@RequestBody EventRequestDto requestDto, @CookieValue String id)
             throws IOException {
-        System.out.println("cookie id = " + id);
         Event saved = eventService.savePost(requestDto, id);
         return (saved != null) ? ResponseEntity.status(HttpStatus.OK).body(saved)
                 : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

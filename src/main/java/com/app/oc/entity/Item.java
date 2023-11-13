@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "item")
-@ToString(of = {"itemId","itemTitle","price","Out","content"})
+@ToString(of = {"itemId","itemTitle","price","content"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Item {
